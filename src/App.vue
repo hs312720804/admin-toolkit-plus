@@ -5,9 +5,13 @@
 </div>
 </template>
 <script lang="ts">
+import CTest from './packages/components/test/index'
 import { defineComponent } from 'vue'
 export default defineComponent({
-  name: 'App'
+  name: 'App',
+  components: {
+    CTest
+  }
 })
 </script>
 <style>

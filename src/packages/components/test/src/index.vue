@@ -1,5 +1,5 @@
 <template>
-  <div>{{test}}</div>
+  <div>{{test}}122</div>
 </template>
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
