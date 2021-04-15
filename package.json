@@ -1,7 +1,10 @@
 {
-  "name": "admin-toolkit-plus2",
+  "name": "admin-toolkit-plus",
   "version": "0.0.1",
-  "main": "./src/packages/index.ts",
+  "files": [
+    "dist/lib/*"
+  ],
+  "main": "admin-toolkit-plus.es.js",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",

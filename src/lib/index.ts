@@ -18,7 +18,7 @@ const install = (app: App, opt: InstallOptions): void => {
   // setConfig(option)
 
   components.forEach(component => {
-    app.component(component.name, component)
+    // app.component(component.name, component)
   })
 
   // plugins.forEach(plugin => {
