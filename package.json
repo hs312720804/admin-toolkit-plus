@@ -2,7 +2,9 @@
   "name": "admin-toolkit-plus",
   "version": "0.0.1",
   "files": [
-    "dist/lib/*"
+    "dist",
+    "src/lib",
+    "src/assets"
   ],
   "main": "admin-toolkit-plus.es.js",
   "scripts": {
