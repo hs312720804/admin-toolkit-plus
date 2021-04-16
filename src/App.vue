@@ -6,11 +6,17 @@
 </template>
 <script lang="ts">
 import CTest from './lib/components/test/index'
-import { defineComponent } from 'vue'
+import components from './lib/index'
+import { defineComponent, onMounted } from 'vue'
 export default defineComponent({
   name: 'App',
   components: {
     CTest
+  },
+  setup(props, ctx) {
+     onMounted(() => {
+       console.log(components.cTest.name)
+     })
   }
 })
 </script>
