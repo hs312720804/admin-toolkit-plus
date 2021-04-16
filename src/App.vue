@@ -1,22 +1,27 @@
 <template>
 <div>
   <img alt="Vue logo" src="./assets/logo.png" />
-  <c-test></c-test>
+  <c-card title="1111" @go-back="goBack">
+        1111
+  </c-card>
 </div>
 </template>
 <script lang="ts">
-import CTest from './lib/components/test/index'
 import components from './lib/index'
 import { defineComponent, onMounted } from 'vue'
 export default defineComponent({
   name: 'App',
   components: {
-    CTest
+    ...components
   },
-  setup(props, ctx) {
-     onMounted(() => {
-       console.log(components.cTest.name)
-     })
+  setup (props, ctx) {
+    // methods
+    const goBack = () => {
+      debugger
+    }
+    return {
+      goBack
+    }
   }
 })
 </script>

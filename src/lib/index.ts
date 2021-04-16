@@ -1,12 +1,16 @@
 import type { App } from 'vue'
 import { InstallOptions } from '../utils/config'
-import cTest from './components/test/index'
+import CBreadcrumb from './components/breadcrumb/index'
+import CCard from './components/card/index'
+import CContentWrapper from './components/content-wrapper/index'
 const defaultInstallOpt: InstallOptions = {
   size: '' as ComponentSize,
   zIndex: 2000,
 }
 const components = [
-  cTest
+  CBreadcrumb,
+  CCard,
+  CContentWrapper
 ]
 const install = (app: App, opt: InstallOptions): void => {
   // const option = Object.assign(defaultInstallOpt, opt)
@@ -28,10 +32,14 @@ const install = (app: App, opt: InstallOptions): void => {
 }
 // install(App, InstallOptions)
 export {
-  cTest,
+  CBreadcrumb,
+  CCard,
+  CContentWrapper,
   install
 }
 export default {
-  cTest,
+  CBreadcrumb,
+  CCard,
+  CContentWrapper,
   install
 }
