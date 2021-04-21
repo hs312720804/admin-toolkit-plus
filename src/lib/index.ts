@@ -22,7 +22,7 @@ const install = (app: App, opt: InstallOptions): void => {
   // console.log('i18n=', i18n)
   // console.log('app=', app)
   // app.use(ElementPlus)
-  // app.use(i18n)
+  app.use(i18n)
   components.forEach(component => {
     const name = component.name
     app.component(name, component)
