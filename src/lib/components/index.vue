@@ -34,9 +34,7 @@
   </el-container>
 </template>
 <script>
-import changeColor from './changeColor.vue'
 export default {
-  components: { changeColor },
   data () {
     return {
       isCollapseMenu: false,
@@ -64,12 +62,14 @@ export default {
     },
     toggleMenu () {
       this.isCollapseMenu = !this.isCollapseMenu
-      this.$appState.$set('isCollapseMenu', this.isCollapseMenu)
+      localStorage.setItem('isCollapseMenu', this.isCollapseMenu)
+      // this.$appState.$set('isCollapseMenu', this.isCollapseMenu)
     }
   },
   created () {
     this.getMenu()
-    this.isCollapseMenu = !!this.$appState.$get('isCollapseMenu')
+    this.isCollapseMenu = localStorage.getItem('isCollapseMenu')
+    // !!this.$appState.$get('isCollapseMenu')
     this.breadcrumb = this.$route.matched.map((v, i) => {
       return {
         to: v.path,

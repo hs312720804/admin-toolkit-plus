@@ -1,6 +1,5 @@
 <template>
 <div>
-  <img alt="Vue logo" src="./assets/logo.png" />
   <c-card title="1111" @go-back="goBack">
         1111
   </c-card>
