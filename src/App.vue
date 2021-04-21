@@ -17,8 +17,10 @@ export default defineComponent({
   setup (props, ctx) {
     // methods
     const goBack = () => {
-      debugger
     }
+    onMounted(() => {
+     
+    })
     return {
       goBack
     }

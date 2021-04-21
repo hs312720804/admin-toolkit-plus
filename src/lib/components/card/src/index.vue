@@ -1,6 +1,10 @@
 <template>
     <div class="content-card">
-        <div v-if="title !== undefined" class="content-card__header">
+        <div class="content-card__footer">
+            33344
+           <slot name ="footer"/>33
+        </div>
+        <!-- <div v-if="title !== undefined" class="content-card__header">
             {{ title }}
             <div class="actions">
                 <slot name="actions">
@@ -13,7 +17,7 @@
         </div>
         <div class="content-card__footer" v-if="$slots.footer">
           <slot name ="footer"/>
-        </div>
+        </div> -->
     </div>
 </template>
 
@@ -23,6 +27,9 @@ export default defineComponent({
   name: 'CCard',
   props: {
     title: String
+  },
+  setup() {
+
   }
 })
 </script>
