@@ -4,6 +4,7 @@
   <c-card title="1111" @go-back="goBack">
         1111
   </c-card>
+  
 </div>
 </template>
 <script lang="ts">
