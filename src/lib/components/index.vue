@@ -18,15 +18,12 @@
           @click="toggleMenu"
         ></el-button>
         <c-breadcrumb class="breadcrumb" :items="breadcrumb"/>
-
-        <div>
+        <!-- <div>
             <span class="v-top" style="line-height: 30px">Change theme color to: </span>
             <change-color></change-color>
             <el-button @click="reset" size="small" style="float: right;">Reset</el-button>
-        </div>
-
+        </div> -->
       </el-header>
-
       <el-main class="content">
         <router-view></router-view>
       </el-main>

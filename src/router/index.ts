@@ -6,7 +6,7 @@ const routes = [
     path: '/',
     name: 'dashboard',
     component: main,
-    redirect: '/actionList',
+    redirect: 'actionList',
     meta: {
       title: '面板',
       icon: 'iconfont el-icon-cc-file-add',
@@ -16,7 +16,7 @@ const routes = [
       {
         path: 'actionList',
         name: 'actionList',
-        component: demos.ActionListDemo,
+        component: demos.CardDemo,
         meta: {
           title: '按钮组',
           icon: 'iconfont el-icon-cc-file-add',

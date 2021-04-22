@@ -41,6 +41,7 @@ export default defineComponent({
     line-height 50px
     font-size 18px
     font-weight bold
+    text-align left
     border-bottom 1px solid #f0f0f0
     background #fff
     .actions
