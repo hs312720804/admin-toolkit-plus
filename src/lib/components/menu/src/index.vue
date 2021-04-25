@@ -9,35 +9,34 @@
     :collapse="isCollapse"
     :mode="mode"
   >
-    <template v-for="(item, index) in items">
-      <el-submenu v-if="item.children" :key="index"  :index="index + ''">
+    <template v-for="(item, index) in items" :key="index+'menu'" >
+      <el-submenu v-if="item.children" :index="index + ''">
         <template #title>
           <i v-if="item.icon" :class="item.icon"></i>
           <span>{{ item.title }}</span>
         </template>
-        <template v-for="(child, idx) in item.children">
+        <template v-for="(child, idx) in item.children"  :key="idx+'menu_c'">
           <el-menu-item
             v-if="typeof(child.children) === 'undefined'"
-            :key="idx"
             :index="child.route"
           >
-            <template v-if="item.path">
+            <template v-if="item.path"  #title>
               <a :href="'#' + item.path + (item.path === '/' ? '' : '/') + child.route" onclick="return false">
                 <i v-if="child.icon" :class="child.icon"></i>
                 <span>{{ child.title }}</span>
               </a>
-            </template>
-            <template v-else>
+            </template> 
+            <template v-else #title>
               <i v-if="child.icon" :class="child.icon"></i>
               <span>{{ child.title }}</span>
             </template>
           </el-menu-item>
           <el-submenu v-else :key="index +'_'+idx" :index="index +'_'+idx">
-            <template>
+            <template #title>
               <i v-if="child.icon" :class="child.icon"></i>
               <span>{{ child.title }}</span>
             </template>
-            <template v-for="(c,n) in child.children" :key="n">
+            <template v-for="(c,n) in child.children" :key="n+'no-c'">
               <el-menu-item  :index="c.route">
                 <i v-if="c.icon" :class="c.icon"></i>
                 <span>{{c.title}}</span>
@@ -46,7 +45,7 @@
           </el-submenu>
         </template>
       </el-submenu>
-      <el-menu-item v-else :key="item.route" :index="item.route">
+      <el-menu-item v-else :index="item.route">
         <i v-if="item.icon" :class="item.icon"></i>
         <span>{{ item.title }}</span>
       </el-menu-item>
