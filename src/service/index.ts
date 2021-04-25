@@ -31,33 +31,26 @@ export function getList (params) {
 }
 interface p {
   currentPage: number,
-  pageSize?: number
+  pageSize: number,
+  total: number
 }
 export function pageFakeData (pagination: p) {
-  let data = [
-    { name: '测试1', id: '1' },
-    { name: '测试2', id: '2' },
-    { name: '测试3', id: '3' },
-    { name: '测试4', id: '4' },
-    { name: '测试5', id: '5' },
-    { name: '测试6', id: '6' },
-    { name: '测试7', id: '7' },
-    { name: '测试8', id: '8' },
-    { name: '测试9', id: '9' },
-    { name: '测试10', id: '10' }
-  ]
   return new Promise((resolve, reject) => {
-    if (pagination.currentPage > 1) {
-      data = data.map(item => {
-        return {
-          name: item.name + pagination.currentPage,
-          id: item.id + 'a' + pagination.currentPage
-        }
+    let data = []
+    const total = 100
+    const pageSize = pagination.pageSize
+    const currentPage = pagination.currentPage 
+    const count = pageSize * currentPage 
+    const n = count > total ? count - total : pageSize
+    for (let i =0 ;i < n; i++) {
+      data.push({
+        name: '第' + (currentPage) + '页，每页显示' + pageSize + ',当前页第' + (i+1) + '条数据',
+        id: i
       })
     }
     const results = {
       rows: data,
-      total: 100
+      total
     }
     resolve(results)
   })
