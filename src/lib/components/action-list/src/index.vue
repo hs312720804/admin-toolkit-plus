@@ -1,38 +1,33 @@
 <template>
    <div class="action-list" :style="align === 'left' ? {'justify-content': 'flex-start'} : ''">
      <template v-if="!group">
-       <Button
+       <el-button
             v-for="(item, key) in actions"
             :key="key"
             :type="item.type"
             @click="owner[key]()"
         >
           {{ item.text }}
-       </Button>
+       </el-button>
     </template>
     <template v-else>
       <el-button-group>
-        <Button
+        <el-button
             v-for="(item, key) in actions"
             :key="key"
             :type="item.type"
             @click="owner[key]()"
         >
           {{ item.text }}
-        </Button>
+        </el-button>
       </el-button-group>
     </template>
   </div>
 </template>
 
 <script>
-import { Row, Button } from 'element-ui'
 export default {
   name: 'CActionList',
-  components: {
-    Row,
-    Button
-  },
   inject: {
     actionOwner: {
       default: null
@@ -54,6 +49,7 @@ export default {
   },
   computed: {
     owner () {
+      debugger
       return this.actionOwner || this.target || this.$parent
     }
   }

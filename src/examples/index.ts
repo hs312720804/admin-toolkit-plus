@@ -1,4 +1,4 @@
-// import ActionListDemo from './ActionListDemo.vue'
+import ActionListDemo from './ActionListDemo.vue'
 import BreadcrumbDemo from './BreadcrumbDemo.vue'
 import ContentWrapperDemo from './ContentWrapperDemo.vue'
 import MenuDemo from './MenuDemo.vue'
@@ -15,7 +15,7 @@ import CardDemo from './CardDemo.vue'
 // import AppParamsDemo from './AppParamsDemo.vue'
 // import AppParamsReadDemo from './AppParamsReadDemo.vue'
 // import TypeListDemo from './TypeListDemo.vue'
-// import CardListDemo from './CardListDemo.vue'
+import CardListDemo from './CardListDemo.vue'
 // import FatherSonLinkDemo from './FatherSonLinkDemo.vue'
 // import FatherSonLinkDemo1 from './FatherSonLinkDemo1.vue'
 // import probabilityDemo from './probabilityDemo.vue'
@@ -39,7 +39,7 @@ import CardDemo from './CardDemo.vue'
 // import FixPageDemo from './FixPageDemo.vue'
 // import AddMultiDemo from './AddMultiDemo.vue'
 // import ProductListDemo from './ProductListDemo.vue'
-// import AddFormObjDemo from './AddFormObjDemo.vue'
+import AddFormObjDemo from './AddFormObjDemo.vue'
 // import CellEditDemo from './CellEditDemo.vue'
 // import CascaderPanelDemo from './CascaderPanelDemo.vue'
 // import TableTreeDemo from './TableTreeDemo.vue'
@@ -56,7 +56,7 @@ export {
 
   BreadcrumbDemo,
   CardDemo,
-  // ActionListDemo,
+  ActionListDemo,
   ContentWrapperDemo,
   MenuDemo,
   // RemoteSelectDemo,
@@ -72,7 +72,7 @@ export {
   // AppParamsDemo,
   // AppParamsReadDemo,
   // TypeListDemo,
-  // CardListDemo,
+  CardListDemo,
   // FatherSonLinkDemo,
   // FatherSonLinkDemo1,
   // probabilityDemo,
@@ -96,7 +96,7 @@ export {
   // FixPageDemo,
   // AddMultiDemo,
   // ProductListDemo,
-  // AddFormObjDemo,
+  AddFormObjDemo,
   // CellEditDemo,
   // CascaderPanelDemo,
   // TableTreeDemo,

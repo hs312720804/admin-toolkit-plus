@@ -20,10 +20,9 @@
     />
   </div>
 </template>
-<script lang="ts">
-import { defineComponent, provide } from 'vue'
 
-export default defineComponent({
+<script>
+export default {
   data () {
     return {
       actions: {
@@ -51,6 +50,6 @@ export default defineComponent({
       this.$message('handleBatchEdit')
     }
   }
-})
-</script>
+}
 
+</script>

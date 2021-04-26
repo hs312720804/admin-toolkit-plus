@@ -26,7 +26,7 @@ export default {
       if (_.trim(val) === '') {
         this.$message({
           type: 'error',
-          message: this.$t('cMessage.inputPositiveInteger')
+          message: this.$t('message.cMessage.inputPositiveInteger')
         })
         return
       }

@@ -10,7 +10,7 @@
       <div v-show="isShowPanel">
         <el-cascader-panel v-if="panelOptions.length > 0"  ref="panel" v-model="inputValue"  :options="panelOptions" :props="props"></el-cascader-panel>
         <div v-else class="coocaa-cascader-panel--empty">
-          {{$t('cMessage.noData')}}
+          {{$t('message.cMessage.noData')}}
         </div>
       </div>
      </div>

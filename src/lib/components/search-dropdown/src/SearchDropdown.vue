@@ -46,7 +46,7 @@
         </ul>
 
         <!-- 查询结果为空时候 -->
-        <div class="result-null" v-if="value && result.length == 0">{{$t('cMessage.noResult')}}</div>
+        <div class="result-null" v-if="value && result.length == 0">{{$t('message.cMessage.noResult')}}</div>
       </div>
     </div>
 
@@ -63,7 +63,7 @@ export default {
     placeholderValue: {
       type: String,
       default: () => {
-        return this.$t('cMessage.search') + '...'
+        return this.$t('message.cMessage.search') + '...'
       }
     },
     FuzzySearchList: {

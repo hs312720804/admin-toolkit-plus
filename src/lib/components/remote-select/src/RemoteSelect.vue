@@ -12,7 +12,7 @@
     >
       <slot name="selected">
         <div v-if="showSelection" class="selected">
-          <Tag type="info" class="selected__tip">{{$t('cMessage.selected')}}: </Tag>
+          <Tag type="info" class="selected__tip">{{$t('message.cMessage.selected')}}: </Tag>
           <Tag
             v-for="item in selected"
             closable
@@ -25,9 +25,9 @@
       </slot>
       <slot></slot>
       <div slot="footer" class="dialog-footer">
-        <Button v-if="showClearSelectionBtn" style="float:left" type="danger" @click="handleClearSelected">{{$t('cMessage.clearSelected')}}</Button>
-        <Button @click="handleSelectCancel">{{$t('cButton.cancel')}}</Button>
-        <Button type="primary" @click="handleSelectEnd">{{$t('cButton.ok')}}</Button>
+        <Button v-if="showClearSelectionBtn" style="float:left" type="danger" @click="handleClearSelected">{{$t('message.cMessage.clearSelected')}}</Button>
+        <Button @click="handleSelectCancel">{{$t('message.cButton.cancel')}}</Button>
+        <Button type="primary" @click="handleSelectEnd">{{$t('message.cButton.ok')}}</Button>
       </div>
     </Dialog>
   </div>
@@ -45,7 +45,7 @@ export default {
     title: {
       type: String,
       default () {
-        return this.$t('cPlaceholder.select')
+        return this.$t('message.cPlaceholder.select')
       }
     },
     selected: {

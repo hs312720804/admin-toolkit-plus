@@ -5,7 +5,9 @@ import lang from './lang/index'
 import CBreadcrumb from './components/breadcrumb/index'
 import CCard from './components/card/index'
 import CMenu from './components/menu/index'
+import CActionList from './components/action-list/index'
 import CContentWrapper from './components/content-wrapper/index'
+import CAddFormObj from './components/add-form-obj/index'
 const i18n = lang.i18n
 const defaultInstallOpt: InstallOptions = {
   size: '' as ComponentSize,
@@ -15,7 +17,9 @@ const components = [
   CBreadcrumb,
   CCard,
   CContentWrapper,
-  CMenu
+  CMenu,
+  CActionList,
+  CAddFormObj
 ]
 const install = (app: App, opt: InstallOptions): void => {
   app.use(i18n)
@@ -29,6 +33,8 @@ export {
   CCard,
   CContentWrapper,
   CMenu,
+  CActionList,
+  CAddFormObj,
   install
 }
 export default {
@@ -36,5 +42,7 @@ export default {
   CCard,
   CContentWrapper,
   CMenu,
+  CActionList,
+  CAddFormObj,
   install
 }

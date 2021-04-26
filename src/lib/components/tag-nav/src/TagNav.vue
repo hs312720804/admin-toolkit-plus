@@ -4,8 +4,8 @@
     <el-button class="tag-nav__btn tag-nav__right" icon="el-icon-arrow-right" @click="handleScroll('right')"></el-button>
     <el-dropdown split-button class="tag-nav__btn tag-nav__more">
       <el-dropdown-menu slot="dropdown">
-        <el-dropdown-item @click.native="handleCloseOther">{{$t('cMessage.closeOther')}}</el-dropdown-item>
-        <el-dropdown-item @click.native="handleCloseAll">{{$t('cMessage.closeAll')}}</el-dropdown-item>
+        <el-dropdown-item @click.native="handleCloseOther">{{$t('message.message.cMessage.closeOther')}}</el-dropdown-item>
+        <el-dropdown-item @click.native="handleCloseAll">{{$t('message.message.cMessage.closeAll')}}</el-dropdown-item>
       </el-dropdown-menu>
     </el-dropdown>
     <div

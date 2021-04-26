@@ -21,7 +21,7 @@
     </template>
 
     <template v-else>
-      <span v-if="type === 'switch'">{{ getBoolVal(value) ? $t('cMessage.yes') : $t('cMessage.no')  }}</span>
+      <span v-if="type === 'switch'">{{ getBoolVal(value) ? $t('message.cMessage.yes') : $t('message.cMessage.no')  }}</span>
       <el-checkbox v-else :disabled="true" :value="getBoolVal(value)"></el-checkbox>
       <slot></slot>
     </template>

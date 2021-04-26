@@ -8,13 +8,13 @@ import 'vssue/dist/vssue.css'
 
 const VssueGitlabAPI = VssueGitlabAPIFactory({corsAnywhere: 'http://172.20.155.102:7000'})
 export default ({
-  Vue,
+  app,
   options,
   router,
   sideData
 }) => {
-  Vue.use(ElementUI)
-  Vue.use(Vssue, {
+  app.use(ElementUI)
+  app.use(Vssue, {
     api: VssueGitlabAPI,
     // 在这里设置你使用的平台的 OAuth App 配置
     owner: 'FrontEnd',
@@ -23,5 +23,5 @@ export default ({
     clientSecret: '1728d05d7ede313e7741a145f6d4c3903b17863691557989e8a8aa62ae354da6',
     baseURL: 'http://gitlab.skysri.com'
   })
-  Vue.use(ElementUI, { size: 'small', zIndex: 3000 })
+  app.use(ElementUI, { size: 'small', zIndex: 3000 })
 }
