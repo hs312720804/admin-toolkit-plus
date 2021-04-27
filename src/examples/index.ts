@@ -3,8 +3,8 @@ import BreadcrumbDemo from './BreadcrumbDemo.vue'
 import ContentWrapperDemo from './ContentWrapperDemo.vue'
 import MenuDemo from './MenuDemo.vue'
 // import RemoteSelectDemo from './RemoteSelectDemo.vue'
-// import TableDemo from './TableDemo.vue'
-// import TagNavDemo from './TagNavDemo.vue'
+import TableDemo from './TableDemo.vue'
+import TagNavDemo from './TagNavDemo.vue'
 // import ContentEllipsisDemo from './ContentEllipsisDemo.vue'
 // import TheIconDemoIndex from './TheIconDemoIndex.vue'
 // import TheCustomIconDemo from './TheCustomIconDemo.vue'
@@ -37,7 +37,7 @@ import CardListDemo from './CardListDemo.vue'
 // import AnyDemo from './form/AnyDemo.vue'
 // import CnRegionPickerDemo from './RegionPickerCnDemo.vue'
 // import FixPageDemo from './FixPageDemo.vue'
-// import AddMultiDemo from './AddMultiDemo.vue'
+import AddMultiDemo from './AddMultiDemo.vue'
 // import ProductListDemo from './ProductListDemo.vue'
 import AddFormObjDemo from './AddFormObjDemo.vue'
 // import CellEditDemo from './CellEditDemo.vue'
@@ -60,8 +60,8 @@ export {
   ContentWrapperDemo,
   MenuDemo,
   // RemoteSelectDemo,
-  // TableDemo,
-  // TagNavDemo,
+  TableDemo,
+  TagNavDemo,
   // ContentEllipsisDemo,
   // TheIconDemoIndex,
   // TheCustomIconDemo,
@@ -94,7 +94,7 @@ export {
   // AnyDemo,
   // CnRegionPickerDemo,
   // FixPageDemo,
-  // AddMultiDemo,
+  AddMultiDemo,
   // ProductListDemo,
   AddFormObjDemo,
   // CellEditDemo,

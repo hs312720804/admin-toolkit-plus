@@ -1,7 +1,8 @@
 <script lang='ts'>
 import { ElTable as ElTable, ElTableColumn, ElCheckbox, ElRadio } from 'element-plus'
 import TableWrapper from '../../table-wrapper/src/TableWrapper.vue'
-import { h } from 'vue'
+import { h, ComponentOptions } from 'vue'
+import { table } from 'node:console'
 // interface ObjectOf<V> {
 //   [_: string]: V
 // }
@@ -39,8 +40,10 @@ import { h } from 'vue'
 
 // elementui 的 hover-row 功能导致在数据量大的时候很卡,
 // 下面通过特殊的手段禁用
+console.log('aa',ElTable.components)
+const ElTableComponents = ElTable.components as ComponentOptions
 const TableBody = {
-  extends: ElTable.components.TableBody,
+  extends: ElTableComponents.TableBody,
   methods: {
     getRowClass (row, rowIndex) {
       const classes = ['el-table__row']

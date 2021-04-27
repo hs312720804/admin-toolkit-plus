@@ -9,6 +9,8 @@ import CMenu from './components/menu/index'
 import CActionList from './components/action-list/index'
 import CContentWrapper from './components/content-wrapper/index'
 import CAddFormObj from './components/add-form-obj/index'
+import CAddMulti from './components/add-multi/index'
+import CTagNav from './components/tag-nav/index'
 const i18n = lang.i18n
 
 const defaultInstallOpt: InstallOptions = {
@@ -21,7 +23,9 @@ const components = [
   CContentWrapper,
   CMenu,
   CActionList,
-  CAddFormObj
+  CAddFormObj,
+  CAddMulti,
+  CTagNav
 ]
 const install = (app: App, opt: InstallOptions): void => {
   app.use(i18n)
@@ -38,7 +42,9 @@ export {
   CMenu,
   CActionList,
   CAddFormObj,
-  install
+  CAddMulti,
+  install,
+  CTagNav
 }
 export default {
   CBreadcrumb,
@@ -48,5 +54,7 @@ export default {
   CMenu,
   CActionList,
   CAddFormObj,
-  install
+  CAddMulti,
+  install,
+  CTagNav
 }

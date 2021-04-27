@@ -2,12 +2,6 @@
   <div :class="theme">
     <el-button class="tag-nav__btn tag-nav__left" icon="el-icon-arrow-left" @click="handleScroll('left')"></el-button>
     <el-button class="tag-nav__btn tag-nav__right" icon="el-icon-arrow-right" @click="handleScroll('right')"></el-button>
-    <el-dropdown split-button class="tag-nav__btn tag-nav__more">
-      <el-dropdown-menu slot="dropdown">
-        <el-dropdown-item @click.native="handleCloseOther">{{$t('message.message.cMessage.closeOther')}}</el-dropdown-item>
-        <el-dropdown-item @click.native="handleCloseAll">{{$t('message.message.cMessage.closeAll')}}</el-dropdown-item>
-      </el-dropdown-menu>
-    </el-dropdown>
     <div
       ref="viewPort"
       class="tag-nav__view-port">
@@ -228,7 +222,8 @@ export default {
       this.tags = this.initTags
     },
     scrollIntoView () {
-      const activeItem = this.$el.querySelector('.tag-nav__item--active')
+      const activeItem = undefined
+      // const activeItem = this.$el.querySelector('.tag-nav__item--active')
       if (activeItem) {
         const viewPort = this.$refs.viewPort
         const tagList = this.$refs.tagList
@@ -319,8 +314,8 @@ export default {
     position absolute
     height 100%
     z-index 1
-    >>> .el-button-group
-    >>> .el-button
+    :deep(.el-button-group)
+    :deep(.el-button)
       height 100%
 
   .tag-nav__left
@@ -334,9 +329,9 @@ export default {
     right 28px
   .tag-nav__more
     right 0
-    >>> .el-button:first-child
+    :deep(.el-button:first-child)
       display none
-    >>> .el-dropdown__caret-button::before
+    :deep(.el-dropdown__caret-button::before)
       background #eee
 .tag-nav-two
   position relative
@@ -400,8 +395,8 @@ export default {
     position absolute
     height 100%
     z-index 1
-    >>> .el-button-group
-    >>> .el-button
+    :deep(.el-button-group)
+    :deep(.el-button)
       height 100%
       border none
       border-radius 0
@@ -422,9 +417,9 @@ export default {
     right 28px
   .tag-nav__more
     right 0
-    >>> .el-button:first-child
+    :deep(.el-button:first-child)
       display none
-    >>> .el-dropdown__caret-button::before
+    :deep(.el-dropdown__caret-button::before)
       background #eee
 .gray-tab
   position relative
@@ -479,8 +474,8 @@ export default {
     height 100%
     z-index 1
     border-radius 0
-    >>> .el-button-group
-    >>> .el-button
+    :deep(.el-button-group)
+    :deep(.el-button)
       height 100%
       border-radius 0
   .tag-nav__left
@@ -497,11 +492,11 @@ export default {
   .tag-nav__more
     right 0
     border-radius 0
-    >>> .el-button:first-child
+    :deep(.el-button:first-child)
       display none
-    >>> .el-dropdown__caret-button
+    :deep(.el-dropdown__caret-button)
       border 2px solid #e6e6e6
-    >>> .el-dropdown__caret-button::before
+    :deep(.el-dropdown__caret-button::before)
       background #eee
       visibility hidden
 .white-tab
@@ -554,8 +549,8 @@ export default {
     height 100%
     z-index 1
     border-radius 0
-    >>> .el-button-group
-    >>> .el-button
+    :deep(.el-button-group)
+    :deep(.el-button)
       height 100%
       border-radius 0
   .tag-nav__left
@@ -572,11 +567,11 @@ export default {
   .tag-nav__more
     right 0
     border-radius 0
-    >>> .el-button:first-child
+    :deep(.el-button:first-child)
       display none
-    >>> .el-dropdown__caret-button
+    :deep(.el-dropdown__caret-button)
       border 2px solid #e6e6e6
-    >>> .el-dropdown__caret-button::before
+    :deep(.el-dropdown__caret-button::before)
       background #eee
       visibility hidden
 </style>
