@@ -4,14 +4,14 @@
     :background-color="backgroundColor"
     :text-color="textColor"
     :active-text-color="activeTextColor"
-    :defaultActive="defaultActive"
+    :default-active="defaultActive"
     @select="handleSelect"
     :collapse="isCollapse"
     :mode="mode"
   >
     <template v-for="(item, index) in items">
       <el-submenu v-if="item.children" :key="index"  :index="index + ''">
-        <template slot="title">
+        <template #title>
           <i v-if="item.icon" :class="item.icon"></i>
           <span>{{ item.title }}</span>
         </template>
@@ -24,31 +24,31 @@
             <template v-if="item.path">
               <a :href="'#' + item.path + (item.path === '/' ? '' : '/') + child.route" onclick="return false">
                 <i v-if="child.icon" :class="child.icon"></i>
-                <span slot="title">{{ child.title }}</span>
+                <span>{{ child.title }}</span>
               </a>
             </template>
             <template v-else>
               <i v-if="child.icon" :class="child.icon"></i>
-              <span slot="title">{{ child.title }}</span>
+              <span>{{ child.title }}</span>
             </template>
           </el-menu-item>
-          <el-submenu v-else :key="idx" :index="index +'_'+idx">
-            <template slot="title">
+          <el-submenu v-else :key="index +'_'+idx" :index="index +'_'+idx">
+            <template>
               <i v-if="child.icon" :class="child.icon"></i>
               <span>{{ child.title }}</span>
             </template>
-            <template v-for="(c,n) in child.children">
-              <el-menu-item :key="n" :index="c.route">
+            <template v-for="(c,n) in child.children" :key="n">
+              <el-menu-item  :index="c.route">
                 <i v-if="c.icon" :class="c.icon"></i>
-                <span slot="title">{{c.title}}</span>
+                <span>{{c.title}}</span>
               </el-menu-item>
             </template>
           </el-submenu>
         </template>
       </el-submenu>
-      <el-menu-item v-else :key="index" :index="item.route">
+      <el-menu-item v-else :key="item.route" :index="item.route">
         <i v-if="item.icon" :class="item.icon"></i>
-        <span slot="title">{{ item.title }}</span>
+        <span>{{ item.title }}</span>
       </el-menu-item>
     </template>
   </el-menu>

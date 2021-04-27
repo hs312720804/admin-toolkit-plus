@@ -1,6 +1,41 @@
-<script>
-import { Table as ElTable, TableColumn, Checkbox, Radio } from 'element-plus'
+<script lang='ts'>
+import { ElTable as ElTable, ElTableColumn, ElCheckbox, ElRadio } from 'element-plus'
 import TableWrapper from '../../table-wrapper/src/TableWrapper.vue'
+import { h } from 'vue'
+// interface ObjectOf<V> {
+//   [_: string]: V
+// }
+// class OrderItem {
+//   uuid: string
+//   amount: number;
+//   secondaryTotal: number;
+//   total: number;
+//   originalTotal: number;
+//   checked: boolean;
+// }
+// interface Table {
+//   components: {
+//     extends: ObjectOf<OrderItem>
+//   }
+// }
+// const aaa:Table = {
+//   components: {
+//     'extends': [{ 'uuid': '12' }]
+//   }
+// }
+// function identity<T>(arg: T): T {
+//   return arg
+// }
+
+// let myIdentity: {<U>(arg: U) : U;} = identity
+// console.log('111=>', myIdentity([1,2,3]))
+
+// function loggingIdentity<T>(arg: Array<T>): number {
+//   console.log(arg.length)  // Array has a .length, so no more error
+//   return arg.length
+// }
+// let aaa = [1, 2, 3]
+// console.log(toString.call(bbb))
 
 // elementui 的 hover-row 功能导致在数据量大的时候很卡,
 // 下面通过特殊的手段禁用
@@ -24,10 +59,8 @@ const TableBody = {
       if (typeof rowClassName === 'string') {
         classes.push(rowClassName)
       } else if (typeof rowClassName === 'function') {
-        classes.push(rowClassName.call(null, {
-          row,
-          rowIndex
-        }))
+        // classes.push(rowClassName.call(null, {row, rowIndex}))
+        classes.push(rowClassName(row, rowIndex))
       }
 
       if (this.store.states.expandRows.indexOf(row) > -1) {
@@ -50,24 +83,6 @@ const defaultTableProps = {
 }
 export default {
   name: 'CTable',
-  data () {
-    return {
-      hiddenColumns: []
-    }
-  },
-  computed: {
-    selectStatus () {
-      const dataCount = this.data.length
-      const count = this.selected.length
-      if (dataCount === 0 || count === 0) {
-        return 'none'
-      }
-      if (dataCount === count) {
-        return 'all'
-      }
-      return 'indeterminate'
-    }
-  },
   props: {
     props: {
     },
@@ -108,6 +123,24 @@ export default {
       }
     }
   },
+  data () {
+    return {
+      hiddenColumns: []
+    }
+  },
+  computed: {
+    selectStatus () {
+      const dataCount = this.data.length
+      const count = this.selected.length
+      if (dataCount === 0 || count === 0) {
+        return 'none'
+      }
+      if (dataCount === count) {
+        return 'all'
+      }
+      return 'indeterminate'
+    }
+  },
   methods: {
     toggleColumn (index) {
       const hiddenColumns = this.hiddenColumns
@@ -142,103 +175,14 @@ export default {
       }.bind(this)
     }
   },
-  render (h) {
+  render () {
+    // console.log('props==>', this.props)
     const fixSelection = this.fixSelection
     const rowIndexDisableSelection = this.rowIndexDisableSelection
     const useContextMenu = this.useContextMenu
     const hiddenColumns = this.hiddenColumns
-    const header = this.header.reduce((result, item, index) => {
-      if (hiddenColumns.indexOf(index) === -1) {
-        let scopedSlots
-        if (item.render) {
-          scopedSlots = {
-            default: props => item.render(h, props)
-          }
-        }
-        result.push(h(TableColumn, {
-          key: index,
-          props: item,
-          scopedSlots
-        }))
-      }
-      return result
-    }, [])
-    const selectionType = this.selectionType
-    if (selectionType !== 'none') {
-      const options = {
-        props: {
-          width: 55,
-          align: 'center'
-        },
-        scopedSlots: {}
-      }
-      if (fixSelection) {
-        options.props.fixed = 'left'
-      }
-      if (selectionType === 'multiple') {
-        options.props.renderHeader = () => {
-          return h(Checkbox, {
-            props: {
-              value: this.selectStatus === 'all',
-              indeterminate: this.selectStatus === 'indeterminate'
-            },
-            on: {
-              input: () => {
-                const selectStatus = this.selectStatus
-                const status = selectStatus === 'all' || selectStatus === 'indeterminate'
-                this.$emit('all-row-selection-change', !status)
-              }
-            }
-          })
-        }
 
-        options.scopedSlots.default = ({ $index: index, row }) => {
-          const disabled = rowIndexDisableSelection.includes(index)
-          return h(Checkbox, {
-            props: {
-              value: this.selected.indexOf(index) > -1,
-              disabled
-            },
-            nativeOn: {
-              'click': event => event.stopPropagation()
-            },
-            on: {
-              input: (value) => {
-                if (value) {
-                  this.$emit('row-selection-add', row, index)
-                } else {
-                  this.$emit('row-selection-remove', row, index)
-                }
-              }
-            }
-          })
-        }
-      }
-      if (selectionType === 'single') {
-        options.scopedSlots.default = ({ $index: index, row }) => {
-          const disabled = rowIndexDisableSelection.includes(index)
-          return h(Radio, {
-            class: 'hide-radio-label',
-            props: {
-              value: this.selected,
-              label: index,
-              disabled
-            },
-            nativeOn: {
-              click: (event) => {
-                if (!disabled) {
-                  this.$emit('row-selection-change', row, index)
-                }
-                event.stopPropagation()
-                event.preventDefault()
-              }
-            }
-          })
-        }
-      }
-      const selectionColumn = h(TableColumn, options)
-      header.unshift(selectionColumn)
-    }
+    const selectionType = this.selectionType
 
     const elementUITableEvents = [
       'cell-mouse-enter',
@@ -256,27 +200,144 @@ export default {
       'expand-change'
     ].reduce((result, item) => {
       result[item] = this.createEmitter(item)
+      // debugger
       return result
     }, {})
+    let options = {}
+    if (selectionType !== 'none') {
+      options = {
+        props: {
+          width: 55,
+          align: 'center'
+        },
+        slots: {}
+      }
+      if (fixSelection) {
+        options.props.fixed = 'left'
+      }
+
+    }
+    const getHeader = () => {
+      // console.log('88888888<==header==>', this.header)
+      const header = this.header.reduce((result, item, index) => {
+        if (hiddenColumns.indexOf(index) === -1) {
+          let slots
+          if (item.render) {
+            slots = {
+              default: props => item.render(h, props)
+            }
+          }
+          // console.log('result===>', index)
+          // console.log('result===>', result)
+          let a = h(ElTableColumn, {
+            key: index,
+            ...item,
+            slots
+          })
+          // debugger
+          // let a = 1
+          result.push(a)
+        }
+        // console.log('result===>', result)
+        return result
+      }, [])
+
+      // const a = this.header.reduce((re, obj, i) => {
+      //   re.push(obj)
+      //   return re
+      // }, [])
+      // console.log('a=>>>', header)
+      if (selectionType === 'multiple') {
+        options.props.renderHeader = () => {
+          return h(ElCheckbox, {
+            props: {
+              value: this.selectStatus === 'all',
+              indeterminate: this.selectStatus === 'indeterminate'
+            },
+            on: {
+              input: () => {
+                const selectStatus = this.selectStatus
+                const status = selectStatus === 'all' || selectStatus === 'indeterminate'
+                this.$emit('all-row-selection-change', !status)
+              }
+            }
+          })
+        }
+        options.slots = ({ $index: index, row }) => {
+          const disabled = rowIndexDisableSelection.includes(index)
+          return h(ElCheckbox, {
+            props: {
+              value: this.selected.indexOf(index) > -1,
+              disabled
+            },
+            nativeOn: {
+              'click': event => event.stopPropagation()
+            },
+            on: {
+              input: value => {
+                if (value) {
+                  this.$emit('row-selection-add', row, index)
+                } else {
+                  this.$emit('row-selection-remove', row, index)
+                }
+              }
+            }
+          })
+        }
+      }
+
+      if (selectionType === 'single') {
+        options.slots = ({ $index: index, row }) => {
+          const disabled = rowIndexDisableSelection.includes(index)
+          return h(ElRadio, {
+            class: 'hide-radio-label',
+            props: {
+              value: this.selected,
+              label: index,
+              disabled
+            },
+            nativeOn: {
+              click: event => {
+                if (!disabled) {
+                  this.$emit('row-selection-change', row, index)
+                }
+                event.stopPropagation()
+                event.preventDefault()
+              }
+            }
+          })
+        }
+      }
+      const selectionColumn = h(ElTableColumn, options, options.slots)
+      header.unshift(selectionColumn)
+
+      return header
+    }
+
+    // console.log('getHeader===>', getHeader)
     const table = h(
-      Table,
+      ElTable,
       {
         ref: 'table',
         class: 'cc-table',
         props: {
-          ...defaultTableProps,
-          ...this.props,
-          data: this.data
+          ...defaultTableProps
         },
-        directives: this.$directives,
+        ...this.props,
+        data: this.data,
+        // directives: this.$directives,
         on: {
           ...elementUITableEvents,
           'sort-change': this.handleSortChange,
           'row-click': this.handleRowClick
         }
       },
-      header
+      // header
+      {
+        default: getHeader
+      }
     )
+    // console.log('table==>', table)
     if (!useContextMenu) {
       return table
     }

@@ -1,20 +1,21 @@
 <template>
 <div>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <c-card title="1111" @go-back="goBack">
+  <!-- <c-card title="1111" @go-back="goBack">
         1111
   </c-card>
   
+  </c-card> -->
+  <router-view></router-view>
 </div>
 </template>
 <script lang="ts">
-import components from './lib/index'
+// import components from './lib/index'
 import { defineComponent, onMounted } from 'vue'
 export default defineComponent({
   name: 'App',
-  components: {
-    ...components
-  },
+  // components: {
+  //   ...components
+  // },
   setup (props, ctx) {
     // methods
     const goBack = () => {
@@ -35,6 +36,7 @@ export default defineComponent({
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 0px;
+  
 }
 </style>
