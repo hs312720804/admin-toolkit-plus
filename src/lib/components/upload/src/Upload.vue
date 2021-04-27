@@ -112,11 +112,11 @@ export default {
 
         const fileSize = file.size
         if (minSize !== undefined && fileSize < minSize) {
-          return rejectError(this.$t('cMessage.fileNBig'))
+          return rejectError(this.$t('message.cMessage.fileNBig'))
         }
 
         if (maxSize !== undefined && fileSize > maxSize) {
-          return rejectError(this.$t('cMessage.fileTooBig'))
+          return rejectError(this.$t('message.cMessage.fileTooBig'))
         }
         if (
           height !== undefined ||
@@ -133,28 +133,28 @@ export default {
               const ratio = imgInfo.width / imgInfo.height
               switch (true) {
                 case height !== undefined && height !== imgInfo.height:
-                  rejectError(this.$t('cMessage.imgHeightError'))
+                  rejectError(this.$t('message.cMessage.imgHeightError'))
                   break
                 case minHeight !== undefined && minHeight > imgInfo.height:
-                  rejectError(this.$t('cMessage.imgHeightError'))
+                  rejectError(this.$t('message.cMessage.imgHeightError'))
                   break
                 case maxHeight !== undefined && maxHeight < imgInfo.height:
-                  rejectError(this.$t('cMessage.imgHeightError'))
+                  rejectError(this.$t('message.cMessage.imgHeightError'))
                   break
                 case width !== undefined && width !== imgInfo.width:
-                  rejectError(this.$t('cMessage.imgHeightError'))
+                  rejectError(this.$t('message.cMessage.imgHeightError'))
                   break
                 case minWidth !== undefined && minWidth > imgInfo.width:
-                  rejectError(this.$t('cMessage.imgHeightError'))
+                  rejectError(this.$t('message.cMessage.imgHeightError'))
                   break
                 case maxWidth !== undefined && maxWidth < imgInfo.width:
-                  rejectError(this.$t('cMessage.imgHeightError'))
+                  rejectError(this.$t('message.cMessage.imgHeightError'))
                   break
                 case maxRatio !== undefined && ratio > maxRatio:
-                  rejectError(this.$t('cMessage.imgHeightError'))
+                  rejectError(this.$t('message.cMessage.imgHeightError'))
                   break
                 case minRatio !== undefined && ratio < minRatio:
-                  rejectError(this.$t('cMessage.imgHeightError'))
+                  rejectError(this.$t('message.cMessage.imgHeightError'))
                   break
                 default:
                   resolve()

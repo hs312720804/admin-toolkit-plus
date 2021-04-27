@@ -29,7 +29,7 @@ export default {
       const reg = /^[a-fA-F0-9]{12}$/
       value = _.trim(value)
       if (value !== '' && !reg.test(value)) {
-        callback(new Error(this.$t('cMessage.inputRuleMac')))
+        callback(new Error(this.$t('message.cMessage.inputRuleMac')))
       } else {
         callback()
       }
@@ -37,13 +37,13 @@ export default {
     var validateMacs = (rule, value, callback) => {
       const reg = /^[a-fA-F0-9]{12}$/
       if (value.indexOf('，') > -1) {
-        callback(new Error(this.$t('cMessage.useEnglishComma')))
+        callback(new Error(this.$t('message.cMessage.useEnglishComma')))
       }
       value = value.split(',')
       try {
         value.forEach((e, index) => {
           if (e !== '' && !reg.test(_.trim(e))) {
-            throw Error(this.$t('cMessage.the') + (index + 1) + this.$t('cMessage.macError'))
+            throw Error(this.$t('message.cMessage.the') + (index + 1) + this.$t('message.cMessage.macError'))
           }
         })
         callback()

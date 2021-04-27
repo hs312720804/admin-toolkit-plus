@@ -18,11 +18,15 @@
     "dev": "vite",
     "build-lib": "vite build --config vite.config.lib.ts",
     "build": "vite build",
-    "serve": "vite preview"
+    "serve": "vite preview",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
   },
   "dependencies": {
     "@stateform/element": "^0.1.14",
+    "@vssue/api-github-v3": "^1.4.7",
     "element-plus": "^1.0.2-beta.40",
+    "vssue": "^1.4.8",
     "vue": "^3.0.5",
     "vue-i18n": "^9.1.6",
     "vue-router": "^4.0.6"
@@ -33,6 +37,7 @@
     "@vue/compiler-sfc": "^3.0.5",
     "stylus": "^0.54.8",
     "typescript": "^4.1.3",
-    "vite": "^2.1.5"
+    "vite": "^2.1.5",
+    "vuepress": "^2.0.0-beta.9"
   }
 }

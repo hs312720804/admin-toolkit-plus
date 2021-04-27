@@ -12,7 +12,7 @@
                     :label="item.label"
                   ></el-option>
                 </el-select>
-                <template v-if="m.type === 'baoguang'">{{$t('cMessage.ExposureM')}}</template>
+                <template v-if="m.type === 'baoguang'">{{$t('message.cMessage.ExposureM')}}</template>
               </div>
               <div class="el-form-item__content">
                 <div class="monitor-form" v-for="(c,i) in m.value" :key="i">
@@ -33,34 +33,34 @@
                       v-if="inputType === 'textArea'"
                       type="textarea"
                       :autosize="{ minRows: 3, maxRows: 5}"
-                      :placeholder="$t('cMessage.content')"
+                      :placeholder="$t('message.cPlaceholder.content')"
                       v-model="c.code"
                       @change="handleIputCode($event,key,index,i,m.type)"
                       >
                       </el-input>
                        <el-input
                        v-else
-                      :placeholder="$t('cMessage.content')"
+                      :placeholder="$t('message.cPlaceholder.content')"
                       v-model="c.code"
                       @change="handleIputCode($event,key,index,i,m.type)"
                       >
                       </el-input>
                     </el-col>
                     <el-col :span="2">
-                      <el-button :disabled="m.value.length > 1 ? false : true " @click="handleDeleteExposure(key,index,i,m.type)">{{$t('cButton.del')}}</el-button>
+                      <el-button :disabled="m.value.length > 1 ? false : true " @click="handleDeleteExposure(key,index,i,m.type)">{{$t('message.cButton.del')}}</el-button>
                     </el-col>
                   </el-row>
                 </div>
                 <el-row>
                   <el-col>
-                    <el-button class="normal-btn-orange" @click="handleAddExposure(key,index,m.type)">{{$t('cButton.add')}}</el-button>
+                    <el-button class="normal-btn-orange" @click="handleAddExposure(key,index,m.type)">{{$t('message.cButton.add')}}</el-button>
                   </el-col>
                 </el-row>
               </div>
             </div>
             <el-row>
               <el-col>
-                <p class="add-code-more" @click="handleAddCode(key)">+{{$t('cButton.addMore')}}</p>
+                <p class="add-code-more" @click="handleAddCode(key)">+{{$t('message.cButton.addMore')}}</p>
               </el-col>
             </el-row>
           </div>
@@ -134,19 +134,14 @@ export default {
   }
 }
 </script>
-<style lang="scss" scoped>
-// 11111
-.add-code-more{
+<style lang="stylus" scoped>
+.add-code-more {
   border: none;
   color: #409EFF;
   cursor: pointer;
   font-size: 14px;
   padding: 0px 16px;
 }
-
-</style>
-
-<style lang="stylus" scoped>
 .el-row
   margin 0
 >>>.el-select
@@ -156,13 +151,6 @@ export default {
 >>> .el-radio-button__orig-radio:checked + .el-radio-button__inner
   background-color #FC4C00
   border-color #FC4C00
-// .add-code-more{
-//   border: none;
-//   color: #FC4C00;
-//   cursor: pointer;
-//   font-size: 14px;
-//   padding: 0px 16px;
-// }
 .box
   border 1px solid #d8d8d8
   margin-bottom 16px

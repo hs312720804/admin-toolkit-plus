@@ -10,7 +10,7 @@
         </div>
       </template>
       <el-button type="primary" plain @click="handleAddParam" class="add-item">
-        <i class="el-icon-plus"></i>{{$t('cButton.add')}}
+        <i class="el-icon-plus"></i>{{$t('message.cButton.add')}}
       </el-button>
     </el-form-item>
  </el-collapse>

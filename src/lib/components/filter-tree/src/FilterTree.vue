@@ -37,7 +37,7 @@ export default {
     placeholder: {
       type: String,
       default: () => {
-        return this.$t('cMessage.inputkeyWord')
+        return this.$t('message.cMessage.inputkeyWord')
       }
     },
     defaultProps: {

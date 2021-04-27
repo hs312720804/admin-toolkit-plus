@@ -2,14 +2,14 @@
   <el-select
     ref="select"
     :value="value"
-    :placeholder="$t('cPlaceholder.select')"
+    :placeholder="$t('message.cPlaceholder.select')"
     filterable
     remote
     clearable
     :remote-method="remoteMethod"
     reserve-keyword
     @input="handleInputValue"
-    :no-data-text="$t('cMessage.noData')"
+    :no-data-text="$t('message.cMessage.noData')"
     :loading="loading"
     :loading-text="loadingText"
     :disabled="disabled"
@@ -24,7 +24,7 @@ export default {
   data () {
     return {
       loading: false,
-      loadingText: this.$t('cMessage.loading'),
+      loadingText: this.$t('message.cMessage.loading'),
       options: [],
       total: 0,
       inputValue: this.value,
@@ -71,13 +71,13 @@ export default {
     showNoMore () {
       this.$nextTick(() => {
         this.appendTips()
-        document.getElementById('appendId').innerText = this.$t('cMessage.noData')
+        document.getElementById('appendId').innerText = this.$t('message.cMessage.noData')
       })
     },
     showLoading () {
       this.$nextTick(() => {
         this.appendTips()
-        document.getElementById('appendId').innerText = this.$t('cMessage.loading')
+        document.getElementById('appendId').innerText = this.$t('message.cMessage.loading')
       })
     },
     appendTips () {
@@ -110,10 +110,10 @@ export default {
         this.total = data.total
         if (this.options.length === 0) {
           this.loading = true
-          this.loadingText = this.$t('cMessage.noData')
+          this.loadingText = this.$t('message.cMessage.noData')
         } else {
           this.loading = false
-          this.loadingText = this.$t('cMessage.loading')
+          this.loadingText = this.$t('message.cMessage.loading')
         }
       })
     },

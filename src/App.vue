@@ -1,16 +1,11 @@
 <template>
 <div>
-  <!-- <c-card title="1111" @go-back="goBack">
-        1111
-  </c-card>
-  
-  </c-card> -->
   <router-view></router-view>
 </div>
 </template>
 <script lang="ts">
 // import components from './lib/index'
-import { defineComponent, onMounted } from 'vue'
+import { defineComponent, onMounted, reactive } from 'vue'
 export default defineComponent({
   name: 'App',
   // components: {
@@ -18,6 +13,7 @@ export default defineComponent({
   // },
   setup (props, ctx) {
     // methods
+
     const goBack = () => {
     }
     onMounted(() => {

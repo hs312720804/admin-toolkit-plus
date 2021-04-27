@@ -16,7 +16,7 @@ const routes = [
       {
         path: 'actionList',
         name: 'actionList',
-        component: demos.CardDemo,
+        component: demos.ActionListDemo,
         meta: {
           title: '按钮组',
           icon: 'iconfont el-icon-cc-file-add',

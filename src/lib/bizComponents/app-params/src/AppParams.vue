@@ -1,21 +1,21 @@
 <template>
   <div>
     <el-form-item
-      :label="$t('cMessage.packageName')"
+      :label="$t('message.cMessage.packageName')"
       :prop="formProp('packagename')"
       :rules="rules.packagename"
     >
       <el-input v-model.trim="inputValue.packagename"></el-input>
     </el-form-item>
     <el-form-item
-      :label="$t('cMessage.versionCode')"
+      :label="$t('message.cMessage.versionCode')"
       :prop="formProp('versioncode')"
       :rules="rules.versioncode"
     >
       <el-input v-model.trim="inputValue.versioncode"></el-input>
     </el-form-item>
     <el-form-item
-      :label="$t('cMessage.dowhat')"
+      :label="$t('message.cMessage.dowhat')"
       :prop="formProp('dowhat')"
       :rules="rules.dowhat"
     >
@@ -30,7 +30,7 @@
       </el-select>
     </el-form-item>
     <el-form-item
-      :label="$t('cMessage.bywhat')"
+      :label="$t('message.cMessage.bywhat')"
       :prop="formProp('bywhat')"
       :rules="rules.bywhat"
     >
@@ -45,14 +45,14 @@
       </el-select>
     </el-form-item>
     <el-form-item
-      :label="$t('cMessage.byvalue')"
+      :label="$t('message.cMessage.byvalue')"
       :prop="formProp('byvalue')"
       :rules="rules.byvalue"
     >
       <el-input type="textarea" v-model.trim="inputValue.byvalue"></el-input>
     </el-form-item>
     <slot></slot>
-    <el-form-item  :label="$t('cMessage.extendParams')">
+    <el-form-item  :label="$t('message.cMessage.extendParams')">
       <div
         class="app-extend-params"
         v-for="(param, index) in inputValue.params"
@@ -79,7 +79,7 @@
         </a>
       </div>
       <el-button type="primary" plain @click="handleAddParam">
-        <i class="el-icon-plus"></i>&nbsp;{{$t('cButton.add')}}
+        <i class="el-icon-plus"></i>&nbsp;{{$t('message.cButton.add')}}
       </el-button>
     </el-form-item>
   </div>
@@ -91,7 +91,7 @@ export default {
   data () {
     function validateKV (rule, value, cb) {
       if (/[！￥……（）——【】：；“”‘’、《》，。？\s+]/.test(value)) {
-        cb(new Error(this.$t('cRules.notSpeAndSpaceCharacters')))
+        cb(new Error(this.$t('message.cRules.notSpeAndSpaceCharacters')))
       } else {
         cb()
       }
@@ -108,27 +108,27 @@ export default {
       },
       rules: {
         packagename: [
-          { required: true, message: this.$t('cRules.required'), trigger: 'blur' }
+          { required: true, message: this.$t('message.cRules.required'), trigger: 'blur' }
         ],
         versioncode: [
-          { required: true, message: this.$t('cRules.required'), trigger: 'blur' }
+          { required: true, message: this.$t('message.cRules.required'), trigger: 'blur' }
         ],
         dowhat: [
-          { required: true, message: this.$t('cRules.required'), trigger: 'change' }
+          { required: true, message: this.$t('message.cRules.required'), trigger: 'change' }
         ],
         bywhat: [
-          { required: true, message: this.$t('cRules.required'), trigger: 'change' }
+          { required: true, message: this.$t('message.cRules.required'), trigger: 'change' }
         ],
         byvalue: [
-          { required: true, message: this.$t('cRules.required'), trigger: 'blur' }
+          { required: true, message: this.$t('message.cRules.required'), trigger: 'blur' }
         ],
         params: {
           key: [
-            { required: true, message: this.$t('cRules.required'), trigger: 'blur' },
+            { required: true, message: this.$t('message.cRules.required'), trigger: 'blur' },
             { validator: validateKV, trigger: 'blur' }
           ],
           value: [
-            { required: true, message: this.$t('cRules.required'), trigger: 'blur' },
+            { required: true, message: this.$t('message.cRules.required'), trigger: 'blur' },
             { validator: validateKV, trigger: 'blur' }
           ]
         }

@@ -7,7 +7,7 @@
           </div>
            <div class="actions">
                 <slot name="actions">
-                    <el-button type="text" @click="$emit('go-back')">{{$t('cButton.goBack')}}</el-button>
+                    <el-button type="text" @click="$emit('go-back')">{{$t('message.cButton.goBack')}}</el-button>
                 </slot>
             </div>
         </div>

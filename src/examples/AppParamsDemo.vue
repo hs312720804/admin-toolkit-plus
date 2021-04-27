@@ -38,7 +38,7 @@ export default {
     handleChangelanguage (type) {
       this.$i18n.locale = type
       this.$nextTick(() => {
-        window.console.log('required=' + this.$t('cRules.required'))
+        window.console.log('required=' + this.$t('message.cRules.required'))
       })
     }
   }
