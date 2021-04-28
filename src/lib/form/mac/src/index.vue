@@ -4,7 +4,7 @@
     <el-input
       v-if="!isReadonly"
       :modelValue="modelValue"
-      @update:modelValue="$emit('input', $event)"
+      @update:modelValue="$emit('update:modelValue', $event)"
       :type="type"
       :disabled="disabled"
       :clearable="clearable"

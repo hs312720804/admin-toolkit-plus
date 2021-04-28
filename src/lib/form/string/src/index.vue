@@ -15,10 +15,9 @@
       @update:modelValue="$emit('update:modelValue', $event)"
       @change="$emit('change', $event)"
     />
-    <template v-else>{{ value }}</template>
+    <template v-else>{{ modelValue }}</template>
   </el-form-item>
 </template>
-
 <script>
 import formItemMixin from '../../formItemMixin'
 export default {

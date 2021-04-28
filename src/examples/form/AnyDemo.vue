@@ -17,7 +17,7 @@
 export default {
   data () {
     return {
-      isReadonly: true,
+      isReadonly: false,
       form: {
         isMarried: 0
       }

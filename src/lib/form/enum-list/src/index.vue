@@ -37,7 +37,7 @@
       </el-select>
     </template>
 
-    <template v-else>{{ getLabel(value) }}</template>
+    <template v-else>{{ getLabel(modelValue) }}</template>
     <slot></slot>
   </el-form-item>
 </template>

@@ -9,7 +9,7 @@
       :disabled="disabled"
       @change="$emit('change', $event)"
     />
-    <template v-else>{{ value }}</template>
+    <template v-else>{{ modelValue }}</template>
     <slot></slot>
   </el-form-item>
 </template>
