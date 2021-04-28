@@ -11,6 +11,9 @@ import CContentWrapper from './components/content-wrapper/index'
 import CAddFormObj from './components/add-form-obj/index'
 import CAddMulti from './components/add-multi/index'
 import CTagNav from './components/tag-nav/index'
+import CCardList from './components/card-list/index'
+import CForm from './form/form/index'
+import CFormAny from './form/any/index'
 const i18n = lang.i18n
 
 const defaultInstallOpt: InstallOptions = {
@@ -25,7 +28,10 @@ const components = [
   CActionList,
   CAddFormObj,
   CAddMulti,
-  CTagNav
+  CTagNav,
+  CCardList,
+  CForm,
+  CFormAny
 ]
 const install = (app: App, opt: InstallOptions): void => {
   app.use(i18n)
@@ -44,7 +50,10 @@ export {
   CAddFormObj,
   CAddMulti,
   install,
-  CTagNav
+  CTagNav,
+  CCardList,
+  CForm,
+  CFormAny
 }
 export default {
   CBreadcrumb,
@@ -56,5 +65,8 @@ export default {
   CAddFormObj,
   CAddMulti,
   install,
-  CTagNav
+  CTagNav,
+  CCardList,
+  CForm,
+  CFormAny
 }

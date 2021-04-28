@@ -1,7 +1,7 @@
 <template>
   <el-container>
     <div :class="isCollapseMenu?'aside_menu aside__menu_collapse':'aside_menu' ">
-      <div class="log">{{isCollapseMenu?'toolkit':"admin-toolkit"}}</div>
+      <div class="log">{{isCollapseMenu?'toolkit':"admin-toolkit-plus"}}</div>
       <c-menu
         :isCollapse="isCollapseMenu"
         :items="items"
@@ -106,12 +106,12 @@ export default {
 .main_menu
   background-color: transparent
   border-right: none
-  >>> .el-submenu__title
+  :deep(.el-submenu__title)
     color: hsla(0, 0%, 100%, 0.7)
-  >>> .el-submenu__title:hover
+  :deep(.el-submenu__title:hover)
     background: transparent
     color: hsla(0, 0%, 100%, 0.9)
-  >>> .el-menu
+  :deep(.el-menu)
     background: black
     color: hsla(0, 0%, 100%, 0.7)
     .el-menu-item
@@ -134,9 +134,9 @@ export default {
   display: flex
 .aside__menu_collapse
   width: 60px
-.header >>> .el-button--text
+.header :deep(.el-button--text)
   color: white
-.header >>> .el-breadcrumb__inner
+.header :deep(.el-breadcrumb__inner)
   color: white
 .content
   position relative

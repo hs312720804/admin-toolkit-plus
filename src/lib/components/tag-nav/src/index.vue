@@ -2,6 +2,16 @@
   <div :class="theme">
     <el-button class="tag-nav__btn tag-nav__left" icon="el-icon-arrow-left" @click="handleScroll('left')"></el-button>
     <el-button class="tag-nav__btn tag-nav__right" icon="el-icon-arrow-right" @click="handleScroll('right')"></el-button>
+    <div class="tag-nav__btn tag-nav__more">
+      <el-dropdown split-button>
+        <template #dropdown>
+        <el-dropdown-menu>
+          <el-dropdown-item @click="handleCloseOther">{{$t('message.cMessage.closeOther')}}</el-dropdown-item>
+          <el-dropdown-item @click="handleCloseAll">{{$t('message.cMessage.closeAll')}}</el-dropdown-item>
+        </el-dropdown-menu>
+        </template>
+    </el-dropdown>
+    </div>
     <div
       ref="viewPort"
       class="tag-nav__view-port">
@@ -253,6 +263,12 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
+.tag-nav__more
+  right 0
+  :deep(.el-button:first-child)
+    display none
+  :deep(.el-dropdown__caret-button::before)
+    background #eee
 .tag-nav
   position relative
   padding 0 55px 0 25px
@@ -321,18 +337,12 @@ export default {
   .tag-nav__left
     left 0
   .tag-nav__right
-    right 28px
+    right 25px
   .tag-nav__left,
   .tag-nav__right
       padding 12px 5px
   .tag-nav__back
-    right 28px
-  .tag-nav__more
-    right 0
-    :deep(.el-button:first-child)
-      display none
-    :deep(.el-dropdown__caret-button::before)
-      background #eee
+    right 25px
 .tag-nav-two
   position relative
   padding 0 52px 0 23px
@@ -408,13 +418,13 @@ export default {
     left 0
     border-right 1px solid #f0f0f0
   .tag-nav__right
-    right 28px
+    right 25px
     border-left 1px solid #f0f0f0
   .tag-nav__left,
   .tag-nav__right
     padding 11px 5px
   .tag-nav__back
-    right 28px
+    right 25px
   .tag-nav__more
     right 0
     :deep(.el-button:first-child)
@@ -482,13 +492,13 @@ export default {
     left 0
     border 2px solid #e6e6e6
   .tag-nav__right
-    right 28px
+    right 25px
     border 2px solid #e6e6e6
   .tag-nav__left,
   .tag-nav__right
     padding 12px 5px
   .tag-nav__back
-    right 28px
+    right 25px
   .tag-nav__more
     right 0
     border-radius 0
@@ -557,13 +567,13 @@ export default {
     left 0
     border 2px solid #e6e6e6
   .tag-nav__right
-    right 28px
+    right 25px
     border 2px solid #e6e6e6
   .tag-nav__left,
   .tag-nav__right
       padding 12px 5px
   .tag-nav__back
-    right 28px
+    right 25px
   .tag-nav__more
     right 0
     border-radius 0

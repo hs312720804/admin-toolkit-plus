@@ -1,4 +1,5 @@
 <script>
+import { h } from 'vue'
 export default {
   name: 'CForm',
   provide () {
@@ -7,14 +8,14 @@ export default {
     }
   },
   props: ['readonly'],
-  render (h) {
+  render () {
     return h('el-form', {
       ref: 'form',
       class: this.readonly ? 'data-form data-form__readonly' : 'data-form',
       props: {
         ...this.$attrs
       }
-    }, this.$slots.default)
+    }, this.$slots.default?.())
   }
 }
 </script>

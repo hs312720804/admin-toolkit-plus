@@ -4,8 +4,8 @@
       读写模式切换
       <el-switch v-model="isReadonly" />
     </div>
-    <c-form label-width="120px" ref="form" :readonly="isReadonly" :model="form" :rules="rules">
-      <c-form-string label="姓名" prop="name" v-model="form.name" />
+    <c-form :label-width="'120px'" ref="form" :readonly="isReadonly" :model="form" :rules="rules">
+      <!-- <c-form-string label="姓名" prop="name" v-model="form.name" />
       <c-form-number label="年龄" v-model="form.age" />
       <c-form-enum
         label="性别"
@@ -18,10 +18,14 @@
       <c-form-enum-list type="checkbox" v-model="form.skill" label="语言技能" :options="langOptions" />
       <c-form-enum-list label="兴趣" v-model="form.hobbies" :options="hobbiesOptions" />
       <c-form-boolean type="switch" label="是否正式员工" v-model="form.isRegular" />
-      <c-form-boolean label v-model="form.isIn">参加活动</c-form-boolean>
-      <c-form-any label="是否已婚">
-        <el-switch slot="edit" :value="!!form.isMarried" @input="form.isMarried = $event ? 1 : 0"></el-switch>
-        <span slot="read">{{ form.isMarried ? '是' : '否' }}</span>
+      <c-form-boolean label v-model="form.isIn">参加活动</c-form-boolean> -->
+      <c-form-any :label="'是否已婚'">
+        <template v-slot:edit>
+          <el-switch :modelValue="!!form.isMarried" @update:modelValue="form.isMarried = $event ? 1 : 0"></el-switch>
+        </template>
+        <template v-slot:read>
+          <span >{{ form.isMarried ? '是' : '否' }}</span>
+        </template>
       </c-form-any>
       <el-form-item>
         <el-button type="primary" @click="saveForm">保存</el-button>

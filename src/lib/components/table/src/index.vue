@@ -1,42 +1,7 @@
 <script>
 import { ElTable as ElTable, ElTableColumn, ElCheckbox, ElRadio } from 'element-plus'
-import TableWrapper from './TableWrapper.vue'
-import { h } from 'vue'
-// interface ObjectOf<V> {
-//   [_: string]: V
-// }
-// class OrderItem {
-//   uuid: string
-//   amount: number;
-//   secondaryTotal: number;
-//   total: number;
-//   originalTotal: number;
-//   checked: boolean;
-// }
-// interface Table {
-//   components: {
-//     extends: ObjectOf<OrderItem>
-//   }
-// }
-// const aaa:Table = {
-//   components: {
-//     'extends': [{ 'uuid': '12' }]
-//   }
-// }
-// function identity<T>(arg: T): T {
-//   return arg
-// }
-
-// let myIdentity: {<U>(arg: U) : U;} = identity
-// console.log('111=>', myIdentity([1,2,3]))
-
-// function loggingIdentity<T>(arg: Array<T>): number {
-//   console.log(arg.length)  // Array has a .length, so no more error
-//   return arg.length
-// }
-// let aaa = [1, 2, 3]
-// console.log(toString.call(bbb))
-
+import TableWrapper from '../../table-wrapper/src/TableWrapper.vue'
+import { h, ComponentOptions } from 'vue'
 // elementui 的 hover-row 功能导致在数据量大的时候很卡,
 // 下面通过特殊的手段禁用
 // const TableBody = {
