@@ -7,24 +7,24 @@
         :style="{'margin-bottom': gutter + 'px'}"
         v-for="(row, index) in data"
         :key="index"
-        @click.native="handleClickRow(index, row)"
+        @click="handleClickRow(index, row)"
       >
-        <slot name="row" :row="row" :index="index"></slot>
+        <slot :row="row" :index="index"></slot>
         <div class="card-item__selection">
           <el-checkbox
             v-if="selectionType === 'multiple'"
-            :value="selected.indexOf(index) > -1"
-            @input="handleToggleSelect(index, row)"
-            @click.native="stopPropagation"
+            :modelValue="selected.indexOf(index) > -1"
+            @update:modelValue="handleToggleSelect(index, row)"
+            @click="stopPropagation"
           >
           </el-checkbox>
           <el-radio
             v-if="selectionType === 'single'"
             class="hide-radio-label"
-            :value="selected"
+            :modelValue="selected"
             :label="index"
-            @input="handleToggleSelect(index, row)"
-            @click.native="stopPropagation"
+             @update:modelValue="handleToggleSelect(index, row)"
+            @click="stopPropagation"
           >
           </el-radio>
         </div>

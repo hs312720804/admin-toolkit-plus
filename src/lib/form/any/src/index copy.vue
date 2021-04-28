@@ -1,10 +1,10 @@
 <template>
   <el-form-item :label="label" :prop="prop" :label-width="labelWidth" :rules="rules">
     <template v-if="!isReadonly">
-      <slot name="edit">{{ value }}</slot>
+      <slot name="edit"></slot>
     </template>
     <template v-else>
-      <slot name="read">{{ value }}</slot>
+      <slot name="read">{{ modelValue }}</slot>
     </template>
   </el-form-item>
 </template>
@@ -18,6 +18,9 @@ export default {
     return {
 
     }
+  },
+  created () {
+
   }
 }
 </script>

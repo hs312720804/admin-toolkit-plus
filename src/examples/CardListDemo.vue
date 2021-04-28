@@ -9,9 +9,11 @@
     @row-selection-change="handleRowSelectionChange"
     :select-on-row-click="true"
   >
-    <div class="card-content" slot="row" slot-scope="{row}">
-        id: {{ row.id }}
-    </div>
+     <template v-slot:default="slotProps">
+        <div class="card-content">
+            id: {{ slotProps.row.id }}
+        </div>
+     </template>
   </c-card-list>
 </template>
 <script>
@@ -59,6 +61,7 @@ export default {
       this.table.selected = this.table.selected.concat(index)
     },
     handleRowSelectionRemove (item, index) {
+
       this.table.selected = this.table.selected.filter(item => item !== index)
     },
     handleRowSelectionChange (item, index) {

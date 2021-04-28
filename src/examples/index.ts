@@ -11,7 +11,7 @@ import TagNavDemo from './TagNavDemo.vue'
 // import TheInitIconDemo from './TheInitIconDemo.vue'
 import CardDemo from './CardDemo.vue'
 // import DownloadFileDemo from './DownloadFileDemo.vue'
-// import UploadDemo from './UploadDemo.vue'
+// import UploadDemo from './UploadDemo.vue' 
 // import AppParamsDemo from './AppParamsDemo.vue'
 // import AppParamsReadDemo from './AppParamsReadDemo.vue'
 // import TypeListDemo from './TypeListDemo.vue'
@@ -26,7 +26,7 @@ import CardListDemo from './CardListDemo.vue'
 // import InputPosibilityDemo from './InputPosibilityDemo.vue'
 // import BaseSelectorDemo from './BaseSelectorDemo.vue'
 // import ContextMenuDemo from './ContextMenuDemo.vue'
-// import DataFormDemo from './form/DataFormDemo.vue'
+import DataFormDemo from './form/DataFormDemo.vue'
 // import BooleanDemo from './form/BooleanDemo.vue'
 // import NumberDemo from './form/NumberDemo.vue'
 // import StringDemo from './form/StringDemo.vue'
@@ -34,7 +34,7 @@ import CardListDemo from './CardListDemo.vue'
 // import MacDemo from './form/MacDemo.vue'
 // import EffectiveTimeDemo from './form/EffectiveTimeDemo.vue'
 // import EnumListDemo from './form/EnumListDemo.vue'
-// import AnyDemo from './form/AnyDemo.vue'
+import AnyDemo from './form/AnyDemo.vue'
 // import CnRegionPickerDemo from './RegionPickerCnDemo.vue'
 // import FixPageDemo from './FixPageDemo.vue'
 import AddMultiDemo from './AddMultiDemo.vue'
@@ -83,7 +83,7 @@ export {
   // InputPosibilityDemo,
   // BaseSelectorDemo,
   // ContextMenuDemo,
-  // DataFormDemo,
+  DataFormDemo,
   // BooleanDemo,
   // NumberDemo,
   // StringDemo,
@@ -91,7 +91,7 @@ export {
   // MacDemo,
   // EffectiveTimeDemo,
   // EnumListDemo,
-  // AnyDemo,
+  AnyDemo,
   // CnRegionPickerDemo,
   // FixPageDemo,
   AddMultiDemo,

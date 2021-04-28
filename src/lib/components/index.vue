@@ -1,7 +1,7 @@
 <template>
   <el-container>
     <div :class="isCollapseMenu?'aside_menu aside__menu_collapse':'aside_menu' ">
-      <div class="log">{{isCollapseMenu?'toolkit':"admin-toolkit"}}</div>
+      <div class="log">{{isCollapseMenu?'toolkit':"admin-toolkit-plus"}}</div>
       <c-menu
         :isCollapse="isCollapseMenu"
         :items="items"
