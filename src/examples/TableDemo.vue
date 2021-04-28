@@ -52,6 +52,10 @@ export default {
           {
             id: '2',
             name: '名称2'
+          },
+          {
+            id: '3',
+            name: '名称3'
           }
         ],
         selectionType: 'multiple',

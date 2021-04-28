@@ -1,10 +1,12 @@
 <script>
-import { ElTable as ElTable, ElTableColumn, ElCheckbox, ElRadio } from 'element-plus'
+import { ElTable, ElTableColumn, ElCheckbox, ElRadio } from 'element-plus'
 import TableWrapper from '../../table-wrapper/src/TableWrapper.vue'
-import { h, ComponentOptions } from 'vue'
+import { h } from 'vue'
 // elementui 的 hover-row 功能导致在数据量大的时候很卡,
 // 下面通过特殊的手段禁用
+// const ElTableComponents = ElTable.components as ComponentOptions
 // const TableBody = {
+//   // extends: ElTableComponents.TableBody,
 //   extends: ElTable.components.TableBody,
 //   methods: {
 //     getRowClass (row, rowIndex) {
@@ -185,16 +187,18 @@ export default {
           let slots
           if (item.render) {
             slots = {
-              default: props => item.render(h, props)
+              default: props => item.render(props)
+              // default: (props) => h('span', '123')
             }
+            // slots = item.render
           }
           // console.log('result===>', index)
-          // console.log('result===>', result)
+          console.log('result===>', slots)
           let a = h(ElTableColumn, {
             key: index,
-            ...item,
-            slots
-          })
+            ...item
+          },
+          slots)
           // debugger
           // let a = 1
           result.push(a)
@@ -304,9 +308,9 @@ export default {
       {
         ref: 'table',
         class: 'cc-table',
-        props: {
-          ...defaultTableProps
-        },
+        // props: {
+        ...defaultTableProps,
+        // },
         ...this.props,
         data: this.data,
         // directives: this.$directives,
@@ -327,13 +331,13 @@ export default {
     }
 
     const tableWrapper = h(TableWrapper, {
-      props: {
-        columns: this.header.map(item => item.label),
-        hiddenColumns: this.hiddenColumns
-      },
-      on: {
-        'toggle-column': this.toggleColumn
-      }
+      // props: {
+      columns: this.header.map(item => item.label),
+      hiddenColumns: this.hiddenColumns,
+      // },
+      // on: {
+      'onToggleColumn': this.toggleColumn
+      // }
     }, [table])
     return tableWrapper
   }

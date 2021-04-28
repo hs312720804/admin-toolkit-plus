@@ -1,19 +1,18 @@
-export function createOperationRender (component, actions, elName) {
-  return function render (h, params) {
-    return Object.keys(actions).map(key => {
+import { h } from 'vue'
+import { ElButton } from 'element-plus'
+export function createOperationRender (component: any, actions: [], elName: string) {
+  return function render (params) {
+    return Object.keys(actions).map((key: string | number ) => {
       return h(
-        elName || 'el-button',
+        ElButton || elName,
         {
-          props: {
-            type: 'text'
-          },
-          on: {
-            click: () => {
-              component[key](params)
-            }
+          type: 'text',
+         
+          'onClick': () => {
+            component[key](params)
           }
-        },
-        actions[key]
+        }, actions[key]
+        
       )
     })
   }

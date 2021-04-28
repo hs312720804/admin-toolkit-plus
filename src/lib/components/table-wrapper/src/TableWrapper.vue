@@ -80,6 +80,7 @@ export default {
   list-style none
   li
     cursor pointer
+    text-align left
 .column-status__icon
   display inline-block
   width 15px

@@ -24,6 +24,7 @@ const components = [
   CBreadcrumb,
   CCard,
   CContentWrapper,
+  CTable,
   CMenu,
   CActionList,
   CAddFormObj,
