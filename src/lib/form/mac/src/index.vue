@@ -1,19 +1,19 @@
 <template>
 <div>
-  <el-form-item :label="label" :prop="prop" :label-width="labelWidth" :rules="macRules">
+  <el-form-item class="textAlignLeft" :label="label" :prop="prop" :label-width="labelWidth" :rules="macRules">
     <el-input
       v-if="!isReadonly"
-      :value="value"
+      :modelValue="modelValue"
+      @update:modelValue="$emit('input', $event)"
       :type="type"
       :disabled="disabled"
       :clearable="clearable"
       :placeholder="placeholder"
       :maxlength="type!=='textarea' ? 12 : undefined"
       show-word-limit
-      @input="$emit('input', $event)"
       @change="$emit('change', $event)"
     />
-    <template v-else>{{ value }}</template>
+    <template v-else>{{ modelValue }}</template>
   </el-form-item>
 </div>
 </template>

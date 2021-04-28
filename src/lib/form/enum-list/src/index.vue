@@ -1,28 +1,27 @@
 <template>
-  <el-form-item :label="label" :label-width="labelWidth" :prop="prop" :rules="rules">
+  <el-form-item class="textAlignLeft" :label="label" :prop="prop" :label-width="labelWidth" :rules="rules">
     <template v-if="!isReadonly">
-      <el-radio-group
-        v-if="type === 'radio'"
-        :value="value"
-        @input="handleInputVal"
+      <el-checkbox-group
+        v-if="type === 'checkbox'"
+        :modelValue="modelValue"
+        @update:modelValue="handleInputVal"
         @change="$emit('change', $event)"
         :disabled="disabled"
       >
-        <el-radio
+        <el-checkbox
           v-for="(item, key) in options"
           :disabled="item.disabled"
           :key="key"
           :label="item.value"
-        >{{ item.label }}</el-radio>
-      </el-radio-group>
+        >{{ item.label }}</el-checkbox>
+      </el-checkbox-group>
 
       <el-select
         v-else
-        :value="value"
-        ref="select"
-        @input="handleInputVal"
+        :modelValue="modelValue"
+        :multiple="true"
+        @update:modelValue="handleInputVal"
         @change="$emit('change', $event)"
-        :clearable="clearable"
         :disabled="disabled"
         :placeholder="placeholder || $t('message.cMessage.pleaseSelect')"
         :filterable="filterable"
@@ -46,20 +45,20 @@
 <script>
 import formItemMixin from '../../formItemMixin'
 export default {
-  name: 'CFormEnum',
+  name: 'CFormEnumList',
   mixins: [formItemMixin],
   data () {
     return {
 
     }
   },
-  props: ['type', 'options', 'filterable', 'allowCreate', 'confirm', 'clearable'],
+  props: ['type', 'options', 'filterable', 'allowCreate', 'confirm'],
   methods: {
     getLabel (val) {
       const options = this.options || []
-      const selected = options.find(({ value }) => value === val)
-      if (selected) {
-        return selected.label
+      const selected = options.filter(({ value }) => val.indexOf(value) > -1)
+      if (selected.length > 0) {
+        return selected.map(({ label }) => label).join(', ')
       }
     },
     handleInputVal (val) {
@@ -75,10 +74,10 @@ export default {
           content = confirm.content
         }
         this.$confirm(content, title).then(() => {
-          this.$emit('input', val)
+          this.$emit('update:modelValue', val)
         }).catch(() => { })
       } else {
-        this.$emit('input', val)
+        this.$emit('update:modelValue', val)
       }
     }
   }

@@ -1,3 +1,4 @@
+
 export default {
   inject: ['dataForm'],
   props: {
@@ -21,8 +22,8 @@ export default {
     showWordLimit: Boolean
   },
   computed: {
-    isReadonly () {
-      const readonly = this.readonly
+    isReadonly (): Boolean {
+      const readonly: Boolean = this.readonly
       if (readonly !== undefined) {
         return readonly
       }

@@ -1,27 +1,28 @@
 <template>
-  <el-form-item :label="label" :prop="prop" :label-width="labelWidth" :rules="rules">
+  <el-form-item  class="textAlignLeft" :label="label" :label-width="labelWidth" :prop="prop" :rules="rules">
     <template v-if="!isReadonly">
-      <el-checkbox-group
-        v-if="type === 'checkbox'"
-        :value="value"
-        @input="handleInputVal"
+      <el-radio-group
+        v-if="type === 'radio'"
+        :modelValue="modelValue"
+        @update:modelValue="handleInputVal"
         @change="$emit('change', $event)"
         :disabled="disabled"
       >
-        <el-checkbox
+        <el-radio
           v-for="(item, key) in options"
           :disabled="item.disabled"
           :key="key"
           :label="item.value"
-        >{{ item.label }}</el-checkbox>
-      </el-checkbox-group>
+        >{{ item.label }}</el-radio>
+      </el-radio-group>
 
       <el-select
         v-else
-        :value="value"
-        :multiple="true"
-        @input="handleInputVal"
+        ref="select"
+        :modelValue="modelValue"
+        @update:modelValue="handleInputVal"
         @change="$emit('change', $event)"
+        :clearable="clearable"
         :disabled="disabled"
         :placeholder="placeholder || $t('message.cMessage.pleaseSelect')"
         :filterable="filterable"
@@ -37,7 +38,7 @@
       </el-select>
     </template>
 
-    <template v-else>{{ getLabel(value) }}</template>
+    <template v-else>{{ getLabel(modelValue) }}</template>
     <slot></slot>
   </el-form-item>
 </template>
@@ -45,20 +46,20 @@
 <script>
 import formItemMixin from '../../formItemMixin'
 export default {
-  name: 'CFormEnumList',
+  name: 'CFormEnum',
   mixins: [formItemMixin],
   data () {
     return {
 
     }
   },
-  props: ['type', 'options', 'filterable', 'allowCreate', 'confirm'],
+  props: ['type', 'options', 'filterable', 'allowCreate', 'confirm', 'clearable'],
   methods: {
     getLabel (val) {
       const options = this.options || []
-      const selected = options.filter(({ value }) => val.indexOf(value) > -1)
-      if (selected.length > 0) {
-        return selected.map(({ label }) => label).join(', ')
+      const selected = options.find(({ value }) => value === val)
+      if (selected) {
+        return selected.label
       }
     },
     handleInputVal (val) {
@@ -74,10 +75,10 @@ export default {
           content = confirm.content
         }
         this.$confirm(content, title).then(() => {
-          this.$emit('input', val)
+          this.$emit('update:modelValue', val)
         }).catch(() => { })
       } else {
-        this.$emit('input', val)
+        this.$emit('update:modelValue', val)
       }
     }
   }

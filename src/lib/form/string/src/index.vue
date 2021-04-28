@@ -1,8 +1,8 @@
 <template>
-  <el-form-item :label="label" :prop="prop" :label-width="labelWidth" :rules="rules">
+  <el-form-item  class="textAlignLeft" :label="label" :prop="prop" :label-width="labelWidth" :rules="rules">
     <el-input
       v-if="!isReadonly"
-      :value="value"
+      :modelValue="modelValue"
       :type="type"
       autosize
       :disabled="disabled"
@@ -12,7 +12,7 @@
       :minlength="minlength"
       :placeholder="placeholder"
       :show-word-limit="showWordLimit"
-      @input="$emit('input', $event)"
+      @update:modelValue="$emit('update:modelValue', $event)"
       @change="$emit('change', $event)"
     />
     <template v-else>{{ value }}</template>
