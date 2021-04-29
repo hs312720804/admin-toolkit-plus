@@ -1,10 +1,10 @@
 <template>
-  <el-form-item :label="label" :label-width="labelWidth" :prop="prop" :rules="rules">
+  <el-form-item  class="textAlignLeft" :label="label" :label-width="labelWidth" :prop="prop" :rules="rules">
     <template v-if="!isReadonly">
       <el-radio-group
         v-if="type === 'radio'"
-        :value="value"
-        @input="handleInputVal"
+        :modelValue="modelValue"
+        @update:modelValue="handleInputVal"
         @change="$emit('change', $event)"
         :disabled="disabled"
       >
@@ -18,9 +18,9 @@
 
       <el-select
         v-else
-        :value="value"
         ref="select"
-        @input="handleInputVal"
+        :modelValue="modelValue"
+        @update:modelValue="handleInputVal"
         @change="$emit('change', $event)"
         :clearable="clearable"
         :disabled="disabled"
@@ -38,7 +38,7 @@
       </el-select>
     </template>
 
-    <template v-else>{{ getLabel(value) }}</template>
+    <template v-else>{{ getLabel(modelValue) }}</template>
     <slot></slot>
   </el-form-item>
 </template>
@@ -75,10 +75,10 @@ export default {
           content = confirm.content
         }
         this.$confirm(content, title).then(() => {
-          this.$emit('input', val)
+          this.$emit('update:modelValue', val)
         }).catch(() => { })
       } else {
-        this.$emit('input', val)
+        this.$emit('update:modelValue', val)
       }
     }
   }

@@ -1,18 +1,18 @@
 <template>
-  <el-form-item :label="label" :prop="prop" :label-width="labelWidth" :rules="rules">
+  <el-form-item class="textAlignLeft" :label="label" :prop="prop" :label-width="labelWidth" :rules="rules">
     <template v-if="!isReadonly">
       <el-switch
         v-if="type === 'switch'"
-        :value="getBoolVal(value)"
-        @input="handleInputVal"
+        :modelValue="getBoolVal(modelValue)"
+        @update:modelValue="handleInputVal"
         @change="handleChange"
         :disabled="disabled"
       ></el-switch>
 
       <el-checkbox
         v-else
-        :value="getBoolVal(value)"
-        @input="handleInputVal"
+        :modelValue="getBoolVal(modelValue)"
+        @update:modelValue="handleInputVal"
         @change="handleChange"
         :disabled="disabled"
       >
@@ -21,8 +21,8 @@
     </template>
 
     <template v-else>
-      <span v-if="type === 'switch'">{{ getBoolVal(value) ? $t('message.cMessage.yes') : $t('message.cMessage.no')  }}</span>
-      <el-checkbox v-else :disabled="true" :value="getBoolVal(value)"></el-checkbox>
+      <span v-if="type === 'switch'">{{ getBoolVal(modelValue) ? $t('message.cMessage.yes') : $t('message.cMessage.no')  }}</span>
+      <el-checkbox v-else :disabled="true" :modelValue="getBoolVal(modelValue)"></el-checkbox>
       <slot></slot>
     </template>
   </el-form-item>
@@ -53,7 +53,7 @@ export default {
   },
   methods: {
     handleInputVal (val) {
-      this.$emit('input', this.parseVal(val))
+      this.$emit('update:modelValue', this.parseVal(val))
     },
     handleChange (val) {
       this.$emit('change', this.parseVal(val))

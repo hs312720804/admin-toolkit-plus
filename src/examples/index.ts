@@ -27,13 +27,13 @@ import CardListDemo from './CardListDemo.vue'
 // import BaseSelectorDemo from './BaseSelectorDemo.vue'
 // import ContextMenuDemo from './ContextMenuDemo.vue'
 import DataFormDemo from './form/DataFormDemo.vue'
-// import BooleanDemo from './form/BooleanDemo.vue'
-// import NumberDemo from './form/NumberDemo.vue'
-// import StringDemo from './form/StringDemo.vue'
-// import EnumDemo from './form/EnumDemo.vue'
-// import MacDemo from './form/MacDemo.vue'
-// import EffectiveTimeDemo from './form/EffectiveTimeDemo.vue'
-// import EnumListDemo from './form/EnumListDemo.vue'
+import BooleanDemo from './form/BooleanDemo.vue'
+import NumberDemo from './form/NumberDemo.vue'
+import StringDemo from './form/StringDemo.vue'
+import EnumDemo from './form/EnumDemo.vue'
+import MacDemo from './form/MacDemo.vue'
+import EffectiveTimeDemo from './form/EffectiveTimeDemo.vue'
+import EnumListDemo from './form/EnumListDemo.vue'
 import AnyDemo from './form/AnyDemo.vue'
 // import CnRegionPickerDemo from './RegionPickerCnDemo.vue'
 // import FixPageDemo from './FixPageDemo.vue'
@@ -49,7 +49,7 @@ import AddFormObjDemo from './AddFormObjDemo.vue'
 // import SearchDropdownDemo from './SearchDropdownDemo.vue'
 // import TreeSelectDemo from './TreeSelectDemo.vue'
 // import SelectChangeDemo from './SelectChangeDemo.vue'
-// import SelectLimitDemo from './SelectLimitDemo.vue'
+import SelectLimitDemo from './SelectLimitDemo.vue'
 // import LazyRemoteSelectDemo from './LazyRemoteSelectDemo.vue'
 // import BoxGroupDemo from './BoxGroupDemo.vue'
 export {
@@ -84,13 +84,13 @@ export {
   // BaseSelectorDemo,
   // ContextMenuDemo,
   DataFormDemo,
-  // BooleanDemo,
-  // NumberDemo,
-  // StringDemo,
-  // EnumDemo,
-  // MacDemo,
-  // EffectiveTimeDemo,
-  // EnumListDemo,
+  BooleanDemo,
+  NumberDemo,
+  StringDemo,
+  EnumDemo,
+  MacDemo,
+  EffectiveTimeDemo,
+  EnumListDemo,
   AnyDemo,
   // CnRegionPickerDemo,
   // FixPageDemo,
@@ -106,7 +106,7 @@ export {
   // SearchDropdownDemo,
   // TreeSelectDemo,
   // SelectChangeDemo,
-  // SelectLimitDemo,
+  SelectLimitDemo
   // LazyRemoteSelectDemo,
   // BoxGroupDemo
 }

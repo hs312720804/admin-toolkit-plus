@@ -1,24 +1,22 @@
-<script>
-import { h } from 'vue'
-export default {
+<script lang="ts">
+import { defineComponent, h, provide, watchEffect } from 'vue'
+import { ElForm } from 'element-plus'
+export default defineComponent({
+  props: ['readonly', 'labelWidth'],
   name: 'CForm',
   provide () {
     return {
       dataForm: this
     }
   },
-  props: ['readonly'],
-  render () {
-    return h('el-form', {
+  render() {
+    return h(ElForm, {
       ref: 'form',
       class: this.readonly ? 'data-form data-form__readonly' : 'data-form',
-      props: {
-        ...this.$attrs
-      }
-    }, this.$slots.default?.())
-  }
-}
+      ...this.$props,
+    }, 
+    { default: () => this.$slots.default?.() }
+    )
+  },
+})
 </script>
-
-<style>
-</style>

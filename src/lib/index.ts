@@ -15,6 +15,14 @@ import CCardList from './components/card-list/index'
 import CForm from './form/form/index'
 import CFormAny from './form/any/index'
 import CUpload from './components/upload/index'
+import CFormBoolean from './form/boolean/index'
+import CFormString from './form/string/index'
+import CFormNumber from './form/number/index'
+import CFormEnum from './form/enum/index'
+import CFormEnumList from './form/enum-list/index'
+import CFormMac from './form/mac/index'
+import CFormEffectiveTime from './form/effective-time/index'
+import CSelectLimit from './components/select-limit/index'
 const i18n = lang.i18n
 
 const defaultInstallOpt: InstallOptions = {
@@ -34,7 +42,15 @@ const components = [
   CCardList,
   CForm,
   CFormAny,
-  CUpload
+  CUpload,
+  CFormBoolean,
+  CFormString,
+  CFormNumber,
+  CFormEnum,
+  CFormEnumList,
+  CFormMac,
+  CFormEffectiveTime,
+  CSelectLimit
 ]
 const install = (app: App, opt: InstallOptions): void => {
   app.use(i18n)
@@ -57,7 +73,15 @@ export {
   CCardList,
   CForm,
   CFormAny,
-  CUpload
+  CUpload,
+  CFormBoolean,
+  CFormString,
+  CFormNumber,
+  CFormEnum,
+  CFormEnumList,
+  CFormMac,
+  CFormEffectiveTime,
+  CSelectLimit
 }
 export default {
   CBreadcrumb,
@@ -73,5 +97,13 @@ export default {
   CCardList,
   CForm,
   CFormAny,
-  CUpload
+  CUpload,
+  CFormBoolean,
+  CFormString,
+  CFormNumber,
+  CFormEnum,
+  CFormEnumList,
+  CFormMac,
+  CFormEffectiveTime,
+  CSelectLimit
 }

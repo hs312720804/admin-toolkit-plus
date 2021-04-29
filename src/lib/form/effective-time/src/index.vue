@@ -1,8 +1,8 @@
 <template>
-  <el-form-item :label="label" :prop="prop" :label-width="labelWidth" :rules="effectiveTimeRules">
+  <el-form-item class="textAlignLeft" :label="label" :prop="prop" :label-width="labelWidth" :rules="effectiveTimeRules">
     <el-date-picker
         v-if="!isReadonly"
-        :value="value"
+        :modelValue="modelValue"
         clearable
         type="datetimerange"
         align="right"
@@ -11,12 +11,12 @@
         :picker-options="pickerOptions"
         :default-time="defaultValue"
         @focus="setDefaultValue"
-        @input="$emit('input', $event)"
+        @update:modelValue="$emit('update:modelValue', $event)"
         @change="$emit('change', $event)"
     ></el-date-picker>
     <template v-else>
-      <template v-if="value!=='' && value!==undefined">
-          {{ $moment(value[0]).format('YYYY-MM-DD HH:mm:ss') }} ~ {{ $moment(value[1]).format('YYYY-MM-DD HH:mm:ss') }}
+      <template v-if="modelValue!=='' && modelValue!==undefined">
+          {{ $moment(modelValue[0]).format('YYYY-MM-DD HH:mm:ss') }} ~ {{ $moment(modelValue[1]).format('YYYY-MM-DD HH:mm:ss') }}
       </template>
       </template>
   </el-form-item>

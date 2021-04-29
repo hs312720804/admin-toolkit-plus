@@ -1,15 +1,15 @@
 <template>
-  <el-form-item :label="label" :prop="prop" :label-width="labelWidth" :rules="rules">
+  <el-form-item class="textAlignLeft" :label="label" :prop="prop" :label-width="labelWidth" :rules="rules">
     <el-input-number
       v-if="!isReadonly"
-      :value="value"
+      :modelValue="modelValue"
+      @update:modelValue="$emit('update:modelValue', $event)"
       :min="min"
       :max="max"
       :disabled="disabled"
-      @input="$emit('input', $event)"
       @change="$emit('change', $event)"
     />
-    <template v-else>{{ value }}</template>
+    <template v-else>{{ modelValue }}</template>
     <slot></slot>
   </el-form-item>
 </template>

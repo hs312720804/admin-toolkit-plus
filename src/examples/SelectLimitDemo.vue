@@ -15,7 +15,8 @@
   </div>
 </template>
 <script>
-export default {
+import { defineComponent } from 'vue'
+export default defineComponent({
   data () {
     return {
       options: [
@@ -35,6 +36,6 @@ export default {
       console.log('当前demo值为：', this.demo)
     }
   }
-}
+})
 </script>
 <style lang="stylus" scoped></style>
