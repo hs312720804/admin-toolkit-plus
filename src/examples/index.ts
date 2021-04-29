@@ -11,7 +11,7 @@ import TagNavDemo from './TagNavDemo.vue'
 // import TheInitIconDemo from './TheInitIconDemo.vue'
 import CardDemo from './CardDemo.vue'
 // import DownloadFileDemo from './DownloadFileDemo.vue'
-// import UploadDemo from './UploadDemo.vue' 
+import UploadDemo from './UploadDemo.vue' 
 // import AppParamsDemo from './AppParamsDemo.vue'
 // import AppParamsReadDemo from './AppParamsReadDemo.vue'
 // import TypeListDemo from './TypeListDemo.vue'
@@ -68,7 +68,7 @@ export {
   // TheInitIconDemo,
   // CardDemo,
   // DownloadFileDemo,
-  // UploadDemo,
+  UploadDemo,
   // AppParamsDemo,
   // AppParamsReadDemo,
   // TypeListDemo,

@@ -2,7 +2,7 @@
 `c-form-number`
 用于输入和展示数值
 
-## 示例  
+## 示例
 
 ### 效果
 <Demo>
@@ -13,7 +13,7 @@
 ```vue
 <template>
   <div>
-    <c-form label-width="120px" :readonly="isReadonly"> 
+    <c-form label-width="120px" :readonly="isReadonly">
       <c-form-number label="年龄" v-model="form.age" />
     </c-form>
   </div>

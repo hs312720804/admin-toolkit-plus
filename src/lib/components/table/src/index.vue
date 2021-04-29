@@ -1,6 +1,6 @@
 <script>
 import { ElTable, ElTableColumn, ElCheckbox, ElRadio } from 'element-plus'
-import TableWrapper from '../../table-wrapper/src/TableWrapper.vue'
+import TableWrapper from '../../table-wrapper/src/Index.vue'
 import { h } from 'vue'
 // elementui 的 hover-row 功能导致在数据量大的时候很卡,
 // 下面通过特殊的手段禁用

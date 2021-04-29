@@ -14,6 +14,7 @@ import CTagNav from './components/tag-nav/index'
 import CCardList from './components/card-list/index'
 import CForm from './form/form/index'
 import CFormAny from './form/any/index'
+import CUpload from './components/upload/index'
 const i18n = lang.i18n
 
 const defaultInstallOpt: InstallOptions = {
@@ -32,7 +33,8 @@ const components = [
   CTagNav,
   CCardList,
   CForm,
-  CFormAny
+  CFormAny,
+  CUpload
 ]
 const install = (app: App, opt: InstallOptions): void => {
   app.use(i18n)
@@ -54,7 +56,8 @@ export {
   CTagNav,
   CCardList,
   CForm,
-  CFormAny
+  CFormAny,
+  CUpload
 }
 export default {
   CBreadcrumb,
@@ -69,5 +72,6 @@ export default {
   CTagNav,
   CCardList,
   CForm,
-  CFormAny
+  CFormAny,
+  CUpload
 }
