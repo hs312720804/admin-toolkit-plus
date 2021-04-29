@@ -49,7 +49,7 @@ import AddFormObjDemo from './AddFormObjDemo.vue'
 // import SearchDropdownDemo from './SearchDropdownDemo.vue'
 // import TreeSelectDemo from './TreeSelectDemo.vue'
 // import SelectChangeDemo from './SelectChangeDemo.vue'
-// import SelectLimitDemo from './SelectLimitDemo.vue'
+import SelectLimitDemo from './SelectLimitDemo.vue'
 // import LazyRemoteSelectDemo from './LazyRemoteSelectDemo.vue'
 // import BoxGroupDemo from './BoxGroupDemo.vue'
 export {
@@ -106,7 +106,7 @@ export {
   // SearchDropdownDemo,
   // TreeSelectDemo,
   // SelectChangeDemo,
-  // SelectLimitDemo,
+  SelectLimitDemo
   // LazyRemoteSelectDemo,
   // BoxGroupDemo
 }

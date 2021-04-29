@@ -23,7 +23,8 @@
   </div>
 </template>
 <script>
-export default {
+import { defineComponent } from 'vue'
+export default defineComponent({
   name: 'CSelectLimit',
   props: {
     filterable: null,
@@ -89,5 +90,5 @@ export default {
       this.$emit('change', this.value1)
     }
   }
-}
+})
 </script>
