@@ -23,6 +23,8 @@ import CFormEnumList from './form/enum-list/index'
 import CFormMac from './form/mac/index'
 import CFormEffectiveTime from './form/effective-time/index'
 import CSelectLimit from './components/select-limit/index'
+import CBoxGroup from './components/box-group/index'
+import CTreeSelect from './components/tree-select/index'
 const i18n = lang.i18n
 
 const defaultInstallOpt: InstallOptions = {
@@ -50,7 +52,9 @@ const components = [
   CFormEnumList,
   CFormMac,
   CFormEffectiveTime,
-  CSelectLimit
+  CSelectLimit,
+  CBoxGroup,
+  CTreeSelect
 ]
 const install = (app: App, opt: InstallOptions): void => {
   app.use(i18n)
@@ -81,7 +85,9 @@ export {
   CFormEnumList,
   CFormMac,
   CFormEffectiveTime,
-  CSelectLimit
+  CSelectLimit,
+  CBoxGroup,
+  CTreeSelect
 }
 export default {
   CBreadcrumb,
@@ -105,5 +111,7 @@ export default {
   CFormEnumList,
   CFormMac,
   CFormEffectiveTime,
-  CSelectLimit
+  CSelectLimit,
+  CBoxGroup,
+  CTreeSelect
 }

@@ -1,7 +1,7 @@
 
 <template>
-  <el-select :value="valueTitle" ref="select" :clearable="clearable" @clear="clearHandle">
-    <el-option :value="valueTitle" :label="valueTitle">
+  <el-select :modelValue="valueTitle" ref="select" :clearable="clearable" @clear="clearHandle">
+    <el-option :modelValue="valueTitle" :label="valueTitle">
       <el-tree  id="tree-option"
         ref="selectTree"
         :accordion="accordion"
@@ -9,7 +9,7 @@
         :props="props"
         :node-key="props.value"
         :default-expanded-keys="defaultExpandedKey"
-        @dblclick.native="handleClose"
+        @dblclick="handleClose"
         @node-click="handleNodeClick">
       </el-tree>
     </el-option>
@@ -36,7 +36,7 @@ export default {
       default: () => { return [] }
     },
     /* 初始值 */
-    value: {
+    modelValue: {
       type: Number,
       default: () => { return null }
     },
@@ -53,7 +53,7 @@ export default {
   },
   data () {
     return {
-      valueId: this.value, // 初始值
+      valueId: this.modelValue, // 初始值
       valueTitle: '',
       defaultExpandedKey: []
     }
@@ -72,13 +72,15 @@ export default {
     initHandle () {
       if (this.valueId) {
         this.valueTitle = this.$refs.selectTree.getNode(this.valueId).data[this.props.label] // 初始化显示
+        console.log('init', this.valueTitle)
         this.$refs.selectTree.setCurrentKey(this.valueId) // 设置默认选中
         this.defaultExpandedKey = [this.valueId] // 设置默认展开
       } else {
         /**
          * add by wanghaihua
          */
-        this.valueTitle = null // 初始化显示
+        this.valueTitle = '' // 初始化显示
+        console.log('init', this.valueTitle)
         this.$refs.selectTree.setCurrentKey(null) // 设置默认选中
         this.defaultExpandedKey = [] // 设置默认展开
       }
@@ -92,7 +94,8 @@ export default {
     // 切换选项
     handleNodeClick (node) {
       this.valueTitle = node[this.props.label]
-      this.valueId = node[this.props.value]
+      console.log('handleNodeClick', this.valueTitle)
+      this.valueId = node[this.props.modelValue]
       this.$emit('getValue', this.valueId)
       this.defaultExpandedKey = []
     },
@@ -102,7 +105,7 @@ export default {
       this.valueId = null
       this.defaultExpandedKey = []
       this.clearSelected()
-      this.$emit('getValue', null)
+      this.$emit('getValue', '')
     },
     /* 清空选中样式 */
     clearSelected () {
@@ -111,8 +114,8 @@ export default {
     }
   },
   watch: {
-    value () {
-      this.valueId = this.value
+    modelValue () {
+      this.valueId = this.modelValue
       this.initHandle()
     }
   }

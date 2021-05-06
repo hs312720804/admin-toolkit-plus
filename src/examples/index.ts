@@ -47,11 +47,11 @@ import AddFormObjDemo from './AddFormObjDemo.vue'
 // import InputThousandsDemo from './InputThousandsDemo.vue'
 // import OrderableTableDemo from './OrderableTableDemo.vue'
 // import SearchDropdownDemo from './SearchDropdownDemo.vue'
-// import TreeSelectDemo from './TreeSelectDemo.vue'
+import TreeSelectDemo from './TreeSelectDemo.vue'
 // import SelectChangeDemo from './SelectChangeDemo.vue'
 import SelectLimitDemo from './SelectLimitDemo.vue'
 // import LazyRemoteSelectDemo from './LazyRemoteSelectDemo.vue'
-// import BoxGroupDemo from './BoxGroupDemo.vue'
+import BoxGroupDemo from './BoxGroupDemo.vue'
 export {
 
   BreadcrumbDemo,
@@ -104,9 +104,9 @@ export {
   // InputThousandsDemo,
   // OrderableTableDemo,
   // SearchDropdownDemo,
-  // TreeSelectDemo,
+  TreeSelectDemo,
   // SelectChangeDemo,
-  SelectLimitDemo
+  SelectLimitDemo,
   // LazyRemoteSelectDemo,
-  // BoxGroupDemo
+  BoxGroupDemo
 }

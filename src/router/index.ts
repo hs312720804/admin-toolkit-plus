@@ -172,6 +172,16 @@ const routes = [
           route: 'SelectLimit'
         }
       },
+      {
+        path: 'BoxGroup',
+        name: 'BoxGroup',
+        component: demos.BoxGroupDemo,
+        meta: {
+          title: '单项选择按钮形式',
+          icon: 'iconfont el-icon-cc-file-add',
+          route: 'BoxGroup'
+        }
+      },
       // {
       //   path: 'typeList',
       //   name: 'typeList',

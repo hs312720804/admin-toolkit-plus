@@ -5,16 +5,17 @@
       (index === 0 && index === currentIndex) ? 'active-first' : '']"
       v-for="(item, index) in option"
       :key="index"
-      @click="handleClick(item, index)"
+      @click="handleClick(item, valueKey)"
     >{{item[labelKey]}}</span>
   </div>
 </template>
-<script>
-export default {
+<script lang='ts'>
+import { defineComponent, ref, toRefs, watchEffect } from 'vue'
+export default defineComponent({
   name: 'CBoxGroup',
   props: {
-    value: {
-      type: Number,
+    modelValue: {
+      type: [Number, String],
       default: undefined
     },
     option: {
@@ -32,30 +33,24 @@ export default {
       default: 'value'
     }
   },
-  data () {
+  emits: ['update:modelValue'],
+  setup (props, { emit }) {
+    let currentIndex = ref(0)
+    const { modelValue } = toRefs(props)
+    const { valueKey } = toRefs(props)
+    watchEffect(() => {
+      currentIndex.value = props.option.findIndex((item: any): boolean => item[valueKey.value] === modelValue.value)
+    })
+    function handleClick (item: object, valueKey: keyof typeof item): void {
+      emit('update:modelValue', item[valueKey])
+    }
     return {
-      currentIndex: undefined,
-      value1: undefined
+      currentIndex,
+      handleClick,
+      valueKey,
     }
-  },
-  watch: {
-    value: {
-      handler (newVal) {
-        console.log(newVal, this.option)
-        this.currentIndex = this.option.findIndex(item => item[this.valueKey] === newVal)
-      },
-      immediate: true
-    }
-  },
-  methods: {
-    handleClick (item, index) {
-      this.$emit('input', item[this.valueKey])
-    }
-  },
-  mounted () {
-    // this.currentIndex = this.option.findIndex(item => item[this.valueKey] === this.value)
   }
-}
+})
 </script>
 <style lang="stylus" scoped>
 .cc-check-group
