@@ -46,7 +46,7 @@ import AddFormObjDemo from './AddFormObjDemo.vue'
 // import FilterTreeDemo from './FilterTreeDemo.vue'
 // import InputThousandsDemo from './InputThousandsDemo.vue'
 // import OrderableTableDemo from './OrderableTableDemo.vue'
-// import SearchDropdownDemo from './SearchDropdownDemo.vue'
+import SearchDropdownDemo from './SearchDropdownDemo.vue'
 import TreeSelectDemo from './TreeSelectDemo.vue'
 // import SelectChangeDemo from './SelectChangeDemo.vue'
 import SelectLimitDemo from './SelectLimitDemo.vue'
@@ -103,7 +103,7 @@ export {
   // FilterTreeDemo,
   // InputThousandsDemo,
   // OrderableTableDemo,
-  // SearchDropdownDemo,
+  SearchDropdownDemo,
   TreeSelectDemo,
   // SelectChangeDemo,
   SelectLimitDemo,

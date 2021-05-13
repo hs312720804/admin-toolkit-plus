@@ -25,6 +25,7 @@ import CFormEffectiveTime from './form/effective-time/index'
 import CSelectLimit from './components/select-limit/index'
 import CBoxGroup from './components/box-group/index'
 import CTreeSelect from './components/tree-select/index'
+import CSearchDropdown from './components/search-dropdown/index'
 const i18n = lang.i18n
 
 const defaultInstallOpt: InstallOptions = {
@@ -54,7 +55,8 @@ const components = [
   CFormEffectiveTime,
   CSelectLimit,
   CBoxGroup,
-  CTreeSelect
+  CTreeSelect,
+  CSearchDropdown
 ]
 const install = (app: App, opt: InstallOptions): void => {
   app.use(i18n)
@@ -87,7 +89,8 @@ export {
   CFormEffectiveTime,
   CSelectLimit,
   CBoxGroup,
-  CTreeSelect
+  CTreeSelect,
+  CSearchDropdown
 }
 export default {
   CBreadcrumb,
@@ -113,5 +116,6 @@ export default {
   CFormEffectiveTime,
   CSelectLimit,
   CBoxGroup,
-  CTreeSelect
+  CTreeSelect,
+  CSearchDropdown
 }

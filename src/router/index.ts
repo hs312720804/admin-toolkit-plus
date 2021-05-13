@@ -322,16 +322,16 @@ const routes = [
           route: 'treeSelect'
         }
       },
-      // {
-      //   path: 'searchDropdown',
-      //   name: 'searchDropdown',
-      //   component: demos.SearchDropdownDemo,
-      //   meta: {
-      //     title: '下拉框远程搜索',
-      //     icon: 'iconfont el-icon-cc-file-add',
-      //     route: 'searchDropdown'
-      //   }
-      // },
+      {
+        path: 'searchDropdown',
+        name: 'searchDropdown',
+        component: demos.SearchDropdownDemo,
+        meta: {
+          title: '下拉框远程搜索',
+          icon: 'iconfont el-icon-cc-file-add',
+          route: 'searchDropdown'
+        }
+      },
       {
         path: 'selectChange',
         name: 'selectChange',

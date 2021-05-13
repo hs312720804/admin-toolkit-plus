@@ -53,7 +53,7 @@
   </div>
 </template>
 <script>
-const PinyinMatch = require('pinyin-match')
+import PinyinMatch from  'pinyin-match'
 export default {
   name: 'CSearchDropdown',
   props: {
