@@ -1,5 +1,5 @@
 <template>
-  <el-form-item class="textAlignLeft" :label="label" :prop="prop" :label-width="labelWidth" :rules="effectiveTimeRules">
+  <el-form-item class="textAlignLeft" :label="label+'aa'" :prop="prop" :label-width="labelWidth" :rules="effectiveTimeRules">
     <el-date-picker
         v-if="!isReadonly"
         :modelValue="modelValue"
@@ -9,6 +9,7 @@
         :disabled="disabled"
         :placeholder="placeholder"
         :picker-options="pickerOptions"
+        @focus="setDefaultValue"
         @update:modelValue="$emit('update:modelValue', $event)"
         @change="$emit('change', $event)"
     ></el-date-picker>
@@ -26,6 +27,7 @@ export default {
   mixins: [formItemMixin],
   data () {
     var validatEffectiveTime = (rule, value, callback) => {
+      debugger
       const startTime = new Date(value[0]).getTime()
       const currentTime = new Date().getTime()
       if (startTime < currentTime) {

@@ -9,6 +9,8 @@
         :disabled="disabled"
         :placeholder="placeholder"
         :picker-options="pickerOptions"
+        :default-time="defaultValue"
+        @focus="setDefaultValue"
         @update:modelValue="$emit('update:modelValue', $event)"
         @change="$emit('change', $event)"
     ></el-date-picker>
@@ -19,7 +21,9 @@
       </template>
   </el-form-item>
 </template>
+
 <script>
+
 import formItemMixin from '../../formItemMixin'
 export default {
   name: 'CFormEffectiveTime',

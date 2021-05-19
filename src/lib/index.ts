@@ -26,6 +26,7 @@ import CSelectLimit from './components/select-limit/index'
 import CBoxGroup from './components/box-group/index'
 import CTreeSelect from './components/tree-select/index'
 import CSearchDropdown from './components/search-dropdown/index'
+import CCascaderPanel from './components/cascader-panel/index'
 const i18n = lang.i18n
 
 const defaultInstallOpt: InstallOptions = {
@@ -56,7 +57,8 @@ const components = [
   CSelectLimit,
   CBoxGroup,
   CTreeSelect,
-  CSearchDropdown
+  CSearchDropdown,
+  CCascaderPanel
 ]
 const install = (app: App, opt: InstallOptions): void => {
   app.use(i18n)
@@ -90,7 +92,8 @@ export {
   CSelectLimit,
   CBoxGroup,
   CTreeSelect,
-  CSearchDropdown
+  CSearchDropdown,
+  CCascaderPanel
 }
 export default {
   CBreadcrumb,
@@ -117,5 +120,6 @@ export default {
   CSelectLimit,
   CBoxGroup,
   CTreeSelect,
-  CSearchDropdown
+  CSearchDropdown,
+  CCascaderPanel
 }

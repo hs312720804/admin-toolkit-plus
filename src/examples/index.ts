@@ -41,7 +41,7 @@ import AddMultiDemo from './AddMultiDemo.vue'
 // import ProductListDemo from './ProductListDemo.vue'
 import AddFormObjDemo from './AddFormObjDemo.vue'
 // import CellEditDemo from './CellEditDemo.vue'
-// import CascaderPanelDemo from './CascaderPanelDemo.vue'
+import CascaderPanelDemo from './CascaderPanelDemo.vue'
 // import TableTreeDemo from './TableTreeDemo.vue'
 // import FilterTreeDemo from './FilterTreeDemo.vue'
 // import InputThousandsDemo from './InputThousandsDemo.vue'
@@ -98,7 +98,7 @@ export {
   // ProductListDemo,
   AddFormObjDemo,
   // CellEditDemo,
-  // CascaderPanelDemo,
+  CascaderPanelDemo,
   // TableTreeDemo,
   // FilterTreeDemo,
   // InputThousandsDemo,
