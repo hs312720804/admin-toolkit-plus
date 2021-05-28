@@ -2,48 +2,6 @@
 import { ElTable, ElTableColumn, ElCheckbox, ElRadio } from 'element-plus'
 import TableWrapper from '../../table-wrapper/src/Index.vue'
 import { h } from 'vue'
-// elementui 的 hover-row 功能导致在数据量大的时候很卡,
-// 下面通过特殊的手段禁用
-// const ElTableComponents = ElTable.components as ComponentOptions
-// const TableBody = {
-//   // extends: ElTableComponents.TableBody,
-//   extends: ElTable.components.TableBody,
-//   methods: {
-//     getRowClass (row, rowIndex) {
-//       const classes = ['el-table__row']
-//       if (this.table.highlightCurrentRow && row === this.store.states.currentRow) {
-//         classes.push('current-row')
-//       }
-
-//       // if (rowIndex === this.store.states.hoverRow) {
-//       //   classes.push('hover-row');
-//       // }
-
-//       if (this.stripe && rowIndex % 2 === 1) {
-//         classes.push('el-table__row--striped')
-//       }
-//       const rowClassName = this.table.rowClassName
-//       if (typeof rowClassName === 'string') {
-//         classes.push(rowClassName)
-//       } else if (typeof rowClassName === 'function') {
-//         // classes.push(rowClassName.call(null, {row, rowIndex}))
-//         classes.push(rowClassName(row, rowIndex))
-//       }
-
-//       if (this.store.states.expandRows.indexOf(row) > -1) {
-//         classes.push('expanded')
-//       }
-
-//       return classes
-//     }
-//   }
-// }
-// const Table = {
-//   extends: ElTable,
-//   components: {
-//     TableBody
-//   }
-// }
 const defaultTableProps = {
   border: true,
   'highlight-current-row': false
@@ -187,7 +145,9 @@ export default {
           let slots
           if (item.render) {
             slots = {
-              default: props => item.render(props)
+              default: props => {
+                return item.render(props)
+              }
               // default: (props) => h('span', '123')
             }
             // slots = item.render

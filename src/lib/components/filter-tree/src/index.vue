@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-input
-      :placeholder="placeholder"
+      :placeholder="placeholderText"
       class="search-text"
       @input="handleSearch"
       v-model="filterText"
@@ -30,14 +30,15 @@ export default {
     return {
       filterText: '',
       expandedKeys: [],
-      treeData: []
+      treeData: [],
+      placeholderText: this.$t('message.cMessage.inputkeyWord')
     }
   },
   props: {
     placeholder: {
       type: String,
       default: () => {
-        return this.$t('message.cMessage.inputkeyWord')
+        return ''
       }
     },
     defaultProps: {
@@ -79,6 +80,7 @@ export default {
     }
   },
   created () {
+    this.placeholderText = this.placeholder === '' ? this.placeholderText : this.placeholder
     this.treeData = this.data
   }
 }

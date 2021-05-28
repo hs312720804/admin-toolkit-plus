@@ -9,29 +9,28 @@
 </template>
 
 <script>
+import { h } from 'vue'
+import CCellEdit from '../lib/components/cell-edit/index'
 export default {
   props: {},
+  components: {
+    CCellEdit
+  },
   data () {
     return {
+      initValue: '111',
       table: {
         props: {},
         header: [
           {
             label: '姓名',
             prop: 'name',
-            render: (h, { row }) => {
+            render: ({ row }) => {
               return h(
-                'c-cell-edit',
+                CCellEdit,
                 {
-                  props: {
-                    initValue: row.name
-                  },
-                  on: {
-                    blur: (val) => {
-                      // row.name = val
-                      this.$message.info('传给后端的值为:' + val)
-                    }
-                  }
+                  modelValue: row.name,
+                  'onUpdate:modelValue': value => row.name = value
                 }
               )
             }

@@ -48,7 +48,7 @@ export default {
   mounted () {
     this.addEventListener()
   },
-  destroyed () {
+  unmounted () {
     this.removeEventListener()
   }
 }

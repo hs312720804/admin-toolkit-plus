@@ -63,7 +63,7 @@ export default {
   line-height 50px
   background-color white
   border-top 1px solid #f0f0f0
-  .sub-foot
+  :deep(.sub-foot)
     text-align right
     padding-right 50px
 .fix-header-footer__header

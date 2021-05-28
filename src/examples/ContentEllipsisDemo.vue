@@ -1,5 +1,5 @@
 <template>
-       <c-ellipsis :content='ellipsisContent' width="100" height="100" ></c-ellipsis>
+       <c-ellipsis :content='ellipsisContent' width="100" height="25" ></c-ellipsis>
 </template>
 <script>
 export default {

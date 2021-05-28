@@ -3,14 +3,16 @@
     <el-button type="primary" v-show="isShowMainPage" @click="openTableList">打开表格</el-button>
     <div v-show="!isShowMainPage">
       <c-card :title="title" @go-back="goBack">
-         <div class="sub-foot" slot="footer">
+        <template v-slot:footer>
+          <div class="sub-foot">
+            <el-button
+            type="success"
+          >保存草稿</el-button>
           <el-button
-          type="success"
-        >保存草稿</el-button>
-        <el-button
-          type="primary"
-        >提交审核</el-button>
-         </div>
+            type="primary"
+          >提交审核</el-button>
+          </div>
+        </template>
       </c-card>
     </div>
   </div>

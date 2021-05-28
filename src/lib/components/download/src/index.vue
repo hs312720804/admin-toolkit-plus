@@ -20,14 +20,7 @@ export default {
   },
   methods: {
     downloadData () {
-      this.$emit('download-data')
-    }
-  },
-  watch: {
-    downloadUrl: function (newValue, oldValue) {
-      this.$nextTick(() => {
-        this.$refs.download_Url.click()
-      })
+      this.$refs.download_Url.click()
     }
   }
 }

@@ -27,6 +27,12 @@ import CBoxGroup from './components/box-group/index'
 import CTreeSelect from './components/tree-select/index'
 import CSearchDropdown from './components/search-dropdown/index'
 import CCascaderPanel from './components/cascader-panel/index'
+import CCellEdit from './components/cell-edit/index'
+import CContextMenu from './components/context-menu/index'
+import CDownload from './components/download/index'
+import CEllipsis from './components/ellipsis/index'
+import CFilterTree from './components/filter-tree/index'
+import CFixPage from './components/fix-page/index'
 const i18n = lang.i18n
 
 const defaultInstallOpt: InstallOptions = {
@@ -58,7 +64,13 @@ const components = [
   CBoxGroup,
   CTreeSelect,
   CSearchDropdown,
-  CCascaderPanel
+  CCascaderPanel,
+  CCellEdit,
+  CContextMenu,
+  CDownload,
+  CEllipsis,
+  CFilterTree,
+  CFixPage
 ]
 const install = (app: App, opt: InstallOptions): void => {
   app.use(i18n)
@@ -93,7 +105,13 @@ export {
   CBoxGroup,
   CTreeSelect,
   CSearchDropdown,
-  CCascaderPanel
+  CCascaderPanel,
+  CCellEdit,
+  CContextMenu,
+  CDownload,
+  CEllipsis,
+  CFilterTree,
+  CFixPage
 }
 export default {
   CBreadcrumb,
@@ -121,5 +139,11 @@ export default {
   CBoxGroup,
   CTreeSelect,
   CSearchDropdown,
-  CCascaderPanel
+  CCascaderPanel,
+  CCellEdit,
+  CContextMenu,
+  CDownload,
+  CEllipsis,
+  CFilterTree,
+  CFixPage
 }

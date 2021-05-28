@@ -1,17 +1,18 @@
 <template>
   <div class="cell-content">
-    <div class="cell-main-content" style="width: 90%">
+    <div class="cell-main-content" style="width: 90%" @click="handleEdit">
       <el-input
         ref="input"
         class="edit-input"
         v-if="!readonly"
-        v-model="value"
+        :modelValue="value"
+        @update:modelValue="handleInput"
         @focus="handleFocus"
         @blur="handleBlur"
       />
-      <div v-else class="input-place">{{ initValue }}</div>
+      <div v-else class="input-place">{{ modelValue }}</div>
     </div>
-    <i class="el-icon-edit icon" @click="handleEdit" style="cursor: pointer;" />
+    <i :class="{'icon': true, 'el-icon-edit': readonly }" @click="handleEdit" style="cursor: pointer;" />
   </div>
 </template>
 
@@ -19,7 +20,7 @@
 export default {
   name: 'CCellEdit',
   components: {},
-  props: ['initValue'],
+  props: ['modelValue'],
   data () {
     return {
       value: '',
@@ -27,20 +28,14 @@ export default {
     }
   },
   computed: {},
-  watch: {
-    initValue: {
-      handle (val) {
-        this.value = val
-      }
-    }
-  },
   methods: {
     handleInput (val) {
       this.value = val
-      this.$emit('input', val)
+      this.$emit('update:modelValue', val)
     },
-    handleEdit () {
+    handleEdit (e) {
       this.readonly = false
+      e.stopPropagation()
     },
     handleBlur () {
       this.readonly = true
@@ -48,11 +43,21 @@ export default {
     },
     handleFocus (e) {
       e.target.select()
+    },
+    domClick (e) {
+      const className = e.srcElement.getAttribute('class')
+      if (!['el-input__inner', 'input-place'].includes(className)) {
+        this.readonly = true
+      }
     }
   },
   created () {
-    this.value = this.initValue
-  }
+    window.addEventListener('click', this.domClick)
+    this.value = this.modelValue
+  },
+  unmounted() {
+    window.removeEventListener('click', this.domClick)
+  },
 }
 </script>
 
@@ -63,6 +68,7 @@ export default {
   align-items center
   justify-content space-between
   color #606266
+  cursor pointer
 .icon
   visibility hidden
 .cell-content:hover .icon

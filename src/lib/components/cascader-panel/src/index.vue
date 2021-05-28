@@ -42,7 +42,7 @@ export default {
       default: false
     },
     placeholder: String,
-    value: Array,
+    modelValue: Array,
     selectedValue: Array,
     isExpand: {
       type: Boolean,
@@ -113,11 +113,11 @@ export default {
           })
           return index === -1
         } else {
-          if (e.parent === null) {
+          if (!!!e.parent) {
             return true
           } else {
             const index = selectedAllNodes.findIndex((ele) => {
-              return ele.value === e.parent.value
+              return ele.value === e.parent?.value
             })
             return index === -1
           }
@@ -185,7 +185,7 @@ export default {
         if (this.$refs.panel) {
           this.selectedAllNodes = this.$refs.panel && this.$refs.panel.getCheckedNodes(false) // 获取所有选中节点
           this.selectedItem = this.getSelectedNodes(true)
-          this.$emit('input', this.inputValue)
+          this.$emit('update:modelValue', this.inputValue)
           this.$emit('get-selected-list', this.selectedItem)
         }
       })
@@ -207,15 +207,15 @@ export default {
     this.$watch('inputValue', this.emitInputValue, {
       deep: true
     })
-    this.$watch('value', this.setInputValue, {
+    this.$watch('modelValue', this.setInputValue, {
       deep: true
     })
-    this.setInputValue(this.value)
+    this.setInputValue(this.modelValue)
   }
 }
 </script>
 <style lang="stylus" scoped>
-.search-selector-tags >>> .el-tag
+.search-selector-tags :deep(.el-tag)
   margin 10px
 .coocaa-cascader-panel--empty
   border 1px solid #E4E7ED

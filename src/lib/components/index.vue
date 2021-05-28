@@ -88,7 +88,8 @@ export default {
 </script>
 <style lang="stylus" scoped>
 .el-container
-  height: 100%
+  height: 100vh
+  overflow hidden
   display: flex
 .aside_menu
   width: 230px

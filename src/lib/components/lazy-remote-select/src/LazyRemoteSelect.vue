@@ -168,7 +168,7 @@ export default {
   created () {
 
   },
-  destroyed () {
+  unmounted () {
     window.removeEventListener('scroll', this.handleScroll, true)
   }
 }

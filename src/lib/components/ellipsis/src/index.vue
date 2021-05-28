@@ -5,9 +5,11 @@
     title=""
     trigger="hover"
     :content="content">
-    <div class="ellipsis" slot="reference" :style="style">
+    <template v-slot:reference>
+    <div class="ellipsis"  :style="style">
       {{ content }}
     </div>
+    </template>
   </el-popover>
 
 </template>
@@ -35,4 +37,5 @@ export default {
   overflow hidden
   text-overflow ellipsis
   white-space nowrap
+  cursor pointer
 </style>
