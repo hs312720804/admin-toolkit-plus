@@ -53,6 +53,16 @@ const routes = [
         }
       },
       {
+        path: 'AppParamsRead',
+        name: 'AppParamsRead',
+        component: demos.AppParamsReadDemo,
+        meta: {
+          title: 'AppParamsRead',
+          icon: 'iconfont el-icon-cc-file-add',
+          route: 'AppParamsRead'
+        }
+      },
+      {
         path: 'menu',
         name: 'menu',
         component: demos.MenuDemo,
@@ -182,66 +192,46 @@ const routes = [
           route: 'BoxGroup'
         }
       },
-      // {
-      //   path: 'typeList',
-      //   name: 'typeList',
-      //   component: demos.TypeListDemo,
-      //   meta: {
-      //     title: '分类列表',
-      //     icon: 'iconfont el-icon-cc-file-add',
-      //     route: 'typeList'
-      //   }
-      // },
-      {
-        path: 'FormFatherAndSonLink',
-        name: 'FormFatherAndSonLink',
-        component: demos.FatherSonLinkDemo,
-        meta: {
-          title: '表单父子关联',
-          icon: 'iconfont el-icon-cc-file-add',
-          route: 'FormFatherAndSonLink'
-        }
-      },
       {
         path: 'probability',
         name: 'probability',
-        component: demos.probabilityDemo,
+        component: demos.InputPosibilityDemo,
         meta: {
           title: '概率输入',
           icon: 'iconfont el-icon-cc-file-add',
           route: 'probability'
         }
       },
-      {
-        path: 'VideoTags',
-        name: 'VideoTags',
-        component: demos.VideoTagsDemo,
-        meta: {
-          title: '标签列表',
-          icon: 'iconfont el-icon-cc-file-add',
-          route: 'VideoTags'
-        }
-      },
-      {
-        path: 'ProductList',
-        name: 'ProductList',
-        component: demos.ProductListDemo,
-        meta: {
-          title: '产品包列表',
-          icon: 'iconfont el-icon-cc-file-add',
-          route: 'ProductList'
-        }
-      },
-      {
-        path: 'VideoFilter',
-        name: 'VideoFilter',
-        component: demos.VideoFilterDemo,
-        meta: {
-          title: '影片筛选器',
-          icon: 'iconfont el-icon-cc-file-add',
-          route: 'VideoFilter'
-        }
-      },
+      // {
+      //   path: 'VideoTags',
+      //   name: 'VideoTags',
+      //   component: demos.VideoTagsDemo,
+      //   meta: {
+      //     title: '标签列表',
+      //     icon: 'iconfont el-icon-cc-file-add',
+      //     route: 'VideoTags'
+      //   }
+      // },
+      // {
+      //   path: 'ProductList',
+      //   name: 'ProductList',
+      //   component: demos.ProductListDemo,
+      //   meta: {
+      //     title: '产品包列表',
+      //     icon: 'iconfont el-icon-cc-file-add',
+      //     route: 'ProductList'
+      //   }
+      // },
+      // {
+      //   path: 'VideoFilter',
+      //   name: 'VideoFilter',
+      //   component: demos.VideoFilterDemo,
+      //   meta: {
+      //     title: '影片筛选器',
+      //     icon: 'iconfont el-icon-cc-file-add',
+      //     route: 'VideoFilter'
+      //   }
+      // },
       {
         path: 'CardList',
         name: 'CardList',
@@ -292,16 +282,16 @@ const routes = [
           route: 'inputPositiveInt'
         }
       },
-      {
-        path: 'selectDialog',
-        name: 'selectDialog',
-        component: demos.SelectDialogDemo,
-        meta: {
-          title: '基础数据选择器',
-          icon: 'iconfont el-icon-cc-file-add',
-          route: 'selectDialog'
-        }
-      },
+      // {
+      //   path: 'selectDialog',
+      //   name: 'selectDialog',
+      //   component: demos.SelectDialogDemo,
+      //   meta: {
+      //     title: '基础数据选择器',
+      //     icon: 'iconfont el-icon-cc-file-add',
+      //     route: 'selectDialog'
+      //   }
+      // },
       {
         path: 'ContentWrapperDemo',
         name: 'ContentWrapperDemo',
@@ -353,13 +343,13 @@ const routes = [
         }
       },
       {
-        path: 'region',
-        name: 'region',
-        component: demos.CnRegionPickerDemo,
+        path: 'clickEvent',
+        name: 'clickEvent',
+        component: demos.ClickEventSelectorDemo,
         meta: {
-          title: '中国地区选择',
+          title: '点击事件选择器',
           icon: 'iconfont el-icon-cc-file-add',
-          route: 'region'
+          route: 'clickEvent'
         }
       }
     ]

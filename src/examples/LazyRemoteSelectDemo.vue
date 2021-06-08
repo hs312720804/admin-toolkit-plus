@@ -1,30 +1,31 @@
 <template>
   <div>
-  <c-lazy-remote-select
-    v-model="selectedValue"
-    :filter="filter"
-    :primaryKey="primaryKey"
-    :optionsMap="optionsMap"
-    serviceName="getList"
-></c-lazy-remote-select>
-{{selectedValue}}
+    <c-lazy-remote-select
+      v-model="selectedValue"
+      :total="total"
+      :options-data="options"
+      @fetch-data="getLazyRemoteData"
+    >
+    </c-lazy-remote-select>
+      {{selectedValue}}
   </div>
 </template>
 <script>
+import { getLazyRemoteData } from '../service/index'
 export default {
   data () {
     return {
-      selectedValue: 3,
-      filter: {
-        label: ''
-      },
-      primaryKey: {
-        value: ''
-      },
-      optionsMap: {
-        key: 'id',
-        label: 'name'
-      }
+      selectedValue: undefined,
+      total: 0,
+      options: []
+    }
+  },
+  methods: {
+    getLazyRemoteData (pagination, filters) {
+      getLazyRemoteData(pagination, filters).then((data) => {
+        this.total = data.total
+        this.options = data.rows
+      })
     }
   }
 }

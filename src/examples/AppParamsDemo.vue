@@ -1,7 +1,7 @@
 <template>
 <div>
-    <el-button type="primary" @click="handleChangelanguage('zh')">中文</el-button>
-    <el-button type="primary" @click="handleChangelanguage('en')">英文</el-button>
+    <!-- <el-button type="primary" @click="handleChangelanguage('zh')">中文</el-button>
+    <el-button type="primary" @click="handleChangelanguage('en')">英文</el-button> -->
   <el-form :model="form" ref="form" label-width="140px">
     <c-app-params prop-prefix="appParams." v-model="form.appParams" />
       <el-form-item>

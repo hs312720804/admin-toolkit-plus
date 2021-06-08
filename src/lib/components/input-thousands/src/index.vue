@@ -3,23 +3,23 @@
   <el-input
     ref="input"
     type="text"
-    :value="inputValue"
-    @input="handleInputValue"
+    :modelValue="inputValue"
+    @update:modelValue="handleInputValue"
     @blur="$emit('blur')"
     @change="$emit('change')"
     :disabled="disabled"
     :placeholder="placeholder"
     >
-    <span
-      v-if="prepend"
-      slot="prepend">
-      {{prepend}}
-    </span>
-    <span
-      v-if="append"
-      slot="append">
+    <template v-slot:prepend v-if="prepend">
+      <span >
+        {{prepend}}
+      </span>
+    </template>
+    <template v-slot:append v-if="append">
+    <span>
       {{append}}
     </span>
+    </template>
   </el-input>
   </div>
 </template>
@@ -34,7 +34,7 @@ export default {
     }
   },
   props: {
-    value: [Number, String],
+    modelValue: [Number, String],
     disabled: Boolean,
     append: String,
     prepend: String,
@@ -53,7 +53,7 @@ export default {
         } else {
           this.inputValue = val
         }
-        this.$emit('input', this.inputValue)
+        this.$emit('update:modelValue', this.inputValue)
       }
     },
     getPositiveInt (data) {
@@ -70,10 +70,10 @@ export default {
     }
   },
   created () {
-    this.$watch('value', (val) => {
+    this.$watch('modelValue', (val) => {
       if (this.inputValue !== val) {
         this.inputValue = this.format_number(val)
-        this.$emit('input', this.inputValue)
+        this.$emit('update:modelValue', this.inputValue)
       }
     }, {
       immediate: true

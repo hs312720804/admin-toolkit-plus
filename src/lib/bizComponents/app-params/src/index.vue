@@ -18,6 +18,7 @@
       :label="$t('message.cMessage.dowhat')"
       :prop="formProp('dowhat')"
       :rules="rules.dowhat"
+      class="textAlignLeft"
     >
       <el-select v-model="inputValue.dowhat">
         <el-option
@@ -33,6 +34,7 @@
       :label="$t('message.cMessage.bywhat')"
       :prop="formProp('bywhat')"
       :rules="rules.bywhat"
+      class="textAlignLeft"
     >
       <el-select v-model="inputValue.bywhat">
         <el-option
@@ -48,11 +50,12 @@
       :label="$t('message.cMessage.byvalue')"
       :prop="formProp('byvalue')"
       :rules="rules.byvalue"
+     
     >
       <el-input type="textarea" v-model.trim="inputValue.byvalue"></el-input>
     </el-form-item>
     <slot></slot>
-    <el-form-item  :label="$t('message.cMessage.extendParams')">
+    <el-form-item  :label="$t('message.cMessage.extendParams')" class="textAlignLeft">
       <div
         class="app-extend-params"
         v-for="(param, index) in inputValue.params"
@@ -78,7 +81,7 @@
           <i class="el-icon-minus"></i>
         </a>
       </div>
-      <el-button type="primary" plain @click="handleAddParam">
+      <el-button size="small" type="primary" plain @click="handleAddParam">
         <i class="el-icon-plus"></i>&nbsp;{{$t('message.cButton.add')}}
       </el-button>
     </el-form-item>
@@ -136,7 +139,7 @@ export default {
     }
   },
   props: {
-    value: {},
+    modelValue: {},
     propPrefix: {},
     dowhatOptions: {
       default () {
@@ -180,7 +183,7 @@ export default {
     }
   },
   watch: {
-    value: 'setInputValue'
+    modelValue: 'setInputValue'
   },
   methods: {
     formProp (key) {
@@ -202,7 +205,7 @@ export default {
       }
     },
     emitInputValue (val) {
-      this.$emit('input', this.inputValue)
+      this.$emit('update:modelValue', this.inputValue)
     },
     handleAddParam () {
       this.inputValue.params.push({
@@ -215,8 +218,8 @@ export default {
     }
   },
   created () {
-    if (this.value) {
-      this.setInputValue(this.value)
+    if (this.modelValue) {
+      this.setInputValue(this.modelValue)
     }
     this.$watch('inputValue', this.emitInputValue, {
       deep: true
@@ -225,6 +228,9 @@ export default {
 }
 </script>
 <style scoped>
+.textAlignLeft :deep(.el-form-item__content) {
+  text-align: left;
+}
 .app-extend-params .el-form-item,
 .app-extend-params .el-form-item__label,
 .app-extend-params .el-form-item__content,

@@ -1,8 +1,5 @@
 <template>
   <c-card :title="title" @go-back="goBack">
-    <div slot="actions" class="go-back">
-      <el-button type="text" size="mini" :icon='goBackIcon' @click="$emit('go-back')">返回</el-button>
-    </div>
     <div class="content font-class" style="display: block;">
       <div @click="getIconClassName" v-if="isUseInitialIcon">
         <ul class="icon_lists dib-box">

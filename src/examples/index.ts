@@ -6,22 +6,22 @@ import MenuDemo from './MenuDemo.vue'
 import TableDemo from './TableDemo.vue'
 import TagNavDemo from './TagNavDemo.vue'
 import ContentEllipsisDemo from './ContentEllipsisDemo.vue'
-// import TheIconDemoIndex from './TheIconDemoIndex.vue'
-// import TheCustomIconDemo from './TheCustomIconDemo.vue'
-// import TheInitIconDemo from './TheInitIconDemo.vue'
+import TheIconDemoIndex from './TheIconDemoIndex.vue'
+import TheCustomIconDemo from './TheCustomIconDemo.vue'
+import TheInitIconDemo from './TheInitIconDemo.vue'
 import CardDemo from './CardDemo.vue'
 import DownloadFileDemo from './DownloadFileDemo.vue'
 import UploadDemo from './UploadDemo.vue' 
-// import AppParamsDemo from './AppParamsDemo.vue'
-// import AppParamsReadDemo from './AppParamsReadDemo.vue'
+import AppParamsDemo from './AppParamsDemo.vue'
+import AppParamsReadDemo from './AppParamsReadDemo.vue'
 // import TypeListDemo from './TypeListDemo.vue'
 import CardListDemo from './CardListDemo.vue'
 // import probabilityDemo from './probabilityDemo.vue'
-// import ClickEventSelectorDemo from './ClickEventSelectorDemo.vue'
+import ClickEventSelectorDemo from './ClickEventSelectorDemo.vue'
 // import SelectDialogDemo from './SelectDialogDemo.vue'
-// import InputOrderDemo from './InputOrderDemo.vue'
-// import InputPositiveIntDemo from './InputPositiveIntDemo.vue'
-// import InputPosibilityDemo from './InputPosibilityDemo.vue'
+import InputOrderDemo from './InputOrderDemo.vue'
+import InputPositiveIntDemo from './InputPositiveIntDemo.vue'
+import InputPosibilityDemo from './InputPosibilityDemo.vue'
 // import BaseSelectorDemo from './BaseSelectorDemo.vue'
 import ContextMenuDemo from './ContextMenuDemo.vue'
 import DataFormDemo from './form/DataFormDemo.vue'
@@ -42,13 +42,13 @@ import CellEditDemo from './CellEditDemo.vue'
 import CascaderPanelDemo from './CascaderPanelDemo.vue'
 // import TableTreeDemo from './TableTreeDemo.vue'
 import FilterTreeDemo from './FilterTreeDemo.vue'
-// import InputThousandsDemo from './InputThousandsDemo.vue'
+import InputThousandsDemo from './InputThousandsDemo.vue'
 // import OrderableTableDemo from './OrderableTableDemo.vue'
 import SearchDropdownDemo from './SearchDropdownDemo.vue'
 import TreeSelectDemo from './TreeSelectDemo.vue'
 // import SelectChangeDemo from './SelectChangeDemo.vue'
 import SelectLimitDemo from './SelectLimitDemo.vue'
-// import LazyRemoteSelectDemo from './LazyRemoteSelectDemo.vue'
+import LazyRemoteSelectDemo from './LazyRemoteSelectDemo.vue'
 import BoxGroupDemo from './BoxGroupDemo.vue'
 export {
 
@@ -61,22 +61,22 @@ export {
   TableDemo,
   TagNavDemo,
   ContentEllipsisDemo,
-  // TheIconDemoIndex,
-  // TheCustomIconDemo,
-  // TheInitIconDemo,
+  TheIconDemoIndex,
+  TheCustomIconDemo,
+  TheInitIconDemo,
   // CardDemo,
   DownloadFileDemo,
   UploadDemo,
-  // AppParamsDemo,
-  // AppParamsReadDemo,
+  AppParamsDemo,
+  AppParamsReadDemo,
   // TypeListDemo,
   CardListDemo,
   // probabilityDemo,
-  // ClickEventSelectorDemo,
+  ClickEventSelectorDemo,
   // SelectDialogDemo,
-  // InputOrderDemo,
-  // InputPositiveIntDemo,
-  // InputPosibilityDemo,
+  InputOrderDemo,
+  InputPositiveIntDemo,
+  InputPosibilityDemo,
   // BaseSelectorDemo,
   ContextMenuDemo,
   DataFormDemo,
@@ -97,12 +97,12 @@ export {
   CascaderPanelDemo,
   // TableTreeDemo,
   FilterTreeDemo,
-  // InputThousandsDemo,
+  InputThousandsDemo,
   // OrderableTableDemo,
   SearchDropdownDemo,
   TreeSelectDemo,
   // SelectChangeDemo,
   SelectLimitDemo,
-  // LazyRemoteSelectDemo,
+  LazyRemoteSelectDemo,
   BoxGroupDemo
 }

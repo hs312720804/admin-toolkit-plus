@@ -1,16 +1,12 @@
 <!--add by wanghaihua 序号排序 2020/8/7-->
 <template>
-  <input-positive-int v-model="inputValue" @change="handleInputValue">
-  </input-positive-int>
+  <c-input-positive-int v-model="inputValue" @change="handleInputValue">
+  </c-input-positive-int>
 </template>
 <script>
 import _ from 'lodash'
-import InputPositiveInt from '../../input-positive-int/src/InputPositiveInt'
 export default {
   name: 'CInputOrder',
-  components: {
-    InputPositiveInt
-  },
   data () {
     return {
       inputValue: undefined
@@ -35,7 +31,7 @@ export default {
       }
     },
     handleInputOrder (index, order) {
-      const dataList = this.data
+      const dataList = JSON.parse(JSON.stringify(this.data))
       if (order > dataList.length) {
         order = dataList.length
       }

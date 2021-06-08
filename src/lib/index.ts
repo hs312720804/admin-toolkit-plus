@@ -33,6 +33,14 @@ import CDownload from './components/download/index'
 import CEllipsis from './components/ellipsis/index'
 import CFilterTree from './components/filter-tree/index'
 import CFixPage from './components/fix-page/index'
+import CIconSelect from './components/icon-select/index'
+import CInputOrder from './components/input-order/index'
+import CInputPositiveInt from './components/input-positive-int/index'
+import CInputPosibility from './components/input-posibility/index'
+import CInputThousands from './components/input-thousands/index'
+import CAppParams from './bizComponents/app-params/index'
+import CAppParamsRead from './bizComponents/app-params-read/index'
+import CLazyRemoteSelect from './components/lazy-remote-select/index'
 const i18n = lang.i18n
 
 const defaultInstallOpt: InstallOptions = {
@@ -70,7 +78,15 @@ const components = [
   CDownload,
   CEllipsis,
   CFilterTree,
-  CFixPage
+  CFixPage,
+  CIconSelect,
+  CInputOrder,
+  CInputPositiveInt,
+  CInputPosibility,
+  CInputThousands,
+  CAppParams,
+  CAppParamsRead,
+  CLazyRemoteSelect
 ]
 const install = (app: App, opt: InstallOptions): void => {
   app.use(i18n)
@@ -111,7 +127,15 @@ export {
   CDownload,
   CEllipsis,
   CFilterTree,
-  CFixPage
+  CFixPage,
+  CIconSelect,
+  CInputOrder,
+  CInputPositiveInt,
+  CInputPosibility,
+  CInputThousands,
+  CAppParams,
+  CAppParamsRead,
+  CLazyRemoteSelect
 }
 export default {
   CBreadcrumb,
@@ -145,5 +169,13 @@ export default {
   CDownload,
   CEllipsis,
   CFilterTree,
-  CFixPage
+  CFixPage,
+  CIconSelect,
+  CInputOrder,
+  CInputPositiveInt,
+  CInputPosibility,
+  CInputThousands,
+  CAppParams,
+  CAppParamsRead,
+  CLazyRemoteSelect
 }

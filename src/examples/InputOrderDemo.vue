@@ -51,13 +51,16 @@ export default {
   methods: {
     handleOrderData (data) {
       this.items = data
+      console.log(this.items.length)
     }
   }
 }
 </script>
 
 <style lang="stylus" scoped>
-.item >>> .el-input
+.item :deep(.el-input)
   width 100px
   display inline-block
+li
+  text-align left
 </style>

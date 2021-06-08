@@ -12,7 +12,8 @@
     </div>
     <div v-show="!isShowMainPage">
       <c-icon-select @get-icon="getIcon" :title="title" :isUseInitialIcon="false" @go-back="goBack">
-        <ul slot="addIcon">
+        <template v-slot:addIcon>
+        <ul>
           <li>
             <span class="icon iconfont el-icon-cc-denglu"></span>
             <div class="name">登录</div>
@@ -22,6 +23,7 @@
             <div class="name">投放方案</div>
           </li>
         </ul>
+        </template>
       </c-icon-select>
     </div>
   </div>

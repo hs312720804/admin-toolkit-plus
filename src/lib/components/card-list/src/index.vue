@@ -89,8 +89,8 @@ export default {
     top 0px
     left 7px
     line-height 1
-    >>> .el-checkbox
+    :deep(.el-checkbox)
         vertical-align top
-.hide-radio-label >>> .el-radio__label
+.hide-radio-label :deep(.el-radio__label)
   display none
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div  class="textAlignLeft">
     <el-form-item :label="$t('message.cMessage.packageName')">{{ value.packagename }}</el-form-item>
     <el-form-item :label="$t('message.cMessage.versionCode')">{{ value.versioncode }}</el-form-item>
     <el-form-item :label="$t('message.cMessage.dowhat')">{{ value.dowhat }}</el-form-item>
@@ -38,6 +38,9 @@ export default {
 </script>
 
 <style scoped>
+.textAlignLeft :deep(.el-form-item__content) {
+  text-align: left;
+}
 .app-extend-params .el-form-item,
 .app-extend-params .el-form-item__label,
 .app-extend-params .el-form-item__content {
