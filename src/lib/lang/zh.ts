@@ -16,6 +16,7 @@ export default {
     inputPositiveInteger: '请输入正整数',
     loading: '加载中',
     search: '搜索',
+    more: '更多',
     selectText: '选择',
     selected: '已选择',
     pleaseSelect: '请选择',

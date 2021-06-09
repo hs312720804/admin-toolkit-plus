@@ -4,6 +4,7 @@
       clearable
       filterable
       remote
+      :multiple="multiple"
       reserve-keyword
       :placeholder="placeholder"
       :remote-method="remoteMethod"
@@ -32,6 +33,10 @@ export default {
     pageSize: {
       type: Number,
       default: 10
+    },
+    multiple: {
+      type: Boolean,
+      default: false
     }
   },
   watch: {
@@ -97,19 +102,19 @@ export default {
     showLoading () {
       this.$nextTick(() => {
         this.appendTips()
-        document.getElementById('appendId').innerText = '正在加载'
+        document.getElementById('appendId').innerText = this.$t('message.cMessage.loading')
       })
     },
     showNoMore () {
       this.$nextTick(() => {
         this.appendTips()
-        document.getElementById('appendId').innerText = '没有数据了'
+        document.getElementById('appendId').innerText = this.$t('message.cMessage.noData')
       })
     },
     showMore () {
       this.$nextTick(() => {
         this.appendTips()
-        document.getElementById('appendId').innerText = '更多'
+        document.getElementById('appendId').innerText = this.$t('message.cMessage.more')
       })
     },
     loadMore () {

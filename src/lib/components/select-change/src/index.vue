@@ -1,5 +1,5 @@
 <template>
-  <el-checkbox-group @input="handleInput" :value="tempVal">
+  <el-checkbox-group @update:modelValue="handleInput" :modelValue="tempVal">
     <el-checkbox-button :label="0" v-if="allText !== ''">{{
       allText
     }}</el-checkbox-button>
@@ -11,7 +11,7 @@
       :disabled="
         item.disabled !== null && item.disabled !== undefined
           ? item.disabled
-          : false
+          : false 
       "
       :key="index"
       :label="item[labelKey]"
@@ -23,7 +23,7 @@
 export default {
   name: 'CSelectChange',
   props: {
-    value: {},
+    modelValue: {},
     allText: {
       type: String,
       default () {
@@ -66,7 +66,7 @@ export default {
     }
   },
   mounted () {
-    this.tempVal = this.value
+    this.tempVal = this.modelValue
   },
   methods: {
     handleInput (val) {
@@ -84,7 +84,7 @@ export default {
           })
         }
       }
-      this.$emit('input', this.tempVal)
+      this.$emit('update:modelValue', this.tempVal)
     }
     // ,
     // handleChange (val) {

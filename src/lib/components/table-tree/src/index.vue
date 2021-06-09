@@ -7,7 +7,7 @@ const defaultTableProps = {
   'highlight-current-row': false
 }
 export default {
-  name: 'CTable',
+  name: 'CTableTree',
   props: {
     props: {
       type: Object, //类型
@@ -63,7 +63,12 @@ export default {
   },
   computed: {
     selectStatus () {
-      const dataCount = this.data.length
+      let dataCount
+      if (this.props['tree-props']) {
+        dataCount = this.getTableDataLength(this.data)
+      } else {
+        dataCount = this.data.length
+      }
       const count = this.selected.length
       if (dataCount === 0 || count === 0) {
         return 'none'
@@ -75,6 +80,22 @@ export default {
     }
   },
   methods: {
+        /*
+    add by wanghaihua 2020/6/3
+    */
+    getTableDataLength (data) {
+      let fun = (data, init) => {
+        return data.reduce((r, c) => {
+          r = r + 1
+          const children = this.props['tree-props'].children
+          if (children && c.children && c.children.length > 0) {
+            r = fun(c.children, r)
+          }
+          return r
+        }, init)
+      }
+      return fun(data, 0)
+    },
     toggleColumn (index) {
       const hiddenColumns = this.hiddenColumns
       const idx = hiddenColumns.indexOf(index)
@@ -189,6 +210,7 @@ export default {
             return h(ElCheckbox, {
             // props: {
             // value: this.selectStatus === 'all',
+              disabled: this.disabled,
               modelValue: this.selectStatus === 'all',
               'onUpdate:modelValue': value => this.$emit('update:modelValue', value),
               indeterminate: this.selectStatus === 'indeterminate',

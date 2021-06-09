@@ -3,6 +3,7 @@
       ref="lazyRemoteSelect"
       v-model="selectedValue"
       :total="total"
+      :multiple="true"
       :options-data="options"
       @fetch-data="getLazyRemoteData"
       @clear-option="handleInitOption"
@@ -14,7 +15,7 @@ import { getLazyRemoteData } from '../service/index'
 export default {
   data () {
     return {
-      selectedValue: undefined,
+      selectedValue: [],
       total: 0,
       options: []
     }

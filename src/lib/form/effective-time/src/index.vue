@@ -8,6 +8,7 @@
         align="right"
         :disabled="disabled"
         :placeholder="placeholder"
+        :default-time="defaultValue"
         :picker-options="pickerOptions"
         @update:modelValue="$emit('update:modelValue', $event)"
         @change="$emit('change', $event)"
@@ -38,7 +39,7 @@ export default {
       effectiveTimeRules: [
         { validator: validatEffectiveTime, trigger: ['blur', 'change'] }
       ],
-      defaultValue: []
+      defaultValue: this.setDefaultValue()
     }
   },
   props: {
@@ -62,7 +63,7 @@ export default {
       let currentDate = new Date()
       currentDate.setMinutes(currentDate.getMinutes() + this.delayTime)
       let now = currentDate.getHours() + ':' + currentDate.getMinutes() + ':' + currentDate.getSeconds()
-      this.defaultValue = [now, '23:59:59']
+      return [new Date(2000, 1, 1, currentDate.getHours(), currentDate.getMinutes(), currentDate.getSeconds()),  new Date(2000,1,1,23, 59, 59)]
     }
   },
   created () {

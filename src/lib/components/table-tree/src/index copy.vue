@@ -1,6 +1,7 @@
 <script>
-import { Table as ElTable, TableColumn, Checkbox, Radio } from 'element-ui'
-import TableWrapper from '../../table-wrapper/src/TableWrapper'
+import { ElTable, ElTableColumn, ElCheckbox, ElRadio } from 'element-plus'
+import TableWrapper from '../../table-wrapper/src/Index.vue'
+import { h } from 'vue'
 // import TableWrapper from './TableWrapper'
 
 // elementui 的 hover-row 功能导致在数据量大的时候很卡,
@@ -328,8 +329,8 @@ export default {
 </script>
 <style lang="stylus" scoped>
 .cc-table
-  >>> .hidden
+  :deep(.hidden)
     display none
-.hide-radio-label >>> .el-radio__label
+.hide-radio-label :deep(.el-radio__label)
   display none
 </style>

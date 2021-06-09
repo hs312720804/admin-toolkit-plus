@@ -16,6 +16,7 @@ export default {
     inputPositiveInteger: 'Please enter a positive integer',
     loading: 'Loading',
     search: 'Search',
+    more: 'more',
     selectText: 'Select',
     selected: 'Selected',
     pleaseSelect: 'Please select',

@@ -40,13 +40,13 @@ import AddMultiDemo from './AddMultiDemo.vue'
 import AddFormObjDemo from './AddFormObjDemo.vue'
 import CellEditDemo from './CellEditDemo.vue'
 import CascaderPanelDemo from './CascaderPanelDemo.vue'
-// import TableTreeDemo from './TableTreeDemo.vue'
+import TableTreeDemo from './TableTreeDemo.vue'
 import FilterTreeDemo from './FilterTreeDemo.vue'
 import InputThousandsDemo from './InputThousandsDemo.vue'
 // import OrderableTableDemo from './OrderableTableDemo.vue'
 import SearchDropdownDemo from './SearchDropdownDemo.vue'
 import TreeSelectDemo from './TreeSelectDemo.vue'
-// import SelectChangeDemo from './SelectChangeDemo.vue'
+import SelectChangeDemo from './SelectChangeDemo.vue'
 import SelectLimitDemo from './SelectLimitDemo.vue'
 import LazyRemoteSelectDemo from './LazyRemoteSelectDemo.vue'
 import BoxGroupDemo from './BoxGroupDemo.vue'
@@ -95,13 +95,13 @@ export {
   AddFormObjDemo,
   CellEditDemo,
   CascaderPanelDemo,
-  // TableTreeDemo,
+  TableTreeDemo,
   FilterTreeDemo,
   InputThousandsDemo,
   // OrderableTableDemo,
   SearchDropdownDemo,
   TreeSelectDemo,
-  // SelectChangeDemo,
+  SelectChangeDemo,
   SelectLimitDemo,
   LazyRemoteSelectDemo,
   BoxGroupDemo
