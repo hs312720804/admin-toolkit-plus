@@ -1,14 +1,13 @@
 <template>
-  <div>
     <c-lazy-remote-select
+      ref="lazyRemoteSelect"
       v-model="selectedValue"
       :total="total"
       :options-data="options"
       @fetch-data="getLazyRemoteData"
+      @clear-option="handleInitOption"
     >
     </c-lazy-remote-select>
-      {{selectedValue}}
-  </div>
 </template>
 <script>
 import { getLazyRemoteData } from '../service/index'
@@ -21,10 +20,13 @@ export default {
     }
   },
   methods: {
+    handleInitOption () {
+      this.options = []
+    },
     getLazyRemoteData (pagination, filters) {
       getLazyRemoteData(pagination, filters).then((data) => {
         this.total = data.total
-        this.options = data.rows
+        this.options = this.options.concat(data.rows)
       })
     }
   }
