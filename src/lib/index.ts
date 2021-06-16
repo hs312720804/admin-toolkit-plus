@@ -43,6 +43,7 @@ import CAppParamsRead from './bizComponents/app-params-read/index'
 import CLazyRemoteSelect from './components/lazy-remote-select/index'
 import CSelectChange from './components/select-change/index'
 import CTableTree from './components/table-tree/index'
+import CListFilter from './components/list-filter/index'
 const i18n = lang.i18n
 
 const defaultInstallOpt: InstallOptions = {
@@ -90,7 +91,8 @@ const components = [
   CAppParamsRead,
   CLazyRemoteSelect,
   CSelectChange,
-  CTableTree
+  CTableTree,
+  CListFilter
 ]
 const install = (app: App, opt: InstallOptions): void => {
   app.use(i18n)
@@ -141,7 +143,8 @@ export {
   CAppParamsRead,
   CLazyRemoteSelect,
   CSelectChange,
-  CTableTree
+  CTableTree,
+  CListFilter
 }
 export default {
   CBreadcrumb,
@@ -185,5 +188,6 @@ export default {
   CAppParamsRead,
   CLazyRemoteSelect,
   CSelectChange,
-  CTableTree
+  CTableTree,
+  CListFilter
 }

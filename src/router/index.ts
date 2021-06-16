@@ -570,6 +570,16 @@ const routes = [
           icon: 'iconfont el-icon-cc-file-add',
           route: 'EffectiveTimeDemo'
         }
+      },
+      {
+        path: 'ListFilterDemo',
+        name: 'ListFilterDemo',
+        component: demos.ListFilterDemo,
+        meta: {
+          title: '列表筛选器',
+          icon: 'iconfont el-icon-cc-file-add',
+          route: 'ListFilterDemo'
+        }
       }
     ]
   }

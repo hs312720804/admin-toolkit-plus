@@ -79,7 +79,8 @@ export default defineUserConfig<DefaultThemeOptions>({
               '/form/EnumList.md',
               '/form/Any.md',
               '/form/Mac.md',
-              '/form/EffectiveTime.md'
+              '/form/EffectiveTime.md',
+              '/components/ListFilter.md'
             ]
           }
         ]

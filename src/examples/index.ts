@@ -50,6 +50,8 @@ import SelectChangeDemo from './SelectChangeDemo.vue'
 import SelectLimitDemo from './SelectLimitDemo.vue'
 import LazyRemoteSelectDemo from './LazyRemoteSelectDemo.vue'
 import BoxGroupDemo from './BoxGroupDemo.vue'
+import ListFilterDemo from './ListFilterDemo.vue'
+
 export {
 
   BreadcrumbDemo,
@@ -104,5 +106,6 @@ export {
   SelectChangeDemo,
   SelectLimitDemo,
   LazyRemoteSelectDemo,
-  BoxGroupDemo
+  BoxGroupDemo,
+  ListFilterDemo
 }
