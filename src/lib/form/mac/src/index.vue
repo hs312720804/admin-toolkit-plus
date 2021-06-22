@@ -1,30 +1,20 @@
-<template>
-<div>
-  <el-form-item class="textAlignLeft" :label="label" :prop="prop" :label-width="labelWidth" :rules="macRules">
-    <el-input
-      v-if="!isReadonly"
-      :modelValue="modelValue"
-      @update:modelValue="$emit('update:modelValue', $event)"
-      :type="type"
-      :disabled="disabled"
-      :clearable="clearable"
-      :placeholder="placeholder"
-      :maxlength="type!=='textarea' ? 12 : undefined"
-      show-word-limit
-      @change="$emit('change', $event)"
-    />
-    <template v-else>{{ modelValue }}</template>
-  </el-form-item>
-</div>
-</template>
-
 <script>
-import formItemMixin from '../../formItemMixin'
+import { h, defineComponent } from 'vue'
+import { ElFormItem, ElInput } from 'element-plus'
 import _ from 'lodash'
-export default {
+export default defineComponent({
   name: 'CFormMac',
-  mixins: [formItemMixin],
-  data () {
+  props: {
+    modelValue: {},
+    formItemAttr: {
+      type: Object,
+      default: () => {
+        return {}
+      }
+    }
+  },
+  inject: ['dataForm'],
+  render () {
     var validateMac = (rule, value, callback) => {
       const reg = /^[a-fA-F0-9]{12}$/
       value = _.trim(value)
@@ -43,7 +33,11 @@ export default {
       try {
         value.forEach((e, index) => {
           if (e !== '' && !reg.test(_.trim(e))) {
-            throw Error(this.$t('message.cMessage.the') + (index + 1) + this.$t('message.cMessage.macError'))
+            throw Error(
+              this.$t('message.cMessage.the') +
+                (index + 1) +
+                this.$t('message.cMessage.macError')
+            )
           }
         })
         callback()
@@ -51,27 +45,50 @@ export default {
         callback(new Error(e.message))
       }
     }
-    return {
-      macRules: [],
-      customRules: {
-        singleMac: [
-          { validator: validateMac, trigger: 'blur' }
-        ],
-        multipleMac: [
-          { validator: validateMacs, trigger: 'blur' }
-        ]
-      }
+    const type = this.$attrs.type
+    const rules = this.formItemAttr.rules
+    let macRules = []
+    const customRules = {
+      singleMac: [{ validator: validateMac, trigger: 'blur' }],
+      multipleMac: [{ validator: validateMacs, trigger: 'blur' }]
     }
-  },
-  created () {
-    if (this.type === 'textarea') {
-      this.macRules = this.rules ? this.customRules.multipleMac.concat(this.rules) : this.customRules.multipleMac
+    if (type === 'textarea') {
+      macRules = rules
+        ? customRules.multipleMac.concat(rules)
+        : customRules.multipleMac
     } else {
-      this.macRules = this.rules ? this.customRules.singleMac.concat(this.rules) : this.customRules.singleMac
+      macRules = rules
+        ? customRules.singleMac.concat(rules)
+        : customRules.singleMac
     }
+    let content = ''
+    if (this.dataForm.readonly) {
+      content = this.modelValue
+    } else {
+      content = h(ElInput, {
+        ...this.$attrs,
+         ref: 'formMac',
+        modelValue: this.modelValue,
+        onChange: $event => this.$emit('change', $event),
+        onFocus: $event => this.$emit('focus', $event),
+        onBlur: $event => this.$emit('blur', $event),
+        onClear: $event => this.$emit('clear', $event),
+        onInput: $event => this.$emit('input', $event),
+        'onUpdate:modelValue': $event => this.$emit('update:modelValue', $event)
+      })
+    }
+    return h(
+      ElFormItem,
+      {
+        ref: 'macFormItem',
+        class: 'textAlignLeft',
+        ...this.formItemAttr,
+        rules: macRules
+      },
+      { default: () => content }
+    )
   }
-}
+})
 </script>
 
-<style>
-</style>
+<style></style>

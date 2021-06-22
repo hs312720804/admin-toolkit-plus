@@ -1,8 +1,8 @@
 <template>
   <div>
     <c-form label-width="120px" :readonly="isReadonly">
-      <c-form-enum label="性别" type="radio" confirm="是否更改性别"  v-model="form.gender" :options="genderOptions" />
-      <c-form-enum label="岗位" v-model="form.job" :options="jobOptions" />
+      <c-form-enum :form-item-attr="formItemAttr" type="radio" confirm="是否更改性别"  v-model="form.gender" :options="genderOptions" />
+      <c-form-enum :form-item-attr="formItemAttr1" v-model="form.job" :options="jobOptions" />
     </c-form>
   </div>
 </template>
@@ -12,6 +12,12 @@ export default {
   data () {
     return {
       isReadonly: false,
+       formItemAttr: {
+        label: '性别'
+      },
+       formItemAttr1: {
+        label: '岗位'
+      },
       genderOptions: [
         {
           label: '男',

@@ -1,30 +1,43 @@
-<template>
-  <el-form-item class="textAlignLeft" :label="label" :prop="prop" :label-width="labelWidth" :rules="rules">
-    <el-input-number
-      v-if="!isReadonly"
-      :modelValue="modelValue"
-      @update:modelValue="$emit('update:modelValue', $event)"
-      :min="min"
-      :max="max"
-      :disabled="disabled"
-      @change="$emit('change', $event)"
-    />
-    <template v-else>{{ modelValue }}</template>
-    <slot></slot>
-  </el-form-item>
-</template>
 
 <script>
-import formItemMixin from '../../formItemMixin'
-export default {
+import { h, defineComponent } from 'vue'
+import { ElFormItem, ElInputNumber } from 'element-plus'
+export default defineComponent({
   name: 'CFormNumber',
-  mixins: [formItemMixin],
-  data () {
-    return {
-
+  props: {
+    modelValue: {},
+    formItemAttr: {
+      type: Object,
+      default: () => {
+        return {}
+      }
     }
+  },
+  inject: ['dataForm'],
+  render () {
+    let content = ''
+    if (this.dataForm.readonly) {
+      content = this.modelValue
+    } else {
+      content = h(ElInputNumber, {
+        ref: 'formInputNumber',
+        ...this.$attrs,
+        modelValue: this.modelValue,
+        'onChange': $event => this.$emit('change', $event),
+        'onFocus': $event => this.$emit('focus', $event),
+        'onBlur': $event => this.$emit('blur', $event),
+        'onUpdate:modelValue': $event => this.$emit('update:modelValue', $event)
+      })
+    }
+    return (
+      h(ElFormItem, {
+        ref: 'numberFormItem',
+        class: 'textAlignLeft',
+        ...this.formItemAttr
+      }, { default: () => content })
+    )
   }
-}
+})
 </script>
 
 <style>

@@ -1,8 +1,8 @@
 <template>
   <div>
     <c-form label-width="120px" :readonly="isReadonly">
-      <c-form-enum-list type="checkbox" v-model="form.skill" label="语言技能" :options="langOptions" />
-      <c-form-enum-list label="兴趣"  v-model="form.hobbies" :options="hobbiesOptions" />
+      <c-form-enum-list type="checkbox" v-model="form.skill" :formItemAttr="formItemAttr1" :options="langOptions" />
+      <c-form-enum-list :formItemAttr="formItemAttr"  v-model="form.hobbies" :options="hobbiesOptions" />
     </c-form>
   </div>
 </template>
@@ -12,6 +12,12 @@ export default {
   data () {
     return {
       isReadonly: false,
+      formItemAttr: {
+        label: '兴趣'
+      },
+       formItemAttr1: {
+        label: '语言技能'
+      },
       langOptions: [
         {
           label: 'javascript',
@@ -47,6 +53,5 @@ export default {
       }
     }
   }
-
 }
 </script>

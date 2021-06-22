@@ -1,8 +1,15 @@
 <script lang="ts">
-import { defineComponent, h, provide, watchEffect } from 'vue'
+import { defineComponent, h, provide, ref } from 'vue'
 import { ElForm } from 'element-plus'
 export default defineComponent({
-  props: ['readonly', 'labelWidth'],
+  props: {
+    readonly: {
+      type: Boolean,
+      default: () => {
+        return false
+      }
+    }
+  },
   name: 'CForm',
   provide () {
     return {
@@ -13,7 +20,7 @@ export default defineComponent({
     return h(ElForm, {
       ref: 'form',
       class: this.readonly ? 'data-form data-form__readonly' : 'data-form',
-      ...this.$props,
+      ...this.$attrs
     }, 
     { default: () => this.$slots.default?.() }
     )

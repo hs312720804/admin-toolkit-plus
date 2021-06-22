@@ -1,68 +1,37 @@
-<template>
-  <el-form-item  class="textAlignLeft" :label="label" :label-width="labelWidth" :prop="prop" :rules="rules">
-    <template v-if="!isReadonly">
-      <el-radio-group
-        v-if="type === 'radio'"
-        :modelValue="modelValue"
-        @update:modelValue="handleInputVal"
-        @change="$emit('change', $event)"
-        :disabled="disabled"
-      >
-        <el-radio
-          v-for="(item, key) in options"
-          :disabled="item.disabled"
-          :key="key"
-          :label="item.value"
-        >{{ item.label }}</el-radio>
-      </el-radio-group>
-
-      <el-select
-        v-else
-        ref="select"
-        :modelValue="modelValue"
-        @update:modelValue="handleInputVal"
-        @change="$emit('change', $event)"
-        :clearable="clearable"
-        :disabled="disabled"
-        :placeholder="placeholder || $t('message.cMessage.pleaseSelect')"
-        :filterable="filterable"
-        :allow-create="allowCreate"
-      >
-        <el-option
-          v-for="(item, key) in options"
-          :disabled="item.disabled"
-          :key="key"
-          :label="item.label"
-          :value="item.value"
-        ></el-option>
-      </el-select>
-    </template>
-
-    <template v-else>{{ getLabel(modelValue) }}</template>
-    <slot></slot>
-  </el-form-item>
-</template>
 
 <script>
-import formItemMixin from '../../formItemMixin'
-export default {
+import { h, defineComponent } from 'vue'
+import { ElFormItem, ElRadioGroup, ElRadio, ElSelect, ElOption } from 'element-plus'
+export default defineComponent({
   name: 'CFormEnum',
-  mixins: [formItemMixin],
-  data () {
-    return {
-
-    }
-  },
-  props: ['type', 'options', 'filterable', 'allowCreate', 'confirm', 'clearable'],
-  methods: {
-    getLabel (val) {
-      const options = this.options || []
-      const selected = options.find(({ value }) => value === val)
-      if (selected) {
-        return selected.label
+  props: {
+    modelValue: {},
+    confirm: {},
+    options: {
+      type: Array,
+      default: () => {
+        return []
       }
     },
-    handleInputVal (val) {
+    type: {},
+    formItemAttr: {
+      type: Object,
+      default: () => {
+        return {}
+      }
+    }
+  },
+  inject: ['dataForm'],
+  render () {
+    let content = ''
+    var getLabel = () => {
+      const options = this.options || []
+      const selected = options.filter(({ value }) => val.indexOf(value) > -1)
+      if (selected.length > 0) {
+        return selected.map(({ label }) => label).join(', ')
+      }
+    }
+    var handleInputVal = (val) => {
       const confirm = this.confirm
       if (confirm) {
         let title
@@ -81,8 +50,57 @@ export default {
         this.$emit('update:modelValue', val)
       }
     }
+    if (this.dataForm.readonly) {
+      content = getLabel(this.modelValue)
+    } else {
+      if (this.type === 'radio') {
+        const radioOptions = this.options.map((e, i) => {
+          return h(ElRadio, {
+            key: i,
+            label: e.value,
+            disabled: e.disabled
+          }, { defalut: () => e.label })
+        })
+        content = h(ElRadioGroup, {
+          ref: 'formSingleSelect',
+          ...this.$attrs,
+          modelValue: this.modelValue,
+          'onChange': $event => this.$emit('change', $event),
+          'onUpdate:modelValue': $event => handleInputVal($event)
+        }, { default: () => radioOptions })
+      } else {
+        const selectOptions = this.options.map((e, i) => {
+          return h(ElOption, {
+            key: i,
+            label: e.label,
+            value: e.value,
+            disabled: e.disabled
+          })
+        })
+        content = h(ElSelect, {
+          ...this.$attrs,
+          ref: 'formSingleSelect',
+          multiple: false,
+          modelValue: this.modelValue,
+          'onChange': $event => this.$emit('change', $event),
+          'onVisibleChange': $event => this.$emit('visible-change', $event),
+          'onRemoveTag': $event => this.$emit('remove-tag', $event),
+          'onClear': $event => this.$emit('clear', $event),
+          'onBlur': $event => this.$emit('blur', $event),
+          'onFocus': $event => this.$emit('focus', $event),
+          'onUpdate:modelValue': $event => handleInputVal($event)
+        }, { default: () => selectOptions })
+      }
+    }
+    return (
+      h(ElFormItem, {
+        ref: 'singleSelectFormItem',
+        class: 'textAlignLeft',
+        ...this.formItemAttr
+      }, { default: () => content })
+    )
   }
-}
+})
 </script>
 
 <style>

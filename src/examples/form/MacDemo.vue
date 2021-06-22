@@ -1,7 +1,7 @@
 <template>
   <div>
     <c-form label-width="120px"  ref="ruleForm" :model="form"  :readonly="isReadonly" >
-      <c-form-mac label="MAC" v-model="form.mac" prop="mac" :rules="rules.mac"/>
+      <c-form-mac type="textarea" :form-item-attr="formItemAttr" v-model="form.mac"/>
        <el-form-item>
         <el-button type="primary" @click="submitForm('ruleForm')">提交</el-button>
       </el-form-item>
@@ -14,6 +14,11 @@ export default {
   data () {
     return {
       isReadonly: false,
+      formItemAttr: {
+        label: 'MAC',
+        prop: 'mac',
+        rules: undefined
+      },
       form: {
         mac: ''
       },
@@ -35,6 +40,9 @@ export default {
         }
       })
     }
+  },
+  created () {
+    this.formItemAttr.rules = this.rules.mac
   }
 }
 </script>

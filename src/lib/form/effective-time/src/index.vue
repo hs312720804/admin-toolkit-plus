@@ -1,38 +1,22 @@
-<template>
-  <el-form-item class="textAlignLeft" :label="label" :prop="prop" :label-width="labelWidth" :rules="effectiveTimeRules">
-    <el-date-picker
-        v-if="!isReadonly"
-        :modelValue="modelValue"
-        clearable
-        type="datetimerange"
-        align="right"
-        :disabled="disabled"
-        :placeholder="placeholder"
-        :default-time="defaultValue"
-        :picker-options="pickerOptions"
-        @update:modelValue="$emit('update:modelValue', $event)"
-        @change="$emit('change', $event)"
-    ></el-date-picker>
-    <template v-else>
-      <template v-if="modelValue!=='' && modelValue!==undefined">
-          {{ $moment(modelValue[0]).format('YYYY-MM-DD HH:mm:ss') }} ~ {{ $moment(modelValue[1]).format('YYYY-MM-DD HH:mm:ss') }}
-      </template>
-      </template>
-  </el-form-item>
-</template>
+
 <script>
-import formItemMixin from '../../formItemMixin'
-export default {
+import { h , defineComponent} from 'vue'
+import { ElFormItem ,ElDatePicker} from 'element-plus'
+import moment from 'moment'
+export default defineComponent({
   name: 'CFormEffectiveTime',
-  mixins: [formItemMixin],
+  inject: ['dataForm'],
   data () {
     var validatEffectiveTime = (rule, value, callback) => {
+      if (value === null) {
+         this.$emit('update:modelValue', '')
+      }
       const startTime = new Date(value[0]).getTime()
       const currentTime = new Date().getTime()
       if (startTime < currentTime) {
-        return callback(new Error(this.$t('message.cMessage.startGEnd')))
+         callback(new Error(this.$t('message.cMessage.startGEnd')))
       } else {
-        callback()
+         callback()
       }
     }
     return {
@@ -43,22 +27,26 @@ export default {
     }
   },
   props: {
-    pickerOptions: {
-      type: Object,
-      default: function () {
-        return {
-          disabledDate (time) {
-            return time.getTime() < new Date().getTime() - 3600 * 1000 * 24 * 1
-          }
-        }
-      }
+    modelValue: {},
+    validDay: {
+      type: Number,
+      default: 7
     },
     delayTime: {
       type: Number,
       default: 10 // 默认分钟
+    },
+    formItemAttr: {
+      type: Object,
+      default: () => {
+        return {}
+      }
     }
   },
   methods: {
+    disabledDate (time) {
+      return time.getTime() > Date.now() + this.validDay * 24 * 60 * 60 * 1000 || time.getTime() < Date.now() - 24 * 60 * 60 * 1000
+    },
     setDefaultValue () {
       let currentDate = new Date()
       currentDate.setMinutes(currentDate.getMinutes() + this.delayTime)
@@ -67,9 +55,38 @@ export default {
     }
   },
   created () {
-    this.effectiveTimeRules = this.rules ? this.effectiveTimeRules.concat(this.rules) : this.effectiveTimeRules
+    this.effectiveTimeRules = this.formItemAttr.rules ? this.effectiveTimeRules.concat(this.formItemAttr.rules) : this.effectiveTimeRules
+  },
+  render () {
+    let content = ''
+    if (this.dataForm.readonly) {
+      const modelValue = this.modelValue
+      if (modelValue!=='' && modelValue!==undefined ) {
+        content = moment(modelValue[0]).format('YYYY-MM-DD HH:mm:ss')
+      }
+    } else {
+      content = h(ElDatePicker, {
+        ref: 'effectiveTime',
+        ...this.$attrs,
+        type: "datetimerange",
+        defaultTime: this.defaultValue,
+        disabledDate: this.disabledDate,
+        modelValue: this.modelValue,
+        'onChange': $event => this.$emit('change', $event),
+        'onBlur': $event => this.$emit('blur', $event),
+        'onUpdate:modelValue': $event => this.$emit('update:modelValue', $event)
+      })
+    }
+    return (
+      h(ElFormItem, {
+        ref: 'effectiveTimeFormItem',
+        class: 'textAlignLeft',
+        ...this.formItemAttr,
+        rules: this.effectiveTimeRules
+      }, { default: () => content })
+    )
   }
-}
+})
 </script>
 
 <style>
