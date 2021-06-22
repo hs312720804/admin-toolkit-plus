@@ -20,51 +20,40 @@ export default defineComponent({
     var getBoolVal = (val) => {
       return !!val
     }
+    let handleInputVal = (val) => {
+      this.$emit('update:modelValue', !!val)
+    }
     if (this.dataForm.readonly) {
-      content = getLabel(this.modelValue)
-    } else {
-      if (this.type === 'radio') {
-        const radioOptions = this.options.map((e, i) => {
-          return h(ElRadio, {
-            key: i,
-            label: e.value,
-            disabled: e.disabled
-          }, { defalut: () => e.label })
-        })
-        content = h(ElRadioGroup, {
-          ref: 'formSingleSelect',
-          ...this.$attrs,
-          modelValue: this.modelValue,
-          'onChange': $event => this.$emit('change', $event),
-          'onUpdate:modelValue': $event => handleInputVal($event)
-        }, { default: () => radioOptions })
+      if (this.type === 'switch') {
+        content = getBoolVal(this.modelValue) ? this.$t('message.cMessage.yes') : this.$t('message.cMessage.no') 
       } else {
-        const selectOptions = this.options.map((e, i) => {
-          return h(ElOption, {
-            key: i,
-            label: e.label,
-            value: e.value,
-            disabled: e.disabled
-          })
-        })
-        content = h(ElSelect, {
+        content = h(ElCheckbox, {
+          disabled: true,
+          modelValue: getBoolVal(this.modelValue)
+        }, { default: () => this.$slots.default?.() })
+      }
+    } else {
+      if (this.type === 'switch') {
+        content = h(ElSwitch, {
+          ref: 'formBoolean',
           ...this.$attrs,
-          ref: 'formSingleSelect',
-          multiple: false,
           modelValue: this.modelValue,
           'onChange': $event => this.$emit('change', $event),
-          'onVisibleChange': $event => this.$emit('visible-change', $event),
-          'onRemoveTag': $event => this.$emit('remove-tag', $event),
-          'onClear': $event => this.$emit('clear', $event),
-          'onBlur': $event => this.$emit('blur', $event),
-          'onFocus': $event => this.$emit('focus', $event),
           'onUpdate:modelValue': $event => handleInputVal($event)
-        }, { default: () => selectOptions })
+        })
+      } else {
+        content = h(ElCheckbox, {
+          ...this.$attrs,
+          ref: 'formBoolean',
+          modelValue: this.modelValue,
+          'onChange': $event => this.$emit('change', $event),
+          'onUpdate:modelValue': $event => handleInputVal($event)
+        }, { default: () => this.$slots.default?.() })
       }
     }
     return (
       h(ElFormItem, {
-        ref: 'singleSelectFormItem',
+        ref: 'booleanFormItem',
         class: 'textAlignLeft',
         ...this.formItemAttr
       }, { default: () => content })
@@ -72,6 +61,3 @@ export default defineComponent({
   }
 })
 </script>
-
-<style>
-</style>

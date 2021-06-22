@@ -24,7 +24,7 @@ export default defineComponent({
   inject: ['dataForm'],
   render () {
     let content = ''
-    var getLabel = () => {
+    var getLabel = (val) => {
       const options = this.options || []
       const selected = options.filter(({ value }) => val.indexOf(value) > -1)
       if (selected.length > 0) {

@@ -1,19 +1,36 @@
 
-<template>
-  <el-form-item class="textAlignLeft" :label="label" :prop="prop" :label-width="labelWidth" :rules="rules">
-    <template v-if="!isReadonly">
-      <slot name="edit"></slot>
-    </template>
-    <template v-else>
-      <slot name="read">{{ modelValue }}</slot>
-    </template>
-  </el-form-item>
-</template>
-<script lang="ts">
-import { defineComponent } from 'vue'
-import formItemMixin from '../../formItemMixin'
+<script>
+import { h, defineComponent } from 'vue'
+import { ElFormItem } from 'element-plus'
 export default defineComponent({
   name: 'CFormAny',
-  mixins: [formItemMixin]
+  props: {
+    modelValue: {},
+    formItemAttr: {
+      type: Object,
+      default: () => {
+        return {}
+      }
+    }
+  },
+  inject: ['dataForm'],
+  render () {
+    let content = ''
+    if (this.dataForm.readonly) {
+      content = this.$slots.read?.() || this.modelValue
+    } else {
+      content = this.$slots.edit?.()
+    }
+    return (
+      h(ElFormItem, {
+        ref: 'stringFormItem',
+        class: 'textAlignLeft',
+        ...this.formItemAttr
+      }, { default: () => content })
+    )
+  }
 })
 </script>
+
+<style>
+</style>
