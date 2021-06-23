@@ -93,16 +93,6 @@ const routes = [
         }
       },
       {
-        path: 'carouse',
-        name: 'carouse',
-        component: demos.CarouselDemo,
-        meta: {
-          title: '幻灯片',
-          icon: 'iconfont el-icon-cc-file-add',
-          route: 'carouse'
-        }
-      },
-      {
         path: 'ellipsis',
         name: 'ellipsis',
         component: demos.ContentEllipsisDemo,

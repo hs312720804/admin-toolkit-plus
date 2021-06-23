@@ -154,7 +154,6 @@ export default defineComponent({
             // slots = item.render
           }
           // console.log('result===>', index)
-          console.log('result===>', slots)
           let a = h(ElTableColumn, {
             key: index,
             ...item
@@ -173,7 +172,6 @@ export default defineComponent({
       //   re.push(obj)
       //   return re
       // }, [])
-      // console.log('a=>>>', header)
       if (selectionType !== 'none') {
         options = {
         // props: {
@@ -300,7 +298,8 @@ export default defineComponent({
       // on: {
       'onToggleColumn': this.toggleColumn
       // }
-    }, {default: () => [table]})
+    },
+    { default: () => { return  [table] }} )
     return tableWrapper
   }
 })

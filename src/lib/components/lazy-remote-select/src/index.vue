@@ -73,7 +73,6 @@ export default {
       '.el-select-dropdown .el-select-dropdown__wrap'
     )
     SELECTWRAP_DOM.addEventListener('scroll', this.handleScroll)
-    console.log(SELECTWRAP_DOM)
   },
   unmounted () {
     window.removeEventListener('scroll', this.handleScroll, true)

@@ -1,7 +1,7 @@
 <template>
   <div>
-    <el-button type="primary" @click="handleChangelanguage('zh')">中文</el-button>
-    <el-button type="primary" @click="handleChangelanguage('en')">英文</el-button>
+    <!-- <el-button type="primary" @click="handleChangelanguage('zh')">中文</el-button>
+    <el-button type="primary" @click="handleChangelanguage('en')">英文</el-button> -->
     <c-tag-nav :init-tags="initTags" style="margin-bottom:10px;" />
     <c-tag-nav
       :init-tags="initTags"

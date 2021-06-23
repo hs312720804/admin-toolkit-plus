@@ -65,7 +65,6 @@ export default {
           alert('submit!')
         } else {
           this.$nextTick(() => {
-            console.log('aa', this.$refs.AddMultiObj)
             this.$refs.AddMultiObj.expandErrorItem()
           })
           console.log('error submit!!')

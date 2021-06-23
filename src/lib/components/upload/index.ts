@@ -1,15 +1,7 @@
-// import CUpload from './src/Upload'
-// import install from '../../install'
-// install(CUpload)
-
-// export default CUpload
-
 import { App } from 'vue'
-import CUpload from './src/index.vue'
-
-CUpload.install = (app: App): void => {
-  const name = CUpload.name
-  app.component(name, CUpload)
+import component from './src/index.vue'
+component.install = (app: App): void => {
+  const name = component.name
+  app.component(name, component)
 }
-
-export default CUpload
+export default component

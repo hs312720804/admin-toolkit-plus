@@ -144,11 +144,11 @@ export default {
 }
 .el-row
   margin 0
->>>.el-select
+:deep(.el-select)
   display flex
 .monitor-form
   margin-bottom 10px
->>> .el-radio-button__orig-radio:checked + .el-radio-button__inner
+:deep(.el-radio-button__orig-radio:checked + .el-radio-button__inner)
   background-color #FC4C00
   border-color #FC4C00
 .box
@@ -165,19 +165,19 @@ export default {
   margin-bottom 16px
 .demo-ruleForm
   margin-top 30px
->>>.el-radio-button__inner,>>>.el-radio-button__orig-radio:checked + .el-radio-button__inner
+:deep(.el-radio-button__inner),:deep(.el-radio-button__orig-radio:checked + .el-radio-button__inner)
   width 161px
   height 32px
   padding 0px
   line-height 32px
->>> .el-radio-button__orig-radio:checked + .el-radio-button__inner
+:deep(.el-radio-button__orig-radio:checked + .el-radio-button__inner)
   background-color #FC4C00
   border-color #FC4C00
->>> .el-button
+:deep(.el-button)
   padding-top 0px
   padding-bottom 0px
   line-height 32px
   height 32px
-.code-tabs>>>.el-tabs__header
+.code-tabs :deep(.el-tabs__header)
   display none
 </style>

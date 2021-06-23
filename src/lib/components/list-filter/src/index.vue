@@ -178,7 +178,7 @@ export default {
 }
 </script>
 <style lang="stylus" scoped>
->>>.el-form
+:deep(.el-form)
   display flex
   flex-wrap wrap
   flex-direction row

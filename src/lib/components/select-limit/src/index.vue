@@ -2,14 +2,14 @@
   <div>
     <el-select
       class="CSelectLimit"
-      :value="value1"
+      :modelValue="value1"
       :filterable="filterable"
       :multiple="multiple"
       :disabled="disabled"
       :allow-create="allowCreate"
       :clearable="clearable"
       :placeholder="placeholder"
-      @input="handleInput"
+      @update:modelValue="handleInput"
       @change="handleChange"
     >
       <el-option
@@ -32,7 +32,7 @@ export default defineComponent({
     disabled: null,
     allowCreate: null,
     clearable: null,
-    value: [String, Array, Number],
+    modelValue: [String, Array, Number],
     placeholder: String,
     limits: {
       type: Number
@@ -76,7 +76,7 @@ export default defineComponent({
       let val = event.target.value
       _this.inputChange(val)
     }
-    this.value1 = this.value
+    this.value1 = this.modelValue
   },
   methods: {
     inputChange (val) {
@@ -84,7 +84,7 @@ export default defineComponent({
     },
     handleInput (val) {
       this.value1 = val
-      this.$emit('input', this.value1)
+      this.$emit('update:modelValue', this.value1)
     },
     handleChange () {
       this.$emit('change', this.value1)

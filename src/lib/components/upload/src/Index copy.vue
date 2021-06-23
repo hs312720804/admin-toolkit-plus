@@ -4,9 +4,11 @@
     <c-upload
       ref="upload"
       :multiple="true"
-      :progress-file-infor="progressFileInfor"
+      :min-height="100"
+      :max-height="200"
       @upload="handleUpload"
     >
+      <!-- slot="preview" slot-scope="{fileList}" -->
       <template #preview="{fileList}" class="upload-pic-list">
         <div class="upload-pic-list__add" @click="$refs.upload.handleSelectFile()">
           <i class="el-icon el-icon-plus"></i>
@@ -35,13 +37,7 @@
 </template>
 
 <script>
-import { findLastIndex } from 'lodash'
 export default {
-  data() {
-    return {
-      progressFileInfor: {}
-    }
-  },
   methods: {
     handleUpload (file, fileListItem) {
       function update () {
@@ -52,13 +48,7 @@ export default {
           clearInterval(fileListItem.interval)
         }
       }
-      fileListItem.interval = setInterval(() => {
-        update()
-        this.progressFileInfor = {
-          id: fileListItem.id,
-          percentage: fileListItem.percentage
-        }
-      }, 200)
+      fileListItem.interval = setInterval(update, 200)
     }
   }
 }

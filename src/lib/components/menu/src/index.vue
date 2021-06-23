@@ -31,7 +31,7 @@
               <span>{{ child.title }}</span>
             </template>
           </el-menu-item>
-          <el-submenu v-else :key="index +'_'+idx" :index="index +'_'+idx">
+          <el-submenu v-else :index="index +'_'+idx">
             <template #title>
               <i v-if="child.icon" :class="child.icon"></i>
               <span>{{ child.title }}</span>
@@ -71,7 +71,6 @@ export default {
     }
   },
   created () {
-    // console.log(this.items)
   }
 }
 </script>

@@ -1,7 +1,7 @@
 
 <template>
   <el-select :modelValue="valueTitle" ref="select" :clearable="clearable" @clear="clearHandle">
-    <el-option :modelValue="valueTitle" :label="valueTitle">
+    <el-option :value="valueTitle" :label="valueTitle">
       <el-tree  id="tree-option"
         ref="selectTree"
         :accordion="accordion"
@@ -72,7 +72,6 @@ export default {
     initHandle () {
       if (this.valueId) {
         this.valueTitle = this.$refs.selectTree.getNode(this.valueId).data[this.props.label] // 初始化显示
-        console.log('init', this.valueTitle)
         this.$refs.selectTree.setCurrentKey(this.valueId) // 设置默认选中
         this.defaultExpandedKey = [this.valueId] // 设置默认展开
       } else {
@@ -80,7 +79,6 @@ export default {
          * add by wanghaihua
          */
         this.valueTitle = '' // 初始化显示
-        console.log('init', this.valueTitle)
         this.$refs.selectTree.setCurrentKey(null) // 设置默认选中
         this.defaultExpandedKey = [] // 设置默认展开
       }
@@ -94,10 +92,12 @@ export default {
     // 切换选项
     handleNodeClick (node) {
       this.valueTitle = node[this.props.label]
-      console.log('handleNodeClick', this.valueTitle)
       this.valueId = node[this.props.modelValue]
       this.$emit('getValue', this.valueId)
       this.defaultExpandedKey = []
+      if (!node.children) {
+        this.$refs.select.blur()
+      }
     },
     // 清除选中
     clearHandle () {
@@ -133,18 +133,18 @@ export default {
   .el-select-dropdown__item.selected {
     font-weight: normal;
   }
-  ul li >>>.el-tree .el-tree-node__content {
+  ul li :deep(.el-tree .el-tree-node__content) {
     height:auto;
     padding: 0 20px;
   }
   .el-tree-node__label{
     font-weight: normal;
   }
-  .el-tree >>>.is-current .el-tree-node__label {
+  .el-tree :deep(.is-current .el-tree-node__label) {
     color: #409EFF;
     font-weight: 700;
   }
-  .el-tree >>>.is-current .el-tree-node__children .el-tree-node__label{
+  .el-tree :deep(.is-current .el-tree-node__children .el-tree-node__label){
     color:#606266;
     font-weight: normal;
   }

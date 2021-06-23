@@ -1,8 +1,7 @@
 import { App } from 'vue'
-import CSelectLimit from './src/SelectLimit.vue'
-CSelectLimit.install = (app: App): void => {
-  const name = CSelectLimit.name
-  app.component(name, CSelectLimit)
+import component from './src/index.vue'
+component.install = (app: App): void => {
+  const name = component.name
+  app.component(name, component)
 }
-
-export default CSelectLimit
+export default component

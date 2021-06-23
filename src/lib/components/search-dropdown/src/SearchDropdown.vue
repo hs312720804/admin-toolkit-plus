@@ -85,7 +85,6 @@ export default {
   },
   watch: {
     value (val) {
-      // console.log('this.key===' + val)
       this.$emit('input', val)
       if (val === '') {
         this.$emit('cancel', val)
