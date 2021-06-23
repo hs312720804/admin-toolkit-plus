@@ -7,12 +7,11 @@ export function createOperationRender (component: any, actions: [], elName: stri
         ElButton || elName,
         {
           type: 'text',
-         
           'onClick': () => {
             component[key](params)
           }
-        }, actions[key]
-        
+        },
+        {default: () => actions[key]}
       )
     })
   }

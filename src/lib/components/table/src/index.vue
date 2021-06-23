@@ -1,12 +1,13 @@
 <script>
 import { ElTable, ElTableColumn, ElCheckbox, ElRadio } from 'element-plus'
 import TableWrapper from '../../table-wrapper/src/Index.vue'
-import { h } from 'vue'
+import { defineComponent, h } from 'vue'
+
 const defaultTableProps = {
   border: true,
   'highlight-current-row': false
 }
-export default {
+export default defineComponent({
   name: 'CTable',
   props: {
     props: {
@@ -157,8 +158,9 @@ export default {
           let a = h(ElTableColumn, {
             key: index,
             ...item
-          },
-          slots)
+          }
+          ,slots
+          )
           // debugger
           // let a = 1
           result.push(a)
@@ -298,10 +300,10 @@ export default {
       // on: {
       'onToggleColumn': this.toggleColumn
       // }
-    }, [table])
+    }, {default: () => [table]})
     return tableWrapper
   }
-}
+})
 
 </script>
 <style lang="stylus" scoped>
