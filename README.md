@@ -1,27 +1,59 @@
-# Vue 3 + Typescript + Vite
+admin toolkit plus
+基于 [vuejs 3.0](https://vue3js.cn/) 和 [element-plus](https://element-plus.gitee.io/#/zh-CN) 的管理后台组件和工具库
 
-This template should help get you started developing with Vue 3 and Typescript in Vite.
+## 安装    
+私有仓库安装：[前端模块私有仓库说明](http://wiki.skyoss.com/pages/viewpage.action?pageId=35726422)
+```
+npm install @ccprivate/admin-toolkit-plus@版本号 --registry=http://172.20.155.102:4873
+```
+```
+## 使用
+完整引入:
+```
+import AdminToolkit from '@ccprivate/admin-toolkit-plus'
+Vue.use(AdminToolkit)
+```
+单个引入:
+import { CMenu, CBreadcrumb, CCard, CActionList, CTable, CCardList, CTagNav, CContentWrapper, CAppParams, CAppParamsRead, CUpload, CForm, CFormString, CFormAny } from '@ccprivate/admin-toolkit'
 
-## Recommended IDE Setup
+Vue.use(CMenu)
+Vue.use(CBreadcrumb)
+Vue.use(CCard)
+Vue.use(CActionList)
+Vue.use(CTable)
+Vue.use(CTable)
+Vue.use(CCardList)
+Vue.use(CTagNav)
+Vue.use(CContentWrapper)
+Vue.use(CAppParams)
+Vue.use(CAppParamsRead)
+Vue.use(CUpload)
+Vue.use(CForm)
+Vue.use(CFormString)
+Vue.use(CFormAny)
+```
+## 工具函数  
+```
+import { utils } from '@ccprivate/admin-toolkit-plus'
+```
+## 组件源代码
 
-[VSCode](https://code.visualstudio.com/) + [Vetur](https://marketplace.visualstudio.com/items?itemName=octref.vetur). Make sure to enable `vetur.experimental.templateInterpolationService` in settings!
+ 请查看 [源代码](http://gitlab.skysri.com/flower/admin-toolkit-plus) 
 
-### If Using `<script setup>`
+## 源代码运行
+```
+运行代码：
+npm install
+npm run dev 开发环境
+npm run build 生产环境
+运用文档： 
+npm run docs:dev  开发环境
+npm run docs:build  生产环境
+```
+## 安装commitizen,为了规范化git commit 方便使用changelog
 
-[`<script setup>`](https://github.com/vuejs/rfcs/pull/227) is a feature that is currently in RFC stage. To get proper IDE support for the syntax, use [Volar](https://marketplace.visualstudio.com/items?itemName=johnsoncodehk.volar) instead of Vetur (and disable Vetur).
-
-## Type Support For `.vue` Imports in TS
-
-Since TypeScript cannot handle type information for `.vue` imports, they are shimmed to be a generic Vue component type by default. In most cases this is fine if you don't really care about component prop types outside of templates. However, if you wish to get actual prop types in `.vue` imports (for example to get props validation when using manual `h(...)` calls), you can use the following:
-
-### If Using Volar
-
-Run `Volar: Switch TS Plugin on/off` from VSCode command palette.
-
-### If Using Vetur
-
-1. Install and add `@vuedx/typescript-plugin-vue` to the [plugins section](https://www.typescriptlang.org/tsconfig#plugins) in `tsconfig.json`
-2. Delete `src/shims-vue.d.ts` as it is no longer needed to provide module info to Typescript
-3. Open `src/main.ts` in VSCode
-4. Open the VSCode command palette
-5. Search and run "Select TypeScript version" -> "Use workspace version"
+```
+npm install -g commitizen
+commitizen init cz-conventional-changelog --save --save-exact
+具体使用见 [源代码](https://blog.csdn.net/m0_37263637/article/details/86723431) 
+```

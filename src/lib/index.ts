@@ -44,6 +44,7 @@ import CLazyRemoteSelect from './components/lazy-remote-select/index'
 import CSelectChange from './components/select-change/index'
 import CTableTree from './components/table-tree/index'
 import CListFilter from './components/list-filter/index'
+import utils from './utils'
 const i18n = lang.i18n
 
 const defaultInstallOpt: InstallOptions = {
@@ -111,6 +112,7 @@ export {
   CAddFormObj,
   CAddMulti,
   install,
+  utils,
   CTagNav,
   CCardList,
   CForm,
@@ -156,6 +158,7 @@ export default {
   CAddFormObj,
   CAddMulti,
   install,
+  utils,
   CTagNav,
   CCardList,
   CForm,

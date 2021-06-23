@@ -451,26 +451,6 @@ const routes = [
       route: 'form'
     },
     children: [
-      // {
-      //   path: 'formList',
-      //   name: 'formList',
-      //   component: demos.GateSchemaFormDemo,
-      //   meta: {
-      //     title: '表单验证',
-      //     icon: 'iconfont el-icon-cc-file-add',
-      //     route: 'formList'
-      //   }
-      // },
-      {
-        path: 'remoteSelectData',
-        name: 'remoteSelectData',
-        component: demos.RemoteSelectDemo,
-        meta: {
-          title: '远程数据',
-          icon: 'iconfont el-icon-cc-file-add',
-          route: 'remoteSelectData'
-        }
-      },
       {
         path: 'DataForm',
         name: 'DataForm',

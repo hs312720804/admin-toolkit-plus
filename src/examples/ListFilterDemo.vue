@@ -39,7 +39,7 @@
       :is-expand="filterExpand"
       :show-label="true"
       label-width="120px"
-      v-if="filterExpand"
+      v-else
       @filter="handleSearch"
       @reset="handleResetSearch"
       @filter-expand="handlefilterExpand"
@@ -261,18 +261,7 @@ export default {
   },
   methods: {
     handleSearch () {
-      console.log('123456789')
-      let reg = /^[1-9]\d*$/
-      if (this.form.day) {
-        if (!reg.test(this.form.day) || this.form.day === '0') {
-          this.$message.error('请正确输入天数')
-          return
-        }
-      }
-      this.currentpage = 1
-      this.filter.pageRequest.pageNum = 1
-      this.filter = { ...this.filter, ...this.form }
-      this.fetchData()
+      alert('查询')
     },
     handlefilterExpand (msg) {
       console.log('msg==>', msg)
