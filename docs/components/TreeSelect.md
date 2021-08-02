@@ -1,8 +1,9 @@
 # 树形下拉框
-`c-tree-select`  
-基于Element-UI的组件改造的树形选择器（树形下拉框）
 
-## 示例  
+`c-tree-select`  
+基于 Element-UI 的组件改造的树形选择器（树形下拉框）
+
+## 示例
 
 ### 效果
 
@@ -12,7 +13,8 @@
 
 </Demo>
 
-### 代码  
+### 代码
+
 ```vue
 <template>
   <!-- 调用树形下拉框组件 -->
@@ -21,7 +23,8 @@
     :options="optionData"
     :value="valueId"
     :clearable="isClearable"
-    @getValue="getValue($event)"/>
+    @getValue="getValue($event)"
+  />
 </template>
 <script>
 export default {
@@ -29,7 +32,8 @@ export default {
     return {
       isClearable: true, // 可清空（可选）
       valueId: 20, // 初始ID（可选）
-      props: { // 配置项（必选）
+      props: {
+        // 配置项（必选）
         value: 'id',
         label: 'name',
         children: 'children'
@@ -84,7 +88,8 @@ export default {
     /* 转树形数据 */
     optionData () {
       let cloneData = JSON.parse(JSON.stringify(this.list)) // 对源数据深度克隆
-      return cloneData.filter(father => { // 循环所有项，并添加children属性
+      return cloneData.filter(father => {
+        // 循环所有项，并添加children属性
         let branchArr = cloneData.filter(child => father.id === child.parentId) // 返回每一项的子级数组
         // branchArr.length > 0 ? father.children = branchArr : '' // 给父级添加一个children属性，并赋值
         if (branchArr.length > 0) {
@@ -103,32 +108,28 @@ export default {
   }
 }
 </script>
-
 ```
 
+## 属性
 
-## 属性  
-
-| 名称 | 类型 | 描述 | 默认值 |  
-| ---- | ---- | ---- | ---- |
-| value / v-model | boolean / string / number | 绑定值 | - |  
-| options | Array | 选项列表数据(树形结构的对象数组) | [] |  
-| props | object | 配置选项，具体看下表 | - |  
-| clearable | boolean | 是否可以清空选项	 | false |
+| 名称            | 类型                      | 描述                             | 默认值 |
+| --------------- | ------------------------- | -------------------------------- | ------ |
+| value / v-model | boolean / string / number | 绑定值                           | -      |
+| options         | Array                     | 选项列表数据(树形结构的对象数组) | []     |
+| props           | object                    | 配置选项，具体看下表             | -      |
+| clearable       | boolean                   | 是否可以清空选项                 | false  |
 
 ## props
-| 参数 | 说明 | 类型 | 可选值 | 默认值
-| ---- | ---- | ---- | ---- | ---- |
-| label | 选项的标签，若不设置则默认与 value 相同 | string/number | - | - |
-| value | 选项的值 | string/number/object | - | - |
-| children | 指定子树为节点对象的某个属性值 | string| - | - |
-| disabled | 是否禁用该选项 | boolean | - | - |
+
+| 参数     | 说明                                    | 类型                 | 可选值 | 默认值 |
+| -------- | --------------------------------------- | -------------------- | ------ | ------ |
+| label    | 选项的标签，若不设置则默认与 value 相同 | string/number        | -      | -      |
+| value    | 选项的值                                | string/number/object | -      | -      |
+| children | 指定子树为节点对象的某个属性值          | string               | -      | -      |
+| disabled | 是否禁用该选项                          | boolean              | -      | -      |
 
 ## 事件
-| 名称 | 回调参数 | 描述 |  
-| ---- | ---- | ---- |
-| getValue | 取值 | 当前选择选项的值 |
 
-
-
-<Comment />
+| 名称     | 回调参数 | 描述             |
+| -------- | -------- | ---------------- |
+| getValue | 取值     | 当前选择选项的值 |

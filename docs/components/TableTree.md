@@ -1,8 +1,9 @@
-# 表格(支持树形结构)  
-`c-table-tree`  
-Table组件的功能扩展，在原始Table组件的功能上添加了树形功能，完全可以替代旧版本的Table组件
+# 表格(支持树形结构)
 
-## 示例  
+`c-table-tree`  
+Table 组件的功能扩展，在原始 Table 组件的功能上添加了树形功能，完全可以替代旧版本的 Table 组件
+
+## 示例
 
 ### 效果
 
@@ -10,7 +11,8 @@ Table组件的功能扩展，在原始Table组件的功能上添加了树形功�
   <TableTreeDemo />
 </Demo>
 
-### 代码  
+### 代码
+
 ```vue
 <template>
   <c-table-tree
@@ -104,7 +106,7 @@ export default {
       this.updateTableSelected()
       const children = targetItem.children
       if (children) {
-        children.forEach((e) => {
+        children.forEach(e => {
           this.handleRowSelectionAdd(e)
         })
       }
@@ -117,7 +119,7 @@ export default {
       this.updateTableSelected()
       const children = targetItem.children
       if (children) {
-        children.forEach((e) => {
+        children.forEach(e => {
           this.handleRowSelectionRemove(e)
         })
       }
@@ -125,7 +127,9 @@ export default {
     handleAllRowSelectionChange (value) {
       if (value) {
         const table = this.table
-        const allData = table.props['tree-props'] ? this.recursion(table.data, []) : table.data
+        const allData = table.props['tree-props']
+          ? this.recursion(table.data, [])
+          : table.data
         allData.forEach(this.handleRowSelectionAdd)
       } else {
         this.handleAllRowSelectionRemove()
@@ -160,7 +164,9 @@ export default {
         result[item[idField]] = true
         return result
       }, {})
-      const newTableData = this.table.props['tree-props'] ? this.recursion(table.data, []) : table.data
+      const newTableData = this.table.props['tree-props']
+        ? this.recursion(table.data, [])
+        : table.data
       table.selected = newTableData.reduce((result, item, index) => {
         if (newSelectedIndex[item[idField]]) {
           result.push(index)
@@ -179,25 +185,23 @@ export default {
   }
 }
 </script>
-
 ```
 
+## 属性
 
-## 属性  
-| 名称 | 类型 | 描述 | 例子 |  
-| ---- | ---- | ---- | ---- |
-| props | Object | element-ui 表格属性 | |
-| header | Array | 表头 | | 
-| data | Array | 表格数据 | |  
-| selectionType | 'none' / 'multiple' / 'single' |  none 为不使用选择功能, multiple 为多选, single 为单选| |
-| selected | Array 或者 Number | 如果 selectionType 是 multiple, 那么 selected 需要是一个数组,  包含选中的 index; 如果 selectionType 是 single, 那么 selected 是被选中的 index | |  
+| 名称          | 类型                           | 描述                                                                                                                                         | 例子 |
+| ------------- | ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------- | ---- |
+| props         | Object                         | element-ui 表格属性                                                                                                                          |      |
+| header        | Array                          | 表头                                                                                                                                         |      |
+| data          | Array                          | 表格数据                                                                                                                                     |      |
+| selectionType | 'none' / 'multiple' / 'single' | none 为不使用选择功能, multiple 为多选, single 为单选                                                                                        |      |
+| selected      | Array 或者 Number              | 如果 selectionType 是 multiple, 那么 selected 需要是一个数组, 包含选中的 index; 如果 selectionType 是 single, 那么 selected 是被选中的 index |      |
 
-## 事件  
-| 名称 | 参数 | 描述 |  
-| ---- | ---- | ---- |  
-| row-selection-add | (row: Object, index: Number) | 只在 selectoinType 为 multiple 时触发 |  
-| row-selection-remove | (row: Object, index: Number) | 只在 selectoinType 为 multiple 时触发 |  
-| row-selection-change | (row: Object, index: Number) | 只在 selectoinType 为 single 时触发 |  
-| all-row-selection-change | (value: Boolean) | 当所有行的选中状态改变时触发, value 为选中状态 |  
+## 事件
 
-<Comment />
+| 名称                     | 参数                         | 描述                                           |
+| ------------------------ | ---------------------------- | ---------------------------------------------- |
+| row-selection-add        | (row: Object, index: Number) | 只在 selectoinType 为 multiple 时触发          |
+| row-selection-remove     | (row: Object, index: Number) | 只在 selectoinType 为 multiple 时触发          |
+| row-selection-change     | (row: Object, index: Number) | 只在 selectoinType 为 single 时触发            |
+| all-row-selection-change | (value: Boolean)             | 当所有行的选中状态改变时触发, value 为选中状态 |

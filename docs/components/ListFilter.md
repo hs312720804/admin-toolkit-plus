@@ -1,15 +1,18 @@
-# 列表筛选器   
+# 列表筛选器
+
 `c-list-filter`  
 列表筛选器，可与 c-table 共用 header 数据
 
-## 示例  
+## 示例
 
 ### 效果
+
 <Demo>
   <ListFilterDemo />
 </Demo>
 
 ### 代码
+
 ```vue
 <template>
   <div id="app">
@@ -24,12 +27,8 @@
       @reset="handleResetSearch"
       @filter-expand="handlefilterExpand"
     >
-      <template
-        #outloop
-      >
-        <c-form-any
-          :prop="customColumn.prop"
-        >
+      <template #outloop>
+        <c-form-any :prop="customColumn.prop">
           <!-- <div slot="edit" style="color:#777; margin-right:10px"> -->
           <template #edit>
             <div style="color:#777; margin-right:10px">
@@ -57,12 +56,8 @@
       @reset="handleResetSearch"
       @filter-expand="handlefilterExpand"
     >
-      <template
-        #outloop
-      >
-        <c-form-any
-          :prop="customColumn.prop"
-        >
+      <template #outloop>
+        <c-form-any :prop="customColumn.prop">
           <template #edit>
             <div style="color:#777; margin-right:10px">
               超
@@ -86,9 +81,7 @@ export default {
   data () {
     return {
       msg: 'Welcome to Your Vue.js App',
-      form: {
-
-      },
+      form: {},
       filterExpand: false,
       shortHeader: [
         {
@@ -269,7 +262,7 @@ export default {
           }
         ],
         data: []
-      },
+      }
     }
   },
   methods: {
@@ -296,7 +289,7 @@ export default {
         this.form[key] = ''
       })
       // this.handleSearch()
-    },
+    }
   },
   created () {
     // this.loadData()
@@ -307,34 +300,33 @@ export default {
   }
 }
 </script>
-
-
 ```
 
-## 属性  
-| 名称 | 类型 | 描述 | 例子 |  
-| ---- | ---- | ---- | ---- |
-| options | Array | 生成表单的数据，请看Options说明 | ---- |
-| form-data | Object | 用于表单v-model | ---- | 
-| is-expand | Boolean | 设置当前是'展开'、'收起'按钮 | false |  
-| length | Number | 截取options的长度,null/0为不限长度 | null/0 |
-| hidden-expand-button | Boolean | 隐藏'展开'、'收起'按钮 | ---- |  
-| is-button | Boolean | 操作按钮的样式类型，true是按钮，false是文字按钮 | true | 
-| show-label | Boolean | 是否显示label | false |
-| label-width | String | show-label为true时生效 | 80px |  
-| buttonText | Object | '查询',重置', '展开', '收起' 按钮的文字，需要修改时保持默认值字段传入。 | {query: '查询', reset: '重置', expand: '展开', packUp: '收起'} | 
+## 属性
 
-## 事件  
-| 名称 | 参数 | 描述 |  
-| ---- | ---- | ---- |  
-| filter | ---- | 查询按钮事件 |  
-| reset | ---- | 重置按钮事件 |  
-| filter-expand | msg | 展开收起按钮切换，返回值：true/false | 
+| 名称                 | 类型    | 描述                                                                    | 例子                                                           |
+| -------------------- | ------- | ----------------------------------------------------------------------- | -------------------------------------------------------------- |
+| options              | Array   | 生成表单的数据，请看 Options 说明                                       | ----                                                           |
+| form-data            | Object  | 用于表单 v-model                                                        | ----                                                           |
+| is-expand            | Boolean | 设置当前是'展开'、'收起'按钮                                            | false                                                          |
+| length               | Number  | 截取 options 的长度,null/0 为不限长度                                   | null/0                                                         |
+| hidden-expand-button | Boolean | 隐藏'展开'、'收起'按钮                                                  | ----                                                           |
+| is-button            | Boolean | 操作按钮的样式类型，true 是按钮，false 是文字按钮                       | true                                                           |
+| show-label           | Boolean | 是否显示 label                                                          | false                                                          |
+| label-width          | String  | show-label 为 true 时生效                                               | 80px                                                           |
+| buttonText           | Object  | '查询',重置', '展开', '收起' 按钮的文字，需要修改时保持默认值字段传入。 | {query: '查询', reset: '重置', expand: '展开', packUp: '收起'} |
 
-## Slot  
-| 名称 | 说明 |
-| ---- | ---- | 
-| loop | options循环内使用，需要inputType类型的判断，请参考示例三 | 
-| outloop | options循环外使用，不需要inputType，脱离options，请参考示例三 | 
+## 事件
 
-<Comment />
+| 名称          | 参数 | 描述                                 |
+| ------------- | ---- | ------------------------------------ |
+| filter        | ---- | 查询按钮事件                         |
+| reset         | ---- | 重置按钮事件                         |
+| filter-expand | msg  | 展开收起按钮切换，返回值：true/false |
+
+## Slot
+
+| 名称    | 说明                                                             |
+| ------- | ---------------------------------------------------------------- |
+| loop    | options 循环内使用，需要 inputType 类型的判断，请参考示例三      |
+| outloop | options 循环外使用，不需要 inputType，脱离 options，请参考示例三 |

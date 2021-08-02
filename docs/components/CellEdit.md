@@ -1,7 +1,8 @@
-# 点击图标修改单元格    
-`c-cell-edit`  
+# 点击图标修改单元格
 
-## 示例  
+`c-cell-edit`
+
+## 示例
 
 ### 效果
 
@@ -9,14 +10,12 @@
   <CellEditDemo />
 </Demo>
 
-### 代码  
+### 代码
+
 ```vue
 <template>
   <div>
-    <c-table
-      :data="table.data"
-      :props="table.props"
-      :header="table.header" />
+    <c-table :data="table.data" :props="table.props" :header="table.header" />
   </div>
 </template>
 
@@ -37,19 +36,16 @@ export default {
             label: '姓名',
             prop: 'name',
             render: (h, { row }) => {
-              return h(
-                CCellEdit,
-                {
-                  props: {
-                    initValue: row.name
-                  },
-                  on: {
-                    blur: (val) => {
-                      this.$message.info('传给后端的值为', val)
-                    }
+              return h(CCellEdit, {
+                props: {
+                  initValue: row.name
+                },
+                on: {
+                  blur: val => {
+                    this.$message.info('传给后端的值为', val)
                   }
                 }
-              )
+              })
             }
           },
           {
@@ -75,21 +71,18 @@ export default {
 }
 </script>
 
-<style lang="stylus" scoped>
-</style>
+<style lang="stylus" scoped></style>
 ```
 
+## 属性
 
-## 属性  
-
-| 名称 | 类型 | 描述 | 例子 |  
-| ---- | ---- | ---- | ---- |
-| init-value | String, Number, Boolean | input关联的v-model初始值 | dsp广告投放修改订单名称 |
+| 名称       | 类型                    | 描述                        | 例子                     |
+| ---------- | ----------------------- | --------------------------- | ------------------------ |
+| init-value | String, Number, Boolean | input 关联的 v-model 初始值 | dsp 广告投放修改订单名称 |
 
 ## 事件
-| 名称 | 参数 | 描述 |  
-| ---- | ---- | ---- |
-| input | value | input的事件回调 |
-| blur | value | 输入框失焦的事件回调 |
 
-<Comment />
+| 名称  | 参数  | 描述                 |
+| ----- | ----- | -------------------- |
+| input | value | input 的事件回调     |
+| blur  | value | 输入框失焦的事件回调 |

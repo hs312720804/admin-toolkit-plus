@@ -23,7 +23,6 @@ export default defineUserConfig<DefaultThemeOptions>({
               '/components/ActionList.md',
               '/components/Breadcrumb.md',
               '/components/TagNav.md',
-              '/components/GateSchemaForm.md',
               '/components/Table.md',
               '/components/TableTree.md',
               '/components/CardList.md',
@@ -86,6 +85,5 @@ export default defineUserConfig<DefaultThemeOptions>({
         ]
       },
     },
-    // logo: 'assets/toolkit.png'
-  },
+  }
 })

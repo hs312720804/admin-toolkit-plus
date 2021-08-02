@@ -1,19 +1,30 @@
-# 序号输入  
-`c-input-order`
-用于输入序号然后调整数据的顺序， 只能输入大于0的正整数
+# 序号输入
 
-## 示例  
+`c-input-order`
+用于输入序号然后调整数据的顺序， 只能输入大于 0 的正整数
+
+## 示例
+
 <Demo>
   <InputOrderDemo />
 </Demo>
 
 ### 代码
-``` vue
+
+```vue
 <template>
   <div>
     <ul>
-      <li class="item" v-for="(item, index) in items" :key="index + Math.random().toString()">
-        <c-input-order :value="index + 1" @order-data="handleOrderData" :data="items"/> 
+      <li
+        class="item"
+        v-for="(item, index) in items"
+        :key="index + Math.random().toString()"
+      >
+        <c-input-order
+          :value="index + 1"
+          @order-data="handleOrderData"
+          :data="items"
+        />
         {{ item.name }}
       </li>
     </ul>
@@ -21,12 +32,12 @@
 </template>
 <script>
 export default {
-  data() {
+  data () {
     return {
       items: [
         {
           id: 'foo',
-          name: 'foo',
+          name: 'foo'
         },
         {
           id: 'bar',
@@ -34,7 +45,7 @@ export default {
         },
         {
           id: 'foo',
-          name: 'foo2',
+          name: 'foo2'
         },
         {
           id: 'bar',
@@ -42,7 +53,7 @@ export default {
         },
         {
           id: 'foo',
-          name: 'foo3',
+          name: 'foo3'
         },
         {
           id: 'bar',
@@ -50,7 +61,7 @@ export default {
         },
         {
           id: 'foo',
-          name: 'foo4',
+          name: 'foo4'
         },
         {
           id: 'bar',
@@ -72,19 +83,17 @@ export default {
   width 100px
   display inline-block
 </style>
-
-
-
 ```
 
-## 属性  
-| 名称 | 类型 | 描述 | 例子 |
-| ---- | ---- | ---- | ---- |
-| value | String, Number | 输入的排序值 | ---- |
-| data | Array | 要排序的数组| ---- |
-## 方法 
-| 名称 | 参数 |描述| 例子 |  
-| ---- | ---- | ---- | ---- |
-| order-data | 要排序的数组 | 见例子 | ---- |
+## 属性
 
-<Comment />
+| 名称  | 类型           | 描述         | 例子 |
+| ----- | -------------- | ------------ | ---- |
+| value | String, Number | 输入的排序值 | ---- |
+| data  | Array          | 要排序的数组 | ---- |
+
+## 方法
+
+| 名称       | 参数         | 描述   | 例子 |
+| ---------- | ------------ | ------ | ---- |
+| order-data | 要排序的数组 | 见例子 | ---- |

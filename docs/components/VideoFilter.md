@@ -1,7 +1,8 @@
-# 标签列表    
-`c-video-filter`  
+# 标签列表
 
-## 示例  
+`c-video-filter`
+
+## 示例
 
 ### 效果
 
@@ -11,15 +12,20 @@
 </ClientOnly>
 </Demo>
 
-### 代码  
+### 代码
+
 ```vue
 <template>
   <div class="cc-video-tag">
     <el-select v-model="addForm.businessType" @change="businessTypeChange">
-        <el-option label="影视" :value="0"></el-option>
-        <el-option label="教育" :value="1"></el-option>
+      <el-option label="影视" :value="0"></el-option>
+      <el-option label="教育" :value="1"></el-option>
     </el-select>
-    <c-video-filter ref="proList" :proData="proData" :setProductAttr="setProductAttr"></c-video-filter>
+    <c-video-filter
+      ref="proList"
+      :proData="proData"
+      :setProductAttr="setProductAttr"
+    ></c-video-filter>
   </div>
 </template>
 <script>
@@ -76,31 +82,29 @@
   }
 }
 </script>
-
 ```
 
+## 属性
 
-## 属性  
-支持业务线之间的切换 
+支持业务线之间的切换
 
-| 名称 | 类型 | 描述 | 例子 |  
-| ---- | ---- | ---- | ---- |
-| ref | Array | 标签组件名称 | |  
-| proData | Array | 产品包数据列表 | |  
-| setProductAttr | Array | 产品包初始状态数据 | |  
+| 名称           | 类型  | 描述               | 例子 |
+| -------------- | ----- | ------------------ | ---- |
+| ref            | Array | 标签组件名称       |      |
+| proData        | Array | 产品包数据列表     |      |
+| setProductAttr | Array | 产品包初始状态数据 |      |
 
 标签列表属性  
-| 名称 | 类型 | 描述  | 例子 |  
+| 名称 | 类型 | 描述 | 例子 |  
 | ---- | ---- | ---- | ---- |  
-| sourceId | int | 产品包id | |  
-| sourceName | String | 产品包名称 | | 
+| sourceId | int | 产品包 id | |  
+| sourceName | String | 产品包名称 | |
 | sourceSign | string | 产品包来源 | |  
 | partnerName | string | 渠道名称 | |
-| company | int | 供应商 | | 
+| company | int | 供应商 | |
 
 ## 事件
-| 名称 | 参数 | 描述 |  
-| ---- | ---- | ---- |
-| businessTypeChange | | 切换业务类型出不同的产品包列表 |
 
-<Comment />
+| 名称               | 参数 | 描述                           |
+| ------------------ | ---- | ------------------------------ |
+| businessTypeChange |      | 切换业务类型出不同的产品包列表 |

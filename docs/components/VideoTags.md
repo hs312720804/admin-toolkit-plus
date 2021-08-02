@@ -523,6 +523,3 @@ export default {
 | currTagData | | 点击标签返回值 |
 | getTagNodes | data | 获取已选标签列表
 | updateTagData | data | 更新标签列表
-
-
-<Comment />

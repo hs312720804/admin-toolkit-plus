@@ -1,15 +1,18 @@
 # 图标组件
-`c-icon-select`   
-图标组件依赖于阿里图标库，所以需要引入iconfont.css样式
 
-## 示例1
-### 使用初始的图标  
+`c-icon-select`  
+图标组件依赖于阿里图标库，所以需要引入 iconfont.css 样式
+
+## 示例 1
+
+### 使用初始的图标
 
 <Demo>
   <TheInitIconDemo/>
 </Demo>
 
-### 代码  
+### 代码
+
 ```vue
 <template>
   <div>
@@ -24,48 +27,57 @@
       </el-form>
     </div>
     <div v-show="!isShowMainPage">
-      <c-icon-select @get-icon="getIcon" :title="title" :isUseInitialIcon="true" @go-back="goBack">
+      <c-icon-select
+        @get-icon="getIcon"
+        :title="title"
+        :isUseInitialIcon="true"
+        @go-back="goBack"
+      >
       </c-icon-select>
     </div>
   </div>
 </template>
 <script>
 export default {
-  data() {
+  data () {
     return {
       isShowMainPage: true,
-      iconName: "",
-      title: "选择图标"
-    };
+      iconName: '',
+      title: '选择图标'
+    }
   },
   methods: {
-    selectIcon() {
-      this.isShowMainPage = false;
+    selectIcon () {
+      this.isShowMainPage = false
     },
     /**
      * 得到icon
      */
-    getIcon(iconName, name) {
-      this.iconName = iconName;
-      this.isShowMainPage = true;
+    getIcon (iconName, name) {
+      this.iconName = iconName
+      this.isShowMainPage = true
     },
     /**
      * 返回
      */
-    goBack() {
-      this.isShowMainPage = true;
+    goBack () {
+      this.isShowMainPage = true
     }
   }
-};
+}
 </script>
 ```
-## 示例2
+
+## 示例 2
+
 ### 通过插槽自定义图标
+
 <Demo>
   <TheCustomIconDemo/>
 </Demo>
 
-### 代码  
+### 代码
+
 ```vue
 <template>
   <div>
@@ -80,7 +92,12 @@ export default {
       </el-form>
     </div>
     <div v-show="!isShowMainPage">
-      <TheIcon @get-icon="getIcon" :title="title" :isUseInitialIcon="false" @go-back="goBack">
+      <TheIcon
+        @get-icon="getIcon"
+        :title="title"
+        :isUseInitialIcon="false"
+        @go-back="goBack"
+      >
         <ul>
           <li>
             <span class="icon iconfont el-icon-cc-denglu"></span>
@@ -97,32 +114,32 @@ export default {
 </template>
 <script>
 export default {
-  data() {
+  data () {
     return {
       isShowMainPage: true,
-      iconName: "",
-      title: "选择图标"
-    };
+      iconName: '',
+      title: '选择图标'
+    }
   },
   methods: {
-    selectIcon() {
-      this.isShowMainPage = false;
+    selectIcon () {
+      this.isShowMainPage = false
     },
     /**
      * 得到icon
      */
-    getIcon(iconName, name) {
-      this.iconName = iconName;
-      this.isShowMainPage = true;
+    getIcon (iconName, name) {
+      this.iconName = iconName
+      this.isShowMainPage = true
     },
     /**
      * 返回
      */
-    goBack() {
-      this.isShowMainPage = true;
+    goBack () {
+      this.isShowMainPage = true
     }
   }
-};
+}
 </script>
 <style scoped>
 ul {
@@ -182,16 +199,18 @@ li {
   cursor: pointer;
 }
 </style>
-
 ```
-## 属性  
-| 名称 | 类型 | 描述 | 例子 |  
-| ---- | ---- | ---- | ---- |
-| title | String | 标题 |见上面例子 |
-| isUseInitialIcon | Boolean | 是否使用初始图标，true为使用false为不使用 |见上面例子 |
+
+## 属性
+
+| 名称             | 类型    | 描述                                         | 例子       |
+| ---------------- | ------- | -------------------------------------------- | ---------- |
+| title            | String  | 标题                                         | 见上面例子 |
+| isUseInitialIcon | Boolean | 是否使用初始图标，true 为使用 false 为不使用 | 见上面例子 |
+
 ## 事件
-| 名称 | 参数 |描述| 例子 |  
-| ---- | ---- | ---- | ---- |
-| go-back | 无 | 返回按钮出发的事件 | 见上面例子 |
-| get-icon | (iconName:String,name:String) | 得到图标icon值和名称 | 见上面例子 |
-<Comment />
+
+| 名称     | 参数                          | 描述                   | 例子       |
+| -------- | ----------------------------- | ---------------------- | ---------- |
+| go-back  | 无                            | 返回按钮出发的事件     | 见上面例子 |
+| get-icon | (iconName:String,name:String) | 得到图标 icon 值和名称 | 见上面例子 |

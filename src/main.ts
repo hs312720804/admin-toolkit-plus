@@ -12,9 +12,13 @@ const app = createApp(App)
 /**
  * 全局注册组件
  */
+interface Icomponent {
+  [key: string]: any
+}
 Object.keys(components).forEach((e) => {
   if (e !== 'install') {
-    const component = components[e]
+    const component = (<Icomponent>components)[e]
+    // const component = components[e]
     const name = component.name
     app.component(name, component)
   }

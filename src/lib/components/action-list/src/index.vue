@@ -49,7 +49,6 @@ export default {
   },
   computed: {
     owner () {
-      debugger
       return this.actionOwner || this.target || this.$parent
     }
   }

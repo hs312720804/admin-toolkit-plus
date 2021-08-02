@@ -1,18 +1,25 @@
 # 表单父子关联
-`c-father-son-link`   
-## 示例1
+
+`c-father-son-link`
+
+## 示例 1
 
 <Demo>
   <FatherSonLinkDemo/>
 </Demo>
 
-### 代码  
+### 代码
+
 ```vue
 <template>
   <div>
     <el-form :model="form" ref="form" :rules="formRules" label-width="100px">
       <el-form-item label="投放名称" prop="launchName">
-        <el-input size="small" v-model="form.launchName" placeholder="投放名称"></el-input>
+        <el-input
+          size="small"
+          v-model="form.launchName"
+          placeholder="投放名称"
+        ></el-input>
       </el-form-item>
       <c-father-son-link
         :parentData="strategyList"
@@ -32,7 +39,7 @@
 </template>
 <script>
 export default {
-  data() {
+  data () {
     return {
       parantLabel: '选择策略',
       childLabel: '选择人群',
@@ -94,40 +101,46 @@ export default {
     }
   },
   methods: {
-    getChildrenList(id) {
+    getChildrenList (id) {
       this.form.strategyName = id
       this.crowdList = this.crowdList_data.filter(e => {
         return id.includes(e.id + '') === true
       })
     },
-    getChildrenValue(id) {
+    getChildrenValue (id) {
       this.form.crowdName = id
     },
-    submitForm() {
+    submitForm () {
       this.$refs.form.validate(valid => {
         if (valid) {
           //保存接口
-           this.$message('保存')
+          this.$message('保存')
         }
       })
     }
   }
 }
 </script>
-
 ```
-## 示例2
+
+## 示例 2
+
 <Demo>
   <FormFatherAndSonLinkDemo1/>
 </Demo>
 
-### 代码  
+### 代码
+
 ```vue
 <template>
   <div>
     <el-form :model="form" ref="form" :rules="formRules" label-width="100px">
       <el-form-item label="投放名称" prop="launchName">
-        <el-input size="small" v-model="form.launchName" placeholder="投放名称"></el-input>
+        <el-input
+          size="small"
+          v-model="form.launchName"
+          placeholder="投放名称"
+        ></el-input>
       </el-form-item>
       <FormFatherAndSonLink
         :parentData="strategyList"
@@ -151,7 +164,7 @@ export default {
   components: {
     FormFatherAndSonLink
   },
-  data() {
+  data () {
     return {
       parantLabel: '选择策略',
       childLabel: '选择人群',
@@ -211,19 +224,19 @@ export default {
     }
   },
   methods: {
-    getChildrenList(id) {
+    getChildrenList (id) {
       this.form.strategyName = id
-      this.crowdList =this.crowdList_data.reduce(function(result,current){
-         if (id.includes(current.id + '') === true) {
-           result = result.concat(current.data)
+      this.crowdList = this.crowdList_data.reduce(function (result, current) {
+        if (id.includes(current.id + '') === true) {
+          result = result.concat(current.data)
         }
         return result
-      },[])
+      }, [])
     },
-    getChildrenValue(id) {
+    getChildrenValue (id) {
       this.form.crowdName = id
     },
-    submitForm() {
+    submitForm () {
       this.$refs.form.validate(valid => {
         if (valid) {
           //保存接口
@@ -234,20 +247,22 @@ export default {
   }
 }
 </script>
-
 ```
-## 属性  
-| 名称 | 类型 | 描述 | 例子 |  
-| ---- | ---- | ---- | ---- |
-| parentData | Array:[{id, name}] | 父组件的数据列表 |见上面例子 |
-| childData | Array:[{ id, name, children: [] }] | 子组件的数据列表 |见上面例子 |
-| parantField | String | 父组件表单验证字段名 |见上面例子 |
-| childField | String | 子组件表单验证字段名 |见上面例子 |
-| parantLabel | String | 父组件的Label值 |见上面例子 |
-| childLabel | String | 子组件的Label值 |见上面例子 |
+
+## 属性
+
+| 名称        | 类型                               | 描述                 | 例子       |
+| ----------- | ---------------------------------- | -------------------- | ---------- |
+| parentData  | Array:[{id, name}]                 | 父组件的数据列表     | 见上面例子 |
+| childData   | Array:[{ id, name, children: [] }] | 子组件的数据列表     | 见上面例子 |
+| parantField | String                             | 父组件表单验证字段名 | 见上面例子 |
+| childField  | String                             | 子组件表单验证字段名 | 见上面例子 |
+| parantLabel | String                             | 父组件的 Label 值    | 见上面例子 |
+| childLabel  | String                             | 子组件的 Label 值    | 见上面例子 |
+
 ## 事件
-| 名称 | 参数 |描述| 例子 |  
-| ---- | ---- | ---- | ---- |
-| get-children-list |（id:Array）| id为父组件选中的值 | 见上面例子 |
-| get-children- value |（id:Array）| id为子组件选中的值 | 见上面例子 |
-<Comment />
+
+| 名称                | 参数         | 描述                | 例子       |
+| ------------------- | ------------ | ------------------- | ---------- |
+| get-children-list   | （id:Array） | id 为父组件选中的值 | 见上面例子 |
+| get-children- value | （id:Array） | id 为子组件选中的值 | 见上面例子 |

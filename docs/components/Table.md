@@ -1,7 +1,8 @@
-# 表格  
-`c-table`  
+# 表格
 
-## 示例  
+`c-table`
+
+## 示例
 
 ### 效果
 
@@ -9,7 +10,8 @@
   <TableDemo />
 </Demo>
 
-### 代码  
+### 代码
+
 ```vue
 <template>
   <c-table
@@ -82,7 +84,7 @@ export default {
     handleDelete ({ $index: index }) {
       this.$message(`删除第${index + 1}条记录`)
     },
-    handleRowSelectionChange(row, index) {
+    handleRowSelectionChange (row, index) {
       this.table.selected = index
     },
     handleRowSelectionAdd (item, index) {
@@ -98,32 +100,30 @@ export default {
         this.table.selected = []
       }
     },
-    handleRowClick(row, index) {
+    handleRowClick (row, index) {
       console.log(arguments)
       this.$message(`row-click`)
     }
   }
 }
 </script>
-
 ```
 
+## 属性
 
-## 属性  
-| 名称 | 类型 | 描述 | 例子 |  
-| ---- | ---- | ---- | ---- |
-| props | Object | element-ui 表格属性 | |
-| header | Array | 表头 | | 
-| data | Array | 表格数据 | |  
-| selectionType | 'none' / 'multiple' / 'single' |  none 为不使用选择功能, multiple 为多选, single 为单选| |
-| selected | Array 或者 Number | 如果 selectionType 是 multiple, 那么 selected 需要是一个数组,  包含选中的 index; 如果 selectionType 是 single, 那么 selected 是被选中的 index | |  
+| 名称          | 类型                           | 描述                                                                                                                                         | 例子 |
+| ------------- | ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------- | ---- |
+| props         | Object                         | element-ui 表格属性                                                                                                                          |      |
+| header        | Array                          | 表头                                                                                                                                         |      |
+| data          | Array                          | 表格数据                                                                                                                                     |      |
+| selectionType | 'none' / 'multiple' / 'single' | none 为不使用选择功能, multiple 为多选, single 为单选                                                                                        |      |
+| selected      | Array 或者 Number              | 如果 selectionType 是 multiple, 那么 selected 需要是一个数组, 包含选中的 index; 如果 selectionType 是 single, 那么 selected 是被选中的 index |      |
 
-## 事件  
-| 名称 | 参数 | 描述 |  
-| ---- | ---- | ---- |  
-| row-selection-add | (row: Object, index: Number) | 只在 selectoinType 为 multiple 时触发 |  
-| row-selection-remove | (row: Object, index: Number) | 只在 selectoinType 为 multiple 时触发 |  
-| row-selection-change | (row: Object, index: Number) | 只在 selectoinType 为 single 时触发 |  
-| all-row-selection-change | (value: Boolean) | 当所有行的选中状态改变时触发, value 为选中状态 |  
+## 事件
 
-<Comment />
+| 名称                     | 参数                         | 描述                                           |
+| ------------------------ | ---------------------------- | ---------------------------------------------- |
+| row-selection-add        | (row: Object, index: Number) | 只在 selectoinType 为 multiple 时触发          |
+| row-selection-remove     | (row: Object, index: Number) | 只在 selectoinType 为 multiple 时触发          |
+| row-selection-change     | (row: Object, index: Number) | 只在 selectoinType 为 single 时触发            |
+| all-row-selection-change | (value: Boolean)             | 当所有行的选中状态改变时触发, value 为选中状态 |
