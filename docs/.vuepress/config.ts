@@ -21,6 +21,7 @@ export default defineUserConfig<DefaultThemeOptions>({
             isGroup: true,
             children: [
               '/components/ActionList.md',
+              '/components/Menu.md',
               '/components/Breadcrumb.md',
               '/components/TagNav.md',
               '/components/Table.md',

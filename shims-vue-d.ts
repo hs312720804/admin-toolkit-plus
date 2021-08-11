@@ -1,5 +1,4 @@
 declare model 'admin-toolkit-puls'
-
 declare module "*.vue" {
   import { ComponentOptions} from "vue"
   const componentOptions: ComponentOptions

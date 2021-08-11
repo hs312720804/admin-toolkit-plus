@@ -1,6 +1,5 @@
 import { createApp } from 'vue'
 import { createI18n } from 'vue-i18n'
-// import { createI18n } from 'vue-i18n/dist/vue-i18n.esm-bundler.js'
 import enLocale from './en'
 import zhLocale from './zh'
 import elementEnLocal from 'element-plus/lib/locale/lang/en'

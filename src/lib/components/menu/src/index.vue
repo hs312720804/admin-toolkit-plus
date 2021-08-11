@@ -9,13 +9,13 @@
     :collapse="isCollapse"
     :mode="mode"
   >
-    <template v-for="(item, index) in items" :key="index+'menu'" >
+    <template v-for="(item, index) in items" :key="index+'_menu'" >
       <el-submenu v-if="item.children" :index="index + ''">
         <template #title>
           <i v-if="item.icon" :class="item.icon"></i>
           <span>{{ item.title }}</span>
         </template>
-        <template v-for="(child, idx) in item.children"  :key="idx+'menu_c'">
+        <template v-for="(child, idx) in item.children"  :key="idx+'_menu_c'">
           <el-menu-item
             v-if="typeof(child.children) === 'undefined'"
             :index="child.route"
@@ -36,7 +36,7 @@
               <i v-if="child.icon" :class="child.icon"></i>
               <span>{{ child.title }}</span>
             </template>
-            <template v-for="(c,n) in child.children" :key="n+'no-c'">
+            <template v-for="(c,n) in child.children" :key="n+'_no-c'">
               <el-menu-item  :index="c.route">
                 <i v-if="c.icon" :class="c.icon"></i>
                 <span>{{c.title}}</span>
@@ -56,15 +56,20 @@
 <script>
 export default {
   name: 'CMenu',
-  props: [
-    'isCollapse',
-    'items',
-    'defaultActive',
-    'textColor',
-    'activeTextColor',
-    'backgroundColor',
-    'mode'
-  ],
+  props: {
+    isCollapse: {
+      type: Boolean,
+      default: false
+    },
+    items: {
+      type: Array
+    },
+    defaultActive: String,
+    textColor: String,
+    activeTextColor: String,
+    backgroundColor: String,
+    mode: String
+  },
   methods: {
     handleSelect (name) {
       this.$router.push({ name }).catch(() => {})

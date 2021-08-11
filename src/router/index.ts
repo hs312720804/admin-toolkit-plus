@@ -331,16 +331,6 @@ const routes = [
           icon: 'iconfont el-icon-cc-file-add',
           route: 'lazyRemoteSelect'
         }
-      },
-      {
-        path: 'clickEvent',
-        name: 'clickEvent',
-        component: demos.ClickEventSelectorDemo,
-        meta: {
-          title: '点击事件选择器',
-          icon: 'iconfont el-icon-cc-file-add',
-          route: 'clickEvent'
-        }
       }
     ]
   },

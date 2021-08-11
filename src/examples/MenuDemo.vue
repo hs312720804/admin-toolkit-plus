@@ -1,6 +1,7 @@
 <template>
   <div>
-    <c-menu :items="menu1" />
+    <c-menu :items="menu" background-color="#282c34"
+    textColor="#00ff50"/>
     <!-- <c-menu :items="threeLevelMenu" mode="horizontal"/> -->
   </div>
 </template>
@@ -8,7 +9,7 @@
 export default {
   data () {
     return {
-      menu1: [
+      menu: [
         {
           title: '表单',
           icon: 'iconfont el-icon-cc-file-add',
@@ -18,7 +19,13 @@ export default {
             {
               title: '表单',
               icon: 'iconfont el-icon-cc-file-add',
-              route: 'DataForm'
+              children: [
+                {
+                  title: '选项一',
+                  route: 'DataForm',
+                  icon: 'el-icon-menu'
+                }
+              ]
             },
             {
               title: '表单布尔值',
@@ -64,53 +71,6 @@ export default {
               title: '列表筛选器',
               icon: 'iconfont el-icon-cc-file-add',
               route: 'ListFilterDemo'
-            }
-          ]
-        }
-      ],
-      menu: [
-        {
-          title: '导航一',
-          icon: 'el-icon-location',
-          route: 'nav1'
-        },
-        {
-          title: '分组一',
-          icon: 'el-icon-menu',
-          children: [
-            {
-              title: '导航二',
-              route: 'nav2',
-              icon: 'el-icon-menu'
-            }
-          ]
-        }
-      ],
-      threeLevelMenu: [
-        {
-          title: '分组一',
-          icon: 'el-icon-location',
-          route: 'nav1'
-        },
-        {
-          title: '分组二',
-          icon: 'el-icon-menu',
-          children: [
-            {
-              title: '导航一',
-              icon: 'el-icon-menu',
-              route: 'nav1'
-            },
-            {
-              title: '导航二',
-              icon: 'el-icon-menu',
-              children: [
-                {
-                  title: '选项一',
-                  route: 'nav2',
-                  icon: 'el-icon-menu'
-                }
-              ]
             }
           ]
         }
