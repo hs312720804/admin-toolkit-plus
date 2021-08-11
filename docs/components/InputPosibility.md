@@ -13,14 +13,21 @@
 
 ```vue
 <template>
-  <c-input-posibility v-model="inputValue" placeholder="请输入概率" />
+  <c-input-posibility
+    v-model="ruleForm.rate"
+    :is-restrict-num="true"
+    :decimals-length="2"
+    placeholder="请输入概率"
+  />
 </template>
 
 <script>
 export default {
   data () {
     return {
-      inputValue
+      ruleForm: {
+        rate: ''
+      }
     }
   }
 }
@@ -29,10 +36,12 @@ export default {
 
 ## 属性
 
-| 名称        | 类型           | 描述 | 例子 |
-| ----------- | -------------- | ---- | ---- |
-| value       | Number, String |      |      |
-| disabled    | Boolean        |      |      |
-| placeholder | String         |      |      |
-| append      | String         |      |      |
-| prepend     | String         |      |      |
+| 名称            | 类型           | 描述                                                   | 例子 |
+| --------------- | -------------- | ------------------------------------------------------ | ---- |
+| value           | Number, String |                                                        |      |
+| disabled        | Boolean        |                                                        |      |
+| placeholder     | String         |                                                        |      |
+| append          | String         |                                                        |      |
+| prepend         | String         |                                                        |      |
+| is-restrict-num | Boolean        | 是否为准确的小数位，如果为 true， decimals-length 必填 |      |
+| decimals-length | Number         | 几位小数                                               |      |

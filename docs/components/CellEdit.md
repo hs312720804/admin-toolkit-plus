@@ -15,18 +15,23 @@
 ```vue
 <template>
   <div>
-    <c-table :data="table.data" :props="table.props" :header="table.header" />
+    <c-table
+      :data="table.data"
+      ref="table"
+      :props="table.props"
+      :header="table.header"
+    />
   </div>
 </template>
 
 <script>
-import CTable from '../lib/components/table/index'
+import { h } from 'vue'
 import CCellEdit from '../lib/components/cell-edit/index'
 export default {
-  components: {
-    CTable
-  },
   props: {},
+  components: {
+    CCellEdit
+  },
   data () {
     return {
       table: {
@@ -35,16 +40,10 @@ export default {
           {
             label: '姓名',
             prop: 'name',
-            render: (h, { row }) => {
+            render: ({ row }) => {
               return h(CCellEdit, {
-                props: {
-                  initValue: row.name
-                },
-                on: {
-                  blur: val => {
-                    this.$message.info('传给后端的值为', val)
-                  }
-                }
+                modelValue: row.name,
+                'onUpdate:modelValue': value => (row.name = value)
               })
             }
           },
@@ -78,7 +77,7 @@ export default {
 
 | 名称       | 类型                    | 描述                        | 例子                     |
 | ---------- | ----------------------- | --------------------------- | ------------------------ |
-| init-value | String, Number, Boolean | input 关联的 v-model 初始值 | dsp 广告投放修改订单名称 |
+| modelValue | String, Number, Boolean | input 关联的 v-model 初始值 | dsp 广告投放修改订单名称 |
 
 ## 事件
 

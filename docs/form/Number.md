@@ -1,43 +1,50 @@
-# 数字  
+# 数字
+
 `c-form-number`
 用于输入和展示数值
 
 ## 示例
 
 ### 效果
+
 <Demo>
   <NumberDemo />
 </Demo>
 
-### 代码  
+### 代码
+
 ```vue
 <template>
   <div>
     <c-form label-width="120px" :readonly="isReadonly">
-      <c-form-number label="年龄" v-model="form.age" />
+      <c-form-number :form-item-attr="formItemAttr" v-model="form.age" />
     </c-form>
   </div>
 </template>
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       isReadonly: false,
+      formItemAttr: {
+        label: "年龄"
+      },
       form: {
-        age: 22,
+        age: 22
       }
     }
   }
-
 }
 </script>
 ```
 
-## 属性  
-| 名称 | 类型 | 描述 | 默认 |  例子 |  
-| ---- | ---- | ---- | ---- | ---- |
-| label | String | 控件 label |  | |  
+## 属性
+
+| 名称  | 类型   | 描述       | 默认 | 例子 |
+| ----- | ------ | ---------- | ---- | ---- |
+| form-item-attr | Object              | el-form-item 组件的属性集合    |
 
 
-<Comment />
+## 事件
+和 element-plus input-number 组件的事件一样

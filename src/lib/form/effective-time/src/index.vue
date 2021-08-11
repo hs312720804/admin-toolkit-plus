@@ -30,7 +30,7 @@ export default defineComponent({
     modelValue: {},
     validDay: {
       type: Number,
-      default: 7
+      default: 7 // 天
     },
     delayTime: {
       type: Number,
@@ -45,11 +45,11 @@ export default defineComponent({
   },
   methods: {
     disabledDate (time) {
-      return time.getTime() > Date.now() + this.validDay * 24 * 60 * 60 * 1000 || time.getTime() < Date.now() - 24 * 60 * 60 * 1000
+      return time.getTime() > Date.now() + (this.validDay - 1) * 24 * 60 * 60 * 1000 || time.getTime() < Date.now() - 24 * 60 * 60 * 1000
     },
     setDefaultValue () {
       let currentDate = new Date()
-      currentDate.setMinutes(currentDate.getMinutes() + this.delayTime)
+      currentDate.setMinutes(currentDate.getMinutes() + parseInt(this.delayTime))
       let now = currentDate.getHours() + ':' + currentDate.getMinutes() + ':' + currentDate.getSeconds()
       return [new Date(2000, 1, 1, currentDate.getHours(), currentDate.getMinutes(), currentDate.getSeconds()),  new Date(2000,1,1,23, 59, 59)]
     }
@@ -74,6 +74,7 @@ export default defineComponent({
         modelValue: this.modelValue,
         'onChange': $event => this.$emit('change', $event),
         'onBlur': $event => this.$emit('blur', $event),
+        'onFocus': $event => this.$emit('focus', $event),
         'onUpdate:modelValue': $event => this.$emit('update:modelValue', $event)
       })
     }

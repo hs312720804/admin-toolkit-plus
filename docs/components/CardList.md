@@ -16,7 +16,7 @@
 ```vue
 <template>
   <c-card-list
-    :gutter="10"
+    :gutter="14"
     :data="table.data"
     :selection-type="table.selectionType"
     :selected="table.selected"
@@ -25,9 +25,9 @@
     @row-selection-change="handleRowSelectionChange"
     :select-on-row-click="true"
   >
-    <div class="card-content" slot="row" slot-scope="{ row }">
-      id: {{ row.id }}
-    </div>
+    <template v-slot:default="slotProps">
+      <div class="card-content">id: {{ slotProps.row.id }}</div>
+    </template>
   </c-card-list>
 </template>
 <script>
@@ -86,23 +86,20 @@ export default {
 
 <style lang="stylus" scoped>
 .card-content
-  min-width 200px
   border 1px solid #ccc
   padding 10px
-  margin-right 10px
 </style>
 ```
 
 ## 属性
 
-| 名称          | 类型                           | 描述                                                                                                                                         | 例子 |
-| ------------- | ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------- | ---- |
-| props         | Object                         | element-ui 表格属性                                                                                                                          |      |
-| header        | Array                          | 表头                                                                                                                                         |      |
-| data          | Array                          | 表格数据                                                                                                                                     |      |
-| selectionType | 'none' / 'multiple' / 'single' | none 为不使用选择功能, multiple 为多选, single 为单选                                                                                        |      |
-| selected      | Array 或者 Number              | 如果 selectionType 是 multiple, 那么 selected 需要是一个数组, 包含选中的 index; 如果 selectionType 是 single, 那么 selected 是被选中的 index |      |
-| gutter        | Number                         | 栅格间隔（同 el-row），默认 20                                                                                                               |      |
+| 名称             | 类型                           | 描述                                                                                                                                   | 例子       |
+| ---------------- | ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| data             | Array                          | 数据来源                                                                                                                               | 见上面例子 |
+| selectionType    | 'none' / 'multiple' / 'single' | none 为不使用选择功能, multiple 为多选 single 为单选                                                                                   | 见上面例子 |
+| selected         | Array 或者 Number              | 如果 selectionType 是 multiple, 那么 selected 需要是一个数组, 包含选中的 index; 如果 selectionType 是 single, 那么 selected 是被选中的 | 见上面例子 |
+| gutter           | Number                         | 栅格间隔（同 el-row），默认 20                                                                                                         | 见上面例子 |
+| selectOnRowClick | Boolean                        | 是否可以通过单击当前行选中数据                                                                                                         | 见上面例子 |
 
 ## 事件
 

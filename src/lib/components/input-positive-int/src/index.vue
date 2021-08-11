@@ -33,6 +33,8 @@ export default {
     modelValue: [Number, String],
     disabled: Boolean,
     append: String,
+    min: Number,
+    max: Number,
     prepend: String,
     placeholder: String,
     isIncludeZero: {
@@ -42,9 +44,39 @@ export default {
   },
   methods: {
     handleInputValue (val) {
+      // if (val === '' || /^[1-9]\d*$/.test(val) || (val === '0' && this.isIncludeZero)) {
+      //   this.inputValue = val
+      //   this.$emit('update:modelValue', val)
+      // }
       if (val === '' || /^[1-9]\d*$/.test(val) || (val === '0' && this.isIncludeZero)) {
-        this.inputValue = val
-        this.$emit('update:modelValue', val)
+        if (val === '') {
+          this.inputValue = val
+          this.$emit('update:modelValue', val)
+          return
+        }
+        if (this.min) {
+          if (this.max) {
+            if (parseInt(val) >= this.min && parseInt(val) <= this.max) {
+              this.inputValue = val
+              this.$emit('update:modelValue', val)
+            }
+          } else {
+            if (parseInt(val) >= this.min) {
+              this.inputValue = val
+              this.$emit('update:modelValue', val)
+            }
+          }
+        } else {
+          if (this.max) {
+            if (parseInt(val) <= this.max) {
+              this.inputValue = val
+              this.$emit('update:modelValue', val)
+            }
+          } else {
+            this.inputValue = val
+            this.$emit('update:modelValue', val)
+          }
+        }
       }
     }
   },

@@ -1,44 +1,60 @@
-# 字符串  
-`c-form-string `
-对element ui el-input元素进行封装，用于输入和展示字符串值，所有的属性可以参考el-input的属性文档
+# 字符串
 
-## 示例  
+`c-form-string`
+对 element ui el-input 元素进行封装，用于输入和展示字符串值，所有的属性可以参考 el-input 的属性文档
+
+## 示例
 
 ### 效果
+
 <Demo>
   <StringDemo />
 </Demo>
 
-### 代码  
+### 代码
+
 ```vue
 <template>
   <div>
-    <c-form label-width="120px" :readonly="isReadonly"> 
-      <c-form-string label="姓名" v-model="form.name" />
+    <c-form label-width="120px" :readonly="isReadonly">
+      <c-form-string @change="handleChange" :form-item-attr="formItemAttr" placeholder="请输入内容" v-model="form.name" />
     </c-form>
   </div>
 </template>
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       isReadonly: false,
+      formItemAttr : {
+        label: "姓名"
+      },
       form: {
-        name: '张三',
+        name: '张三'
       }
+    }
+  },
+  methods: {
+    handleOK () {
+      this.isReadonly = !this.isReadonly
+      console.log('this.isReadonly ', this.isReadonly )
+    },
+    handleChange (value) {
+    },
+    onValidate () {
     }
   }
 }
 </script>
-
 ```
 
-## 属性  
-| 名称 | 类型 | 描述 | 默认 |  例子 |  
-| ---- | ---- | ---- | ---- | ---- |
-| label | String | 控件 label |  | |  
-| maxlength | Number | 最大长度 |  | |  
-| minlength | Number | 最小长度 | 0 | | 
-| show-word-limit | Boolean | 跟 el-input元素属性一致| false | | 
-<Comment />
+## 属性
+
+| 名称  | 类型   | 描述       | 默认 | 例子 |
+| ----- | ------ | ---------- | ---- | ---- |
+| form-item-attr | Object              | el-form-item 组件的属性集合    |
+
+
+## 事件
+和 element-plus input-number 组件的事件一样

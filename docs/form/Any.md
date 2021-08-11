@@ -16,13 +16,16 @@
 <template>
   <div>
     <c-form label-width="120px" :readonly="isReadonly">
-      <c-form-any label="是否已婚">
-        <el-switch
-          slot="edit"
-          :value="!!form.isMarried"
-          @input="form.isMarried = $event ? 1 : 0"
-        ></el-switch>
-        <span slot="read">{{ form.isMarried ? '是' : '否' }} </span>
+      <c-form-any :form-item-attr="formItemAttr">
+        <template v-slot:edit>
+          <el-switch
+            :value="!!form.isMarried"
+            @input="form.isMarried = $event ? 1 : 0"
+          ></el-switch>
+        </template>
+        <template v-slot:read>
+          <span>{{ form.isMarried ? '是' : '否' }} </span>
+        </template>
       </c-form-any>
     </c-form>
   </div>
@@ -32,7 +35,10 @@
 export default {
   data () {
     return {
-      isReadonly: false,
+      isReadonly: true,
+      formItemAttr: {
+        label: '是否已婚'
+      },
       form: {
         isMarried: 0
       }
@@ -44,9 +50,9 @@ export default {
 
 ## 属性
 
-| 名称  | 类型   | 描述       | 默认 | 例子 |
-| ----- | ------ | ---------- | ---- | ---- |
-| label | String | 控件 label |      |      |
+| 名称           | 类型   | 描述                        | 默认 | 例子 |
+| -------------- | ------ | --------------------------- | ---- | ---- |
+| form-item-attr | Object | el-form-item 组件的属性集合 |      |
 
 ## 插槽
 
@@ -55,5 +61,6 @@ export default {
 | edit | 非只读时显示的内容   | 见上方例子 |
 | read | 只读状态下显示的内容 | 见上方例子 |
 
-<Comment />
+```
+
 ```

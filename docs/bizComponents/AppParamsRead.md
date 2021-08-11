@@ -66,5 +66,3 @@ value 包含下面属性
 | ---- | ---- | ---- | ---- |  
 | key | String | | |  
 | value | String | | |
-
-<!-- <Comment /> -->

@@ -1,27 +1,51 @@
-# 表单  
-`c-form`
-数据表单根组件，所有数据表单组件应放本组件里面  
+# 表单
 
-## 示例  
+`c-form`
+数据表单根组件，所有数据表单组件应放本组件里面
+
+## 示例
 
 ### 效果
+
 <Demo>
   <DataFormDemo />
 </Demo>
 
-### 代码  
+### 代码
+
 ```vue
 <template>
   <div>
-    <div class="switch-readonly">读写模式切换 <el-switch v-model="isReadonly" /></div>
-    <c-form label-width="120px" :readonly="isReadonly"> 
+    <div class="switch-readonly">
+      读写模式切换 <el-switch v-model="isReadonly" />
+    </div>
+    <c-form label-width="120px" :readonly="isReadonly">
       <c-form-string label="姓名" v-model="form.name" />
       <c-form-number label="年龄" v-model="form.age" />
-      <c-form-enum label="性别" type="radio" confirm="是否更改性别"  v-model="form.gender" :options="genderOptions" />
+      <c-form-enum
+        label="性别"
+        type="radio"
+        confirm="是否更改性别"
+        v-model="form.gender"
+        :options="genderOptions"
+      />
       <c-form-enum label="岗位" v-model="form.job" :options="jobOptions" />
-      <c-form-enum-list type="checkbox" v-model="form.skill" label="语言技能" :options="langOptions" />
-      <c-form-enum-list label="兴趣" v-model="form.hobbies" :options="hobbiesOptions" />
-      <c-form-boolean type="switch" label="是否正式员工" v-model="form.isRegular" />
+      <c-form-enum-list
+        type="checkbox"
+        v-model="form.skill"
+        label="语言技能"
+        :options="langOptions"
+      />
+      <c-form-enum-list
+        label="兴趣"
+        v-model="form.hobbies"
+        :options="hobbiesOptions"
+      />
+      <c-form-boolean
+        type="switch"
+        label="是否正式员工"
+        v-model="form.isRegular"
+      />
       <c-form-boolean label="" v-model="form.isIn">
         参加活动
       </c-form-boolean>
@@ -31,7 +55,7 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       isReadonly: false,
       genderOptions: [
@@ -97,11 +121,9 @@ export default {
         hobbies: ['music'],
         isRegular: 1,
         isIn: 0
-
       }
     }
   }
-
 }
 </script>
 
@@ -112,10 +134,8 @@ export default {
 </style>
 ```
 
+## 属性
 
-## 属性  
-| 名称 | 类型 | 描述 | 例子 |  
-| ---- | ---- | ---- | ---- |
+| 名称     | 类型    | 描述     | 例子       |
+| -------- | ------- | -------- | ---------- |
 | readonly | Boolean | 是否只读 | 见上面例子 |
-
-<Comment />

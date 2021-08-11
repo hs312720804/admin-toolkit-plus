@@ -18,4 +18,7 @@ export default {
   margin 10px
   padding 10px
   border 1px solid #ccc
+  position relative
+  >>>.fix-header-footer
+    position relative
 </style>

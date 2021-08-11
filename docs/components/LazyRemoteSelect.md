@@ -16,29 +16,35 @@
 ```vue
 <template>
   <c-lazy-remote-select
+    ref="lazyRemoteSelect"
     v-model="selectedValue"
-    :filter="filter"
-    :primaryKey="primaryKey"
-    :optionsMap="optionsMap"
-    serviceName="getList"
-  ></c-lazy-remote-select>
-  {{ selectedValue }}
+    :total="total"
+    :multiple="true"
+    :options-data="options"
+    @fetch-data="getLazyRemoteData"
+    @clear-option="handleInitOption"
+  >
+  </c-lazy-remote-select>
 </template>
 <script>
+import { getLazyRemoteData } from '../service/index'
 export default {
   data () {
     return {
-      selectedValue: undefined,
-      filter: {
-        label: ''
-      },
-      primaryKey: {
-        value: ''
-      },
-      optionsMap: {
-        key: 'id',
-        label: 'name'
-      }
+      selectedValue: [],
+      total: 0,
+      options: []
+    }
+  },
+  methods: {
+    handleInitOption () {
+      this.options = []
+    },
+    getLazyRemoteData (pagination, filters) {
+      getLazyRemoteData(pagination, filters).then(data => {
+        this.total = data.total
+        this.options = this.options.concat(data.rows)
+      })
     }
   }
 }
@@ -47,9 +53,15 @@ export default {
 
 ## 属性
 
-| 名称          | 类型   | 描述             | 例子       |
-| ------------- | ------ | ---------------- | ---------- |
-| selectedValue | String | 绑定的值         | 见上面例子 |
-| filter        | Object | 选择框查询的条件 | 见上面例子 |
-| primaryKey    | Object | 关键值，用于回显 | 见上面例子 |
-| optionsMap    | Object | 映射接口         | 见上面例子 |
+| 名称          | 类型   | 描述     | 例子       |
+| ------------- | ------ | -------- | ---------- |
+| selectedValue | String | 绑定的值 | 见上面例子 |
+| total         | Number | 数据总数 | 见上面例子 |
+| options       | Array  | 选项值   | 见上面例子 |
+
+## 事件
+
+| 名称         | 类型              | 描述                     | 例子       |
+| ------------ | ----------------- | ------------------------ | ---------- |
+| fetch-data   | pagination, query | 参数为分页和查询的字符串 | 见上面例子 |
+| clear-option |                   | 清除数据                 | 见上面例子 |

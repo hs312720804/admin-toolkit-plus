@@ -198,7 +198,7 @@ export default {
     this.setSelectedNodes()
     document.addEventListener('click', this.handleHidePopUp)
   },
-  beforeDestroy () {
+  beforeUnmount () {
     document.removeEventListener('click', this.handleHidePopUp)
   },
   created () {
