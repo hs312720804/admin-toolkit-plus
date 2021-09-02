@@ -79,7 +79,7 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-.item >>> .el-input
+.item :deep(.el-input)
   width 100px
   display inline-block
 </style>

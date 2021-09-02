@@ -19,6 +19,6 @@ export default {
   padding 10px
   border 1px solid #ccc
   position relative
-  >>>.fix-header-footer
+  :deep(.fix-header-footer)
     position relative
 </style>

@@ -185,7 +185,8 @@ export default defineComponent({
         }
         if (selectionType === 'multiple') {
         // options.type = 'selection'
-          options.renderHeader = () => {
+          // options.renderHeader = () => {
+          options.scopedSlot = () => { // modify by wanghaihua
             return h(ElCheckbox, {
             // props: {
             // value: this.selectStatus === 'all',
@@ -202,7 +203,7 @@ export default defineComponent({
             // }
             })
           }
-          options.slots.default = ({ $index: index, row, $event }) => {
+          options.slots.default = ({ $index: index, row }) => {
             const disabled = rowIndexDisableSelection.includes(index)
             return h(ElCheckbox, {
             // props: {
@@ -215,7 +216,7 @@ export default defineComponent({
               onClick: event => event.stopPropagation(),
               // },
               // on: {
-              onChange: value => {
+              onChange: (value, $event) => {
                 if (value) {
                   this.$emit('row-selection-add', row, index)
                 } else {
@@ -230,7 +231,7 @@ export default defineComponent({
         }
 
         if (selectionType === 'single') {
-          options.slots.default = ({ $index: index, row, $event }) => {
+          options.slots.default = ({ $index: index, row}) => {
           // debugger
             const disabled = rowIndexDisableSelection.includes(index)
             return h(ElRadio, {
@@ -242,7 +243,7 @@ export default defineComponent({
               disabled,
               // },
               // nativeOn: {
-              onChange: () => {
+              onChange: ($event) => {
               // debugger
                 if (!disabled) {
                   this.$emit('row-selection-change', row, index)
@@ -255,7 +256,6 @@ export default defineComponent({
           }
         }
         const selectionColumn = h(ElTableColumn, options, options.slots)
-        // debugger
         header.unshift(selectionColumn)
       }
 

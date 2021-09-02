@@ -1,6 +1,11 @@
 import { defineUserConfig } from 'vuepress'
 import type { DefaultThemeOptions } from 'vuepress'
 export default defineUserConfig<DefaultThemeOptions>({
+  head: [
+    [
+      'link', { rel: 'icon', href: 'icon.png'}
+    ]
+  ],
   base: '/admin-toolkit-plus/',
   title: 'Admin Toolkit Plus',
   description: '酷开 Vue3.0 组件库',
