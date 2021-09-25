@@ -4,10 +4,11 @@
 
 ## 示例 1
 
+<ClientOnly>
 <Demo>
   <FatherSonLinkDemo/>
 </Demo>
-
+</ClientOnly>
 ### 代码
 
 ```vue

@@ -7,10 +7,11 @@
 
 ### 使用初始的图标
 
+<ClientOnly>
 <Demo>
   <TheInitIconDemo/>
 </Demo>
-
+</ClientOnly>
 ### 代码
 
 ```vue

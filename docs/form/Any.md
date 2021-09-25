@@ -7,9 +7,11 @@
 
 ### 效果
 
+<ClientOnly>
 <Demo>
   <AnyDemo />
 </Demo>
+</ClientOnly>
 ### 代码
 
 ```vue

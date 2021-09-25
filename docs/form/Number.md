@@ -7,10 +7,11 @@
 
 ### 效果
 
+<ClientOnly>
 <Demo>
   <NumberDemo />
 </Demo>
-
+</ClientOnly>
 ### 代码
 
 ```vue
@@ -28,7 +29,7 @@ export default {
     return {
       isReadonly: false,
       formItemAttr: {
-        label: "年龄"
+        label: '年龄'
       },
       form: {
         age: 22
@@ -41,10 +42,10 @@ export default {
 
 ## 属性
 
-| 名称  | 类型   | 描述       | 默认 | 例子 |
-| ----- | ------ | ---------- | ---- | ---- |
-| form-item-attr | Object              | el-form-item 组件的属性集合    |
-
+| 名称           | 类型   | 描述                        | 默认 | 例子 |
+| -------------- | ------ | --------------------------- | ---- | ---- |
+| form-item-attr | Object | el-form-item 组件的属性集合 |
 
 ## 事件
+
 和 element-plus input-number 组件的事件一样

@@ -6,10 +6,11 @@
 
 ### 效果
 
+<ClientOnly>
 <Demo>
   <CascaderPanelDemo/>
 </Demo>
-
+</ClientOnly>
 ### 代码
 
 ```vue

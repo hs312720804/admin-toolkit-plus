@@ -6,10 +6,11 @@
 
 ### 效果
 
+<ClientOnly>
 <Demo>
   <MenuDemo />
 </Demo>
-
+</ClientOnly>
 ### 代码
 
 ```vue

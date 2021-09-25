@@ -6,10 +6,11 @@
 
 ### 效果
 
+<ClientOnly>
 <Demo>
   <CellEditDemo />
 </Demo>
-
+</ClientOnly>
 ### 代码
 
 ```vue

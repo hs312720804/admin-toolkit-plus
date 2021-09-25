@@ -5,10 +5,11 @@
 
 ## 示例
 
+<ClientOnly>
 <Demo>
   <InputPositiveIntDemo />
 </Demo>
-
+</ClientOnly>
 ### 代码
 
 ```vue

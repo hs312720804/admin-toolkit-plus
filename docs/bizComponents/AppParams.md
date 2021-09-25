@@ -4,10 +4,11 @@
 
 ## 示例
 
+<ClientOnly>
 <Demo>
   <AppParamsDemo />
 </Demo>
-
+</ClientOnly>
 ## 代码
 
 ```vue

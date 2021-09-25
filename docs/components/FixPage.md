@@ -8,10 +8,11 @@
 
 ### 效果
 
+<ClientOnly>
 <Demo>
   <FixPageDemo/>
 </Demo>
-
+</ClientOnly>
 ### 代码
 
 ```vue

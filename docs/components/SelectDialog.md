@@ -6,10 +6,11 @@
 
 ## 示例
 
+<ClientOnly>
 <Demo>
   <SelectDialogDemo />
 </Demo>
-
+</ClientOnly>
 ## 代码
 
 ```vue

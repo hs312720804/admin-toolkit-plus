@@ -7,10 +7,11 @@
 
 ### 效果
 
+<ClientOnly>
 <Demo>
   <EnumDemo />
 </Demo>
-
+</ClientOnly>
 ### 代码
 
 ```vue

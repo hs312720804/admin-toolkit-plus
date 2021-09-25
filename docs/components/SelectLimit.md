@@ -7,10 +7,11 @@
 
 ### 效果
 
+<ClientOnly>
 <Demo>
   <SelectLimitDemo/>
 </Demo>
-
+</ClientOnly>
 ### 代码
 
 ```vue
@@ -55,7 +56,6 @@ export default defineComponent({
 })
 </script>
 <style lang="stylus" scoped></style>
-
 ```
 
 ## 属性

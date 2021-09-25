@@ -1,16 +1,17 @@
 # 表格概率修改
+
 `c-probability`
 封装了表格概率修改的组件，使用的过程中，需要自定义表格的数据和概率输入框失焦的方法
-
 
 ## 示例
 
 ### 效果
 
+<ClientOnly>
 <Demo>
   <probabilityDemo />
 </Demo>
-
+</ClientOnly>
 ### 代码
 ``` vue
 <template>
@@ -98,6 +99,7 @@ export default {
     .probability-count
         margin 20px
 </style>
+
 ```
 
 ## 属性
@@ -109,4 +111,4 @@ export default {
 | 名称 | 参数  | 描述 | 例子 |
 | ---- | ---- | ---- | ---- |
 | probability-blur | event, row | 用于自定义选择概率输入框失去焦点的事件 |见上述例子 |
-
+```

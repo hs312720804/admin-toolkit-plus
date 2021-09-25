@@ -7,10 +7,11 @@ Table 组件的功能扩展，在原始 Table 组件的功能上添加了树形�
 
 ### 效果
 
+<ClientOnly>
 <Demo>
   <TableTreeDemo />
 </Demo>
-
+</ClientOnly>
 ### 代码
 
 ```vue

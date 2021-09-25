@@ -7,10 +7,11 @@
 
 ### 效果
 
+<ClientOnly>
 <Demo>
   <AddMultiDemo/>
 </Demo>
-
+</ClientOnly>
 ### 代码
 
 ```vue
@@ -98,11 +99,11 @@ export default {
 | 名称       | 类型   | 描述                     | 例子       |
 | ---------- | ------ | ------------------------ | ---------- |
 | label      | String | el-form-item label       | 见上面例子 |
-| modelValue      | Array  | v-model 传过来           | 见上面例子 |
+| modelValue | Array  | v-model 传过来           | 见上面例子 |
 | labelWidth | String | el-form-item label-width | 见上面例子 |
 
-
 ## 事件
-| 名称              | 参数           | 描述         |
-| ----------------- | -------------- | ------------ |
-| handle-add-item        | object| 添加选项     |
+
+| 名称            | 参数   | 描述     |
+| --------------- | ------ | -------- |
+| handle-add-item | object | 添加选项 |

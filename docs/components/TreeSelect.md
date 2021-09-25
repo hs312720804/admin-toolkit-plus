@@ -7,12 +7,13 @@
 
 ### 效果
 
+<ClientOnly>
 <Demo>
   <TreeSelectDemo />
   <!-- <SearchDropdownDemo /> -->
 
 </Demo>
-
+</ClientOnly>
 ### 代码
 
 ```vue

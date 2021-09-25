@@ -6,10 +6,11 @@
 
 ### 效果
 
+<ClientOnly>
 <Demo>
   <ContentEllipsisDemo/>
 </Demo>
-
+</ClientOnly>
 ### 代码
 
 ```vue

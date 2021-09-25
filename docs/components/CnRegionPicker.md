@@ -7,12 +7,13 @@
 
 ### 效果
 
+<ClientOnly>
 <Demo>
   <CnRegionPickerDemo
     :showCloseBtn="true"
    />
 </Demo>
-
+</ClientOnly>
 ### 代码
 
 ```vue

@@ -5,10 +5,11 @@
 
 ## 示例
 
+<ClientOnly>
 <Demo>
   <ContextMenuDemo />
 </Demo>
-
+</ClientOnly>
 ## 代码
 
 ```vue

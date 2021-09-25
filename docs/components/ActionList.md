@@ -7,10 +7,11 @@
 
 ### 效果
 
+<ClientOnly>
 <Demo>
   <ActionListDemo />
 </Demo>
-
+</ClientOnly>
 ### 代码
 
 ```vue

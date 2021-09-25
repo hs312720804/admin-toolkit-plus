@@ -6,12 +6,11 @@
 
 ### 效果
 
-<Demo>
 <ClientOnly>
+<Demo>
   <VideoFilterDemo />
-</ClientOnly>
 </Demo>
-
+</ClientOnly>
 ### 代码
 
 ```vue
