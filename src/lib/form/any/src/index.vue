@@ -17,9 +17,9 @@ export default defineComponent({
   render () {
     let content = ''
     if (this.dataForm.readonly) {
-      content = this.$slots.read?.() || this.modelValue
+      content = this.$slots.read() || this.modelValue
     } else {
-      content = this.$slots.edit?.()
+      content = this.$slots.edit()
     }
     return (
       h(ElFormItem, {

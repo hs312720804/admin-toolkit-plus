@@ -10,7 +10,7 @@
     "esModuleInterop": true,
     "suppressImplicitAnyIndexErrors":true,
     "lib": ["esnext", "dom"],
-    "types": ["vite/client", "element-plus"]
+    "types": ["vite/client", "element-plus", "@vuepress/client/types"]
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"]
 }

@@ -30,7 +30,10 @@ export default defineComponent({
         content = h(ElCheckbox, {
           disabled: true,
           modelValue: getBoolVal(this.modelValue)
-        }, { default: () => this.$slots.default?.() })
+        }, { default: () => {
+          return this.$slots.default && this.$slots.default()
+        }
+        })
       }
     } else {
       if (this.type === 'switch') {
@@ -48,7 +51,10 @@ export default defineComponent({
           modelValue: this.modelValue,
           'onChange': $event => this.$emit('change', $event),
           'onUpdate:modelValue': $event => handleInputVal($event)
-        }, { default: () => this.$slots.default?.() })
+        }, { default: () => {
+          return this.$slots.default && this.$slots.default()
+        }
+        })
       }
     }
     return (

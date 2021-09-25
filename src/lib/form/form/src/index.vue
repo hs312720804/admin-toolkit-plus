@@ -22,7 +22,7 @@ export default defineComponent({
       class: this.readonly ? 'data-form data-form__readonly' : 'data-form',
       ...this.$attrs
     }, 
-    { default: () => this.$slots.default?.() }
+    { default: () => this.$slots.default && this.$slots.default()}
     )
   },
 })

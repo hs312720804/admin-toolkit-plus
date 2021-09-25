@@ -117,7 +117,7 @@ export default {
             return true
           } else {
             const index = selectedAllNodes.findIndex((ele) => {
-              return ele.value === e.parent?.value
+              return ele.value === e.parent.value
             })
             return index === -1
           }

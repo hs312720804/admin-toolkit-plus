@@ -11,9 +11,9 @@ export default defineUserConfig<DefaultThemeOptions>({
   description: '酷开 Vue3.0 组件库',
   themeConfig: {
     navbar: [
-      {text: '文档', link: '/'},
-      {text: 'Changelog', link: 'http://gitlab.skysri.com/FrontEnd/admin-toolkit/blob/master/CHANGELOG.md'},
-      {text: 'GitLab', link: 'http://gitlab.skysri.com/FrontEnd/admin-toolkit'}
+      // {text: '文档', link: '/'},
+      // {text: 'Changelog', link: 'http://gitlab.skysri.com/FrontEnd/admin-toolkit/blob/master/CHANGELOG.md'},
+      {text: 'GitLab', link: 'http://gitlab.skysri.com/flower/admin-toolkit-plus'}
     ],
     locales: {
       '/': {
@@ -33,15 +33,11 @@ export default defineUserConfig<DefaultThemeOptions>({
               '/components/TableTree.md',
               '/components/CardList.md',
               '/components/ContentWrapper.md',
-              // '/components/RemoteSelect.md',
               '/components/Card.md',
               '/components/IconSelect.md',
               '/components/Upload.md',
               '/components/DownloadFile.md',
-              // '/components/FatherSonLink.md',
               '/components/ContentEllipsis.md',
-              // '/components/SelectDialog.md',
-              // '/components/BaseSelector.md',
               '/components/CellEdit.md',
               '/components/InputOrder.md',
               '/components/InputPositiveInt.md',
@@ -66,8 +62,6 @@ export default defineUserConfig<DefaultThemeOptions>({
             children: [
               '/bizComponents/AppParams.md',
               '/bizComponents/AppParamsRead.md',
-              // '/bizComponents/ClickEventSelector.md',
-              // '/components/VideoTags.md',
               '/components/AddFormObj.md',
               '/components/SelectChange.md'
             ]

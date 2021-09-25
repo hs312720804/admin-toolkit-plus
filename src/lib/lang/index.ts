@@ -19,7 +19,8 @@ const messages = {
   }
 }
 const i18n = createI18n({
-  locale: localStorage.lang || 'zh',
+  locale: 'zh',
+  // locale: localStorage.lang || 'zh',
   messages
 })
 export default {
