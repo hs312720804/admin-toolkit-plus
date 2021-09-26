@@ -11,7 +11,7 @@ export default defineUserConfig<DefaultThemeOptions>({
   description: '酷开 Vue3.0 组件库',
   themeConfig: {
     navbar: [
-      // {text: '文档', link: '/'},
+      {text: '文档', link: '/'},
       // {text: 'Changelog', link: 'http://gitlab.skysri.com/FrontEnd/admin-toolkit/blob/master/CHANGELOG.md'},
       {text: 'GitLab', link: 'http://gitlab.skysri.com/flower/admin-toolkit-plus'}
     ],
