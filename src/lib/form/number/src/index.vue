@@ -1,7 +1,19 @@
 
+  <template>
+  <el-form-item v-bind="formItemAttr">
+    <el-input-number
+      v-if="!isReadonly"
+      v-bind="$attrs"
+      :model-value="modelValue"
+      @update:modelValue="$emit('update:modelValue', $event)"
+      @change="$emit('change', $event)"
+    />
+    <template v-else>{{ modelValue }}</template>
+    <slot></slot>
+  </el-form-item>
+</template>
 <script>
-import { h, defineComponent } from 'vue'
-import { ElFormItem, ElInputNumber } from 'element-plus'
+import { inject, defineComponent } from 'vue'
 export default defineComponent({
   name: 'CFormNumber',
   props: {
@@ -13,29 +25,11 @@ export default defineComponent({
       }
     }
   },
-  inject: ['dataForm'],
-  render () {
-    let content = ''
-    if (this.dataForm.readonly) {
-      content = this.modelValue
-    } else {
-      content = h(ElInputNumber, {
-        ref: 'formInputNumber',
-        ...this.$attrs,
-        modelValue: this.modelValue,
-        'onChange': $event => this.$emit('change', $event),
-        'onFocus': $event => this.$emit('focus', $event),
-        'onBlur': $event => this.$emit('blur', $event),
-        'onUpdate:modelValue': $event => this.$emit('update:modelValue', $event)
-      })
+  setup (props, ctx) {
+    const isReadonly = inject('readonly')
+    return {
+      isReadonly
     }
-    return (
-      h(ElFormItem, {
-        ref: 'numberFormItem',
-        class: 'textAlignLeft',
-        ...this.formItemAttr
-      }, { default: () => content })
-    )
   }
 })
 </script>

@@ -10,7 +10,7 @@
 export default {
   data () {
     return {
-      isReadonly: false,
+      isReadonly: true,
       formItemAttr : {
         label: "姓名"
       },

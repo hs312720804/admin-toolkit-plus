@@ -20,7 +20,7 @@ export default {
       formItemAttr: {
         label: '是否正式员工'
       },
-      isReadonly: true,
+      isReadonly: false,
       form: {
         isRegular: 1,
         isIn: 1

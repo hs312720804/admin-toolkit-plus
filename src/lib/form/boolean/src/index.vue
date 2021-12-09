@@ -1,7 +1,33 @@
 
+<template>
+  <el-form-item  v-bind="formItemAttr">
+    <template v-if="!isReadonly">
+      <el-switch
+        v-if="type === 'switch'"
+        :model-value="getBoolVal(modelValue)"
+        @update:modelValue="handleInputVal"
+        @change="$emit('change', $event)"
+        v-bind="$attrs"
+      ></el-switch>
+      <el-checkbox
+        v-else
+        :model-value="getBoolVal(modelValue)"
+        @update:modelValue="handleInputVal"
+        @change="$emit('change', $event)"
+        v-bind="$attrs"
+      >
+        <slot></slot>
+      </el-checkbox>
+    </template>
+    <template v-else>
+      <span v-if="type === 'switch'">{{ getBoolVal(modelValue) ? $t('cMessage.yes') : $t('cMessage.no')  }}</span>
+      <el-checkbox v-else :disabled="true" :value="getBoolVal(modelValue)"></el-checkbox>
+      <slot></slot>
+    </template>
+  </el-form-item>
+</template>
 <script>
-import { h, defineComponent } from 'vue'
-import { ElFormItem, ElSwitch, ElCheckbox } from 'element-plus'
+import { inject, defineComponent } from 'vue'
 export default defineComponent({
   name: 'CFormBoolean',
   props: {
@@ -14,56 +40,23 @@ export default defineComponent({
       }
     }
   },
-  inject: ['dataForm'],
-  render () {
-    let content = ''
-    var getBoolVal = (val) => {
+  emits: ['update:modelValue', 'change'],
+  setup(props, ctx) {
+    const getBoolVal = (val) => {
       return !!val
     }
-    let handleInputVal = (val) => {
-      this.$emit('update:modelValue', !!val)
+    const handleInputVal = (val) => {
+      ctx.emit('update:modelValue', !!val)
     }
-    if (this.dataForm.readonly) {
-      if (this.type === 'switch') {
-        content = getBoolVal(this.modelValue) ? this.$t('message.cMessage.yes') : this.$t('message.cMessage.no') 
-      } else {
-        content = h(ElCheckbox, {
-          disabled: true,
-          modelValue: getBoolVal(this.modelValue)
-        }, { default: () => {
-          return this.$slots.default && this.$slots.default()
-        }
-        })
-      }
-    } else {
-      if (this.type === 'switch') {
-        content = h(ElSwitch, {
-          ref: 'formBoolean',
-          ...this.$attrs,
-          modelValue: this.modelValue,
-          'onChange': $event => this.$emit('change', $event),
-          'onUpdate:modelValue': $event => handleInputVal($event)
-        })
-      } else {
-        content = h(ElCheckbox, {
-          ...this.$attrs,
-          ref: 'formBoolean',
-          modelValue: this.modelValue,
-          'onChange': $event => this.$emit('change', $event),
-          'onUpdate:modelValue': $event => handleInputVal($event)
-        }, { default: () => {
-          return this.$slots.default && this.$slots.default()
-        }
-        })
-      }
+    const isReadonly = inject('readonly')
+    const handleChange = (val) => {
+      ctx.emit('change', val)
     }
-    return (
-      h(ElFormItem, {
-        ref: 'booleanFormItem',
-        class: 'textAlignLeft',
-        ...this.formItemAttr
-      }, { default: () => content })
-    )
+    return {
+      getBoolVal,
+      handleInputVal,
+      isReadonly
+    }
   }
 })
 </script>

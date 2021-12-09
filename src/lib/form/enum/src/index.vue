@@ -1,19 +1,77 @@
 
-<script>
-import { h, defineComponent } from 'vue'
-import { ElFormItem, ElRadioGroup, ElRadio, ElSelect, ElOption } from 'element-plus'
+<template>
+  <el-form-item v-bind="formItemAttr">
+    <template v-if="!isReadonly">
+      <el-radio-group
+        v-if="type === 'radio'"
+        v-bind="$attrs"
+        :model-value="modelValue"
+        @update:modelValue="handleInputVal"
+        @change="$emit('change', $event)"
+      >
+        <el-radio
+          v-for="(item, key) in options"
+          :key="key"
+          :disabled="item.disabled"
+          :label="item.value"
+        >
+          {{ item.label }}
+        </el-radio>
+      </el-radio-group>
+      <el-select
+        v-else
+        ref="select"
+        v-bind="$attrs"
+        :model-value="modelValue"
+        @update:modelValue="handleInputVal"
+        @change="$emit('change', $event)"
+        @visible-change="$emit('visible-change', $event)"
+        @clear="$emit('clear', $event)"
+        @remove-tag="$emit('remove-tag', $event)"
+        @focus="$emit('focus', $event)"
+        @blur="$emit('blur', $event)"
+      >
+        <el-option
+          v-for="(item, key) in options"
+          :key="key"
+          :disabled="item.disabled"
+          :label="item.label"
+          :value="item.value"
+        ></el-option>
+      </el-select>
+    </template>
+    <template v-else>{{ getLabel(modelValue) }}</template>
+    <slot></slot>
+  </el-form-item>
+</template>
+
+<script lang="ts">
+import { defineComponent, inject, PropType } from 'vue'
+import { useI18n } from 'vue-i18n'
+import { ElMessageBox } from 'element-plus'
 export default defineComponent({
   name: 'CFormEnum',
   props: {
-    modelValue: {},
-    confirm: {},
+    modelValue: {
+      type: [String, Number],
+      default: () => ''
+    },
+    confirm: {
+      type: Object as PropType<{ title: string, content: string }>,
+      default: () => ''
+    },
     options: {
-      type: Array,
+      type: Array as PropType<{ label: string, value: string }[]>,
       default: () => {
         return []
       }
     },
-    type: {},
+    type: {
+      type: String,
+      default: () => {
+        return 'select'
+      }
+    },
     formItemAttr: {
       type: Object,
       default: () => {
@@ -21,87 +79,52 @@ export default defineComponent({
       }
     }
   },
-  inject: ['dataForm'],
-  render () {
-    let content = ''
-    var getLabel = (val) => {
-      const options = this.options || []
-      const selected = options.filter(({ value }) => val.indexOf(value) > -1)
+  emits: ['update:modelValue', 'change', 'visible-change', 'remove-tag', 'clear', 'blur', 'focus'],
+  setup(props, ctx) {
+    const { t } = useI18n()
+    const _$t = t
+    const getLabel = (val: string) => { 
+      const options = props.options || []
+      interface AA {
+        label: string,
+        value: string
+      }
+      const selected = options.filter((e): Boolean => {
+        return val.indexOf(e.value) > -1
+      })
       if (selected.length > 0) {
-        return selected.map(({ label }) => label).join(', ')
+        return selected.map(({ label }) => {
+          return label
+        }).join(', ')
       }
     }
-    var handleInputVal = (val) => {
-      const confirm = this.confirm
+    const handleInputVal = (val: string | number) => {
+      const confirm = props.confirm
       if (confirm) {
         let title
         let content
         if (typeof confirm === 'string') {
-          title = this.$t('message.cMessage.tip')
+          title = _$t('message.cMessage.tip')
           content = confirm
         } else {
           title = confirm.title
           content = confirm.content
         }
-        this.$confirm(content, title).then(() => {
-          this.$emit('update:modelValue', val)
-        }).catch(() => { })
-      } else {
-        this.$emit('update:modelValue', val)
-      }
-    }
-    if (this.dataForm.readonly) {
-      content = getLabel(this.modelValue)
-    } else {
-      if (this.type === 'radio') {
-        const radioOptions = this.options.map((e, i) => {
-          return h(ElRadio, {
-            key: i,
-            label: e.value,
-            disabled: e.disabled
-          }, { defalut: () => e.label })
-        })
-        content = h(ElRadioGroup, {
-          ref: 'formSingleSelect',
-          ...this.$attrs,
-          modelValue: this.modelValue,
-          'onChange': $event => this.$emit('change', $event),
-          'onUpdate:modelValue': $event => handleInputVal($event)
-        }, { default: () => radioOptions })
-      } else {
-        const selectOptions = this.options.map((e, i) => {
-          return h(ElOption, {
-            key: i,
-            label: e.label,
-            value: e.value,
-            disabled: e.disabled
+        ElMessageBox.confirm(content, title)
+          .then(() => {
+            ctx.emit('update:modelValue', val)
           })
-        })
-        content = h(ElSelect, {
-          ...this.$attrs,
-          ref: 'formSingleSelect',
-          multiple: false,
-          modelValue: this.modelValue,
-          'onChange': $event => this.$emit('change', $event),
-          'onVisibleChange': $event => this.$emit('visible-change', $event),
-          'onRemoveTag': $event => this.$emit('remove-tag', $event),
-          'onClear': $event => this.$emit('clear', $event),
-          'onBlur': $event => this.$emit('blur', $event),
-          'onFocus': $event => this.$emit('focus', $event),
-          'onUpdate:modelValue': $event => handleInputVal($event)
-        }, { default: () => selectOptions })
+          .catch(() => { return '' })
+      } else {
+        ctx.emit('update:modelValue', val)
       }
     }
-    return (
-      h(ElFormItem, {
-        ref: 'singleSelectFormItem',
-        class: 'textAlignLeft',
-        ...this.formItemAttr
-      }, { default: () => content })
-    )
+    const isReadonly = inject('readonly')
+    return {
+      getLabel,
+      handleInputVal,
+      isReadonly
+    }
   }
 })
 </script>
-
-<style>
-</style>

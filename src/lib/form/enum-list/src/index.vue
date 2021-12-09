@@ -1,19 +1,73 @@
-
-<script>
-import { h, defineComponent } from 'vue'
-import { ElFormItem, ElCheckboxGroup, ElCheckbox, ElSelect, ElOption } from 'element-plus'
+<template>
+  <el-form-item v-bind="formItemAttr">
+    <template v-if="!isReadonly">
+      <el-checkbox-group
+        v-bind="$attrs"
+        v-if="type === 'checkbox'"
+        :model-value="modelValue"
+        @update:modelValue="handleInputVal"
+        @change="$emit('change', $event)"
+      >
+        <el-checkbox
+          v-for="(item, key) in options"
+          :disabled="item.disabled"
+          :key="key"
+          :label="item.value"
+        >{{ item.label }}</el-checkbox>
+      </el-checkbox-group>
+      <el-select
+        v-else
+        :model-value="modelValue"
+         v-bind="$attrs"
+         :multiple="true"
+        @update:modelValue="handleInputVal"
+        @change="$emit('change', $event)"
+        @visible-change="$emit('visible-change', $event)"
+        @clear="$emit('clear', $event)"
+        @remove-tag="$emit('remove-tag', $event)"
+        @focus="$emit('focus', $event)"
+        @blur="$emit('blur', $event)"
+      >
+        <el-option
+          v-for="(item, key) in options"
+          :disabled="item.disabled"
+          :key="key"
+          :label="item.label"
+          :value="item.value"
+        ></el-option>
+      </el-select>
+    </template>
+    <template v-else>{{ getLabel(modelValue) }}</template>
+    <slot></slot>
+  </el-form-item>
+</template>
+<script lang="ts">
+import { defineComponent, inject, PropType } from 'vue'
+import { ElMessageBox } from 'element-plus'
+import { useI18n } from 'vue-i18n'
 export default defineComponent({
   name: 'CFormEnumList',
   props: {
-    modelValue: {},
-    confirm: {},
-    options: {
+    modelValue: {
       type: Array,
+      default: () => ''
+    },
+    confirm: {
+      type: Object as PropType<{ title: string, content: string }>,
+      default: () => ''
+    },
+    options: {
+      type: Array as PropType<{ label: string, value: string }[]>,
       default: () => {
         return []
       }
     },
-    type: {},
+    type: {
+      type: String,
+      default: () => {
+        return 'select'
+      }
+    },
     formItemAttr: {
       type: Object,
       default: () => {
@@ -21,87 +75,47 @@ export default defineComponent({
       }
     }
   },
-  inject: ['dataForm'],
-  render () {
-    let content = ''
-    var getLabel = (val) => {
-      const options = this.options || []
-      const selected = options.filter(({ value }) => val.indexOf(value) > -1)
+  emits: ['update:modelValue', 'change', 'visible-change', 'remove-tag', 'clear', 'blur', 'focus'],
+  setup(props, ctx) {
+    const { t } = useI18n()
+    const _$t = t
+    const getLabel = (val: string) => { 
+      const options = props.options || []
+      const selected = options.filter(({ value }) => {
+        return val.indexOf(value) > -1
+      })
       if (selected.length > 0) {
         return selected.map(({ label }) => label).join(', ')
       }
     }
-    var handleInputVal = (val) => {
-      const confirm = this.confirm
+    const handleInputVal = (val: string | number) => {
+      const confirm = props.confirm
       if (confirm) {
         let title
         let content
         if (typeof confirm === 'string') {
-          title = this.$t('message.cMessage.tip')
+          title = _$t('message.cMessage.tip')
           content = confirm
         } else {
           title = confirm.title
           content = confirm.content
         }
-        this.$confirm(content, title).then(() => {
-          this.$emit('update:modelValue', val)
-        }).catch(() => { })
-      } else {
-        this.$emit('update:modelValue', val)
-      }
-    }
-    if (this.dataForm.readonly) {
-      content = getLabel(this.modelValue)
-    } else {
-      if (this.type === 'checkbox') {
-        const checkboxs = this.options.map((e, i) => {
-          return h(ElCheckbox, {
-            key: i,
-            label: e.value,
-            disabled: e.disabled
-          }, { defalut: () => e.label })
-        })
-        content = h(ElCheckboxGroup, {
-          ref: 'formMultipleSelect',
-          ...this.$attrs,
-          modelValue: this.modelValue,
-          'onChange': $event => this.$emit('change', $event),
-          'onUpdate:modelValue': $event => handleInputVal($event)
-        }, { default: () => checkboxs })
-      } else {
-        const selectOptions = this.options.map((e, i) => {
-          return h(ElOption, {
-            key: i,
-            label: e.label,
-            value: e.value,
-            disabled: e.disabled
+        ElMessageBox.confirm(content, title)
+          .then(() => {
+            ctx.emit('update:modelValue', val)
           })
-        })
-        content = h(ElSelect, {
-          ...this.$attrs,
-          ref: 'formMultipleSelect',
-          multiple: true,
-          modelValue: this.modelValue,
-          'onChange': $event => this.$emit('change', $event),
-          'onVisibleChange': $event => this.$emit('visible-change', $event),
-          'onRemoveTag': $event => this.$emit('remove-tag', $event),
-          'onClear': $event => this.$emit('clear', $event),
-          'onBlur': $event => this.$emit('blur', $event),
-          'onFocus': $event => this.$emit('focus', $event),
-          'onUpdate:modelValue': $event => handleInputVal($event)
-        }, { default: () => selectOptions })
+          .catch(() => { return '' })
+      } else {
+        ctx.emit('update:modelValue', val)
       }
     }
-    return (
-      h(ElFormItem, {
-        ref: 'multipleSelectFormItem',
-        class: 'textAlignLeft',
-        ...this.formItemAttr
-      }, { default: () => content })
-    )
+    const isReadonly = inject('readonly')
+    return {
+      getLabel,
+      handleInputVal,
+      isReadonly
+    }
   }
 })
 </script>
 
-<style>
-</style>

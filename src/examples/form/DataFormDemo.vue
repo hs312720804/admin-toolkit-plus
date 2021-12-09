@@ -1,9 +1,9 @@
 <template>
   <div>
-    <div class="switch-readonly">
+    <!-- <div class="switch-readonly">
       读写模式切换
       <el-switch v-model="isReadonly" />
-    </div>
+    </div> -->
     <c-form :label-width="'120px'" ref="form" :readonly="isReadonly" :model="form" :rules="rules">
       <c-form-string label="姓名" prop="name" v-model="form.name" />
       <c-form-number label="年龄" v-model="form.age" />

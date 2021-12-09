@@ -1,7 +1,19 @@
-<script>
-import { h, defineComponent } from 'vue'
-import { ElFormItem, ElInput } from 'element-plus'
+<template>
+  <el-form-item v-bind="ElFormItemAttr">
+    <el-input
+      v-if="!isReadonly"
+      :model-value="modelValue"
+      v-bind="$attrs"
+      @update:modelValue="$emit('update:modelValue', $event)"
+      @change="$emit('change', $event)"
+    />
+    <template v-else>{{ modelValue }}</template>
+  </el-form-item>
+</template>
+<script lang="ts">
+import { defineComponent, inject } from 'vue'
 import _ from 'lodash'
+import { useI18n } from 'vue-i18n'
 export default defineComponent({
   name: 'CFormMac',
   props: {
@@ -13,82 +25,58 @@ export default defineComponent({
       }
     }
   },
-  inject: ['dataForm'],
-  render () {
-    var validateMac = (rule, value, callback) => {
+  setup (props, ctx) {
+    const isReadonly = inject('readonly')
+    let ElFormItemAttr = props.formItemAttr
+    const { t } = useI18n()
+    const _$t = t
+    const validateMac = (rule: object, value: string, callback: Function) => {
       const reg = /^[a-fA-F0-9]{12}$/
       value = _.trim(value)
       if (value !== '' && !reg.test(value)) {
-        callback(new Error(this.$t('message.cMessage.inputRuleMac')))
+        callback(new Error(_$t('message.cMessage.inputRuleMac')))
       } else {
         callback()
       }
     }
-    var validateMacs = (rule, value, callback) => {
+    const validateMacs = (rule: object, value: string, callback: Function) => {
       const reg = /^[a-fA-F0-9]{12}$/
       if (value.indexOf('，') > -1) {
-        callback(new Error(this.$t('message.cMessage.useEnglishComma')))
+        callback(new Error(_$t('message.cMessage.useEnglishComma')))
       }
-      value = value.split(',')
+      const values = value.split(',')
       try {
-        value.forEach((e, index) => {
+        values.forEach((e, index) => {
           if (e !== '' && !reg.test(_.trim(e))) {
             throw Error(
-              this.$t('message.cMessage.the') +
+              _$t('message.cMessage.the') +
                 (index + 1) +
-                this.$t('message.cMessage.macError')
+                _$t('message.cMessage.macError')
             )
           }
         })
         callback()
-      } catch (e) {
+      } catch (e: any) {
         callback(new Error(e.message))
       }
     }
-    const type = this.$attrs.type
-    const rules = this.formItemAttr.rules
-    let macRules = []
+    const rules = props.formItemAttr.rules
+    const type = ctx.attrs.type
+    let macRules
     const customRules = {
       singleMac: [{ validator: validateMac, trigger: 'blur' }],
       multipleMac: [{ validator: validateMacs, trigger: 'blur' }]
     }
     if (type === 'textarea') {
-      macRules = rules
-        ? customRules.multipleMac.concat(rules)
-        : customRules.multipleMac
+      macRules = rules ? customRules.multipleMac.concat(rules) : customRules.multipleMac
     } else {
-      macRules = rules
-        ? customRules.singleMac.concat(rules)
-        : customRules.singleMac
+      macRules = rules ? customRules.singleMac.concat(rules) : customRules.singleMac
     }
-    let content = ''
-    if (this.dataForm.readonly) {
-      content = this.modelValue
-    } else {
-      content = h(ElInput, {
-        ...this.$attrs,
-         ref: 'formMac',
-        modelValue: this.modelValue,
-        onChange: $event => this.$emit('change', $event),
-        onFocus: $event => this.$emit('focus', $event),
-        onBlur: $event => this.$emit('blur', $event),
-        onClear: $event => this.$emit('clear', $event),
-        onInput: $event => this.$emit('input', $event),
-        'onUpdate:modelValue': $event => this.$emit('update:modelValue', $event)
-      })
+    ElFormItemAttr.rules = macRules
+    return {
+      isReadonly,
+      ElFormItemAttr
     }
-    return h(
-      ElFormItem,
-      {
-        ref: 'macFormItem',
-        class: 'textAlignLeft',
-        ...this.formItemAttr,
-        rules: macRules
-      },
-      { default: () => content }
-    )
   }
 })
 </script>
-
-<style></style>

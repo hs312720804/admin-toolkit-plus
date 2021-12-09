@@ -1,7 +1,15 @@
-
+<template>
+  <el-form-item  v-bind="formItemAttr">
+    <template v-if="!isReadonly">
+      <slot name="edit"></slot>
+    </template>
+    <template v-else>
+      <slot name="read">{{ modelValue }}</slot>
+    </template>
+  </el-form-item>
+</template>
 <script>
-import { h, defineComponent } from 'vue'
-import { ElFormItem } from 'element-plus'
+import { h, defineComponent, inject } from 'vue'
 export default defineComponent({
   name: 'CFormAny',
   props: {
@@ -13,24 +21,11 @@ export default defineComponent({
       }
     }
   },
-  inject: ['dataForm'],
-  render () {
-    let content = ''
-    if (this.dataForm.readonly) {
-      content = this.$slots.read() || this.modelValue
-    } else {
-      content = this.$slots.edit()
+  setup () {
+    const isReadonly = inject('readonly')
+    return {
+      isReadonly
     }
-    return (
-      h(ElFormItem, {
-        ref: 'stringFormItem',
-        class: 'textAlignLeft',
-        ...this.formItemAttr
-      }, { default: () => content })
-    )
   }
 })
 </script>
-
-<style>
-</style>
