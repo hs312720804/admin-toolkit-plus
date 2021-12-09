@@ -1,7 +1,11 @@
 <template>
   <el-container>
-    <div :class="isCollapseMenu?'aside_menu aside__menu_collapse':'aside_menu' ">
-      <div class="log">{{isCollapseMenu?'toolkit':"admin-toolkit-plus"}}</div>
+    <div
+      :class="isCollapseMenu ? 'aside_menu aside__menu_collapse' : 'aside_menu'"
+    >
+      <div class="log">
+        {{ isCollapseMenu ? 'toolkit' : 'admin-toolkit-plus' }}
+      </div>
       <c-menu
         :isCollapse="isCollapseMenu"
         :items="items"
@@ -14,10 +18,9 @@
         <el-button
           class="collpase-btn"
           type="text"
-          :icon="isCollapseMenu? 'iconfont el-icon-cc-indent' : 'iconfont el-icon-cc-outdent'"
           @click="toggleMenu"
         ></el-button>
-        <c-breadcrumb class="breadcrumb" :items="breadcrumb"/>
+        <c-breadcrumb class="breadcrumb" :items="breadcrumb" />
         <!-- <div>
             <span class="v-top" style="line-height: 30px">Change theme color to: </span>
             <change-color></change-color>
@@ -102,14 +105,14 @@ export default {
   padding: 10px 0
   line-height: 40px
   color: white
-.main_menu .el-submenu__item
+.main_menu .el-sub-menu__item
   color: #c2c5cc
 .main_menu
   background-color: transparent
   border-right: none
-  :deep(.el-submenu__title)
+  :deep(.el-sub-menu__title)
     color: hsla(0, 0%, 100%, 0.7)
-  :deep(.el-submenu__title:hover)
+  :deep(.el-sub-menu__title:hover)
     background: transparent
     color: hsla(0, 0%, 100%, 0.9)
   :deep(.el-menu)

@@ -1,8 +1,16 @@
 <template>
   <div>
     <ul>
-      <li class="item" v-for="(item, index) in items" :key="index + Math.random().toString()">
-        <c-input-order :value="index + 1" @order-data="handleOrderData" :data="items"/>
+      <li
+        class="item"
+        v-for="(item, index) in items"
+        :key="index + Math.random().toString()"
+      >
+        <c-input-order
+          :value="index + 1"
+          @order-data="handleOrderData"
+          :data="items"
+        />
         {{ item.name }}
       </li>
     </ul>
@@ -51,7 +59,6 @@ export default {
   methods: {
     handleOrderData (data) {
       this.items = data
-      console.log(this.items.length)
     }
   }
 }

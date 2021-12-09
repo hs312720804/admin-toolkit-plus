@@ -1,4 +1,3 @@
-
 <template>
   <el-form-item v-bind="formItemAttr">
     <template v-if="!isReadonly">
@@ -57,11 +56,11 @@ export default defineComponent({
       default: () => ''
     },
     confirm: {
-      type: Object as PropType<{ title: string, content: string }>,
+      type: [String, Object],
       default: () => ''
     },
     options: {
-      type: Array as PropType<{ label: string, value: string }[]>,
+      type: Array as PropType<{ label: string; value: string }[]>,
       default: () => {
         return []
       }
@@ -79,23 +78,35 @@ export default defineComponent({
       }
     }
   },
-  emits: ['update:modelValue', 'change', 'visible-change', 'remove-tag', 'clear', 'blur', 'focus'],
-  setup(props, ctx) {
+  emits: [
+    'update:modelValue',
+    'change',
+    'visible-change',
+    'remove-tag',
+    'clear',
+    'blur',
+    'focus'
+  ],
+  setup (props, ctx) {
     const { t } = useI18n()
     const _$t = t
-    const getLabel = (val: string) => { 
+    const getLabel = (val: string) => {
       const options = props.options || []
       interface AA {
-        label: string,
+        label: string
         value: string
       }
-      const selected = options.filter((e): Boolean => {
-        return val.indexOf(e.value) > -1
-      })
+      const selected = options.filter(
+        (e): Boolean => {
+          return val.indexOf(e.value) > -1
+        }
+      )
       if (selected.length > 0) {
-        return selected.map(({ label }) => {
-          return label
-        }).join(', ')
+        return selected
+          .map(({ label }) => {
+            return label
+          })
+          .join(', ')
       }
     }
     const handleInputVal = (val: string | number) => {
@@ -114,7 +125,9 @@ export default defineComponent({
           .then(() => {
             ctx.emit('update:modelValue', val)
           })
-          .catch(() => { return '' })
+          .catch(() => {
+            return ''
+          })
       } else {
         ctx.emit('update:modelValue', val)
       }

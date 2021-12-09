@@ -1,6 +1,6 @@
 {
   "name": "@ccprivate/admin-toolkit-plus",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "files": [
     "dist",
     "src/lib",
@@ -24,12 +24,12 @@
   },
   "dependencies": {
     "@stateform/element": "^0.1.14",
-    "element-plus": "^1.0.2-beta.40",
+    "element-plus": "^1.2.0-beta.5",
     "lodash": "^4.17.21",
     "moment": "^2.29.1",
     "pinyin-match": "^1.2.1",
     "vssue": "^1.4.8",
-    "vue": "^3.0.5",
+    "vue": "^3.2.24",
     "vue-i18n": "^9.1.6",
     "vue-router": "^4.0.6"
   },

@@ -1,5 +1,5 @@
 <script lang="ts">
-import { defineComponent, h, provide } from 'vue'
+import { defineComponent, h, provide, watch, watchEffect, ref } from 'vue'
 import { ElForm } from 'element-plus'
 export default defineComponent({
   name: 'CForm',
@@ -12,8 +12,14 @@ export default defineComponent({
     }
   },
   setup (props) {
-    console.log('props', props.readonly)
-    provide('readonly', props.readonly)
+    const readonly = ref(props.readonly)
+    watch(
+      () => props.readonly,
+      (count, prevCount) => {
+        readonly.value = count
+      }
+    )
+    provide('readonly', readonly)
   },
   render () {
     return h(

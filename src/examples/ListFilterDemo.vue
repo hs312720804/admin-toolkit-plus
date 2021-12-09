@@ -11,12 +11,8 @@
       @reset="handleResetSearch"
       @filter-expand="handlefilterExpand"
     >
-      <template
-        #outloop
-      >
-        <c-form-any
-          :prop="customColumn.prop"
-        >
+      <template #outloop>
+        <c-form-any :prop="customColumn.prop">
           <!-- <div slot="edit" style="color:#777; margin-right:10px"> -->
           <template #edit>
             <div style="color:#777; margin-right:10px">
@@ -44,12 +40,8 @@
       @reset="handleResetSearch"
       @filter-expand="handlefilterExpand"
     >
-      <template
-        #outloop
-      >
-        <c-form-any
-          :prop="customColumn.prop"
-        >
+      <template #outloop>
+        <c-form-any :prop="customColumn.prop">
           <template #edit>
             <div style="color:#777; margin-right:10px">
               超
@@ -73,9 +65,7 @@ export default {
   data () {
     return {
       msg: 'Welcome to Your Vue.js App',
-      form: {
-
-      },
+      form: {},
       filterExpand: false,
       shortHeader: [
         {
@@ -256,7 +246,7 @@ export default {
           }
         ],
         data: []
-      },
+      }
     }
   },
   methods: {
@@ -264,7 +254,6 @@ export default {
       alert('查询')
     },
     handlefilterExpand (msg) {
-      console.log('msg==>', msg)
       this.filterExpand = msg
     },
     handleResetSearch () {
@@ -272,7 +261,7 @@ export default {
         this.form[key] = ''
       })
       // this.handleSearch()
-    },
+    }
   },
   created () {
     // this.loadData()
@@ -292,7 +281,8 @@ export default {
   color: #2c3e50;
 }
 
-h1, h2 {
+h1,
+h2 {
   font-weight: normal;
 }
 

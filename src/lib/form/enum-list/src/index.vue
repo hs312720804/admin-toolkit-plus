@@ -13,13 +13,14 @@
           :disabled="item.disabled"
           :key="key"
           :label="item.value"
-        >{{ item.label }}</el-checkbox>
+          >{{ item.label }}</el-checkbox
+        >
       </el-checkbox-group>
       <el-select
         v-else
         :model-value="modelValue"
-         v-bind="$attrs"
-         :multiple="true"
+        v-bind="$attrs"
+        :multiple="true"
         @update:modelValue="handleInputVal"
         @change="$emit('change', $event)"
         @visible-change="$emit('visible-change', $event)"
@@ -53,11 +54,11 @@ export default defineComponent({
       default: () => ''
     },
     confirm: {
-      type: Object as PropType<{ title: string, content: string }>,
+      type: [String, Object],
       default: () => ''
     },
     options: {
-      type: Array as PropType<{ label: string, value: string }[]>,
+      type: Array as PropType<{ label: string; value: string }[]>,
       default: () => {
         return []
       }
@@ -75,11 +76,19 @@ export default defineComponent({
       }
     }
   },
-  emits: ['update:modelValue', 'change', 'visible-change', 'remove-tag', 'clear', 'blur', 'focus'],
-  setup(props, ctx) {
+  emits: [
+    'update:modelValue',
+    'change',
+    'visible-change',
+    'remove-tag',
+    'clear',
+    'blur',
+    'focus'
+  ],
+  setup (props, ctx) {
     const { t } = useI18n()
     const _$t = t
-    const getLabel = (val: string) => { 
+    const getLabel = (val: string) => {
       const options = props.options || []
       const selected = options.filter(({ value }) => {
         return val.indexOf(value) > -1
@@ -104,7 +113,9 @@ export default defineComponent({
           .then(() => {
             ctx.emit('update:modelValue', val)
           })
-          .catch(() => { return '' })
+          .catch(() => {
+            return ''
+          })
       } else {
         ctx.emit('update:modelValue', val)
       }
@@ -118,4 +129,3 @@ export default defineComponent({
   }
 })
 </script>
-

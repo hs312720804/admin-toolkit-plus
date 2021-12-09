@@ -1,11 +1,10 @@
 <template>
   <el-form-item v-bind="ElFormItemAttr">
     <el-date-picker
-        v-if="!isReadonly"
-       :model-value="modelValue"
-       v-bind="$attrs"
+      v-if="!isReadonly"
+      :model-value="modelValue"
+      v-bind="$attrs"
       type="datetimerange"
-      align="right"
       :disabled-date="disabledDate"
       :default-time="setDefaultValue()"
       @update:modelValue="$emit('update:modelValue', $event)"
@@ -14,14 +13,15 @@
       @blur="$emit('blur', $event)"
     ></el-date-picker>
     <template v-else>
-      <template v-if="modelValue!=='' && modelValue!==undefined">
-          {{ $moment(modelValue[0]).format('YYYY-MM-DD HH:mm:ss') }} ~ {{ $moment(modelValue[1]).format('YYYY-MM-DD HH:mm:ss') }}
+      <template v-if="modelValue !== '' && modelValue !== undefined">
+        {{ $moment(modelValue[0]).format('YYYY-MM-DD HH:mm:ss') }} ~
+        {{ $moment(modelValue[1]).format('YYYY-MM-DD HH:mm:ss') }}
       </template>
-      </template>
+    </template>
   </el-form-item>
 </template>
 <script>
-import { inject , defineComponent} from 'vue'
+import { inject, defineComponent } from 'vue'
 import moment from 'moment'
 import { useI18n } from 'vue-i18n'
 export default defineComponent({
@@ -43,35 +43,60 @@ export default defineComponent({
       }
     }
   },
-  emits: ['update:modelValue', 'change','focus', 'blur', 'focus'],
-  setup(props, ctx) {
+  emits: ['update:modelValue', 'change', 'focus', 'blur', 'focus'],
+  setup (props, ctx) {
     const { t } = useI18n()
     const _$t = t
     const isReadonly = inject('readonly')
-    const disabledDate = (time) => {
-      return time.getTime() > Date.now() + (props.validDay - 1) * 24 * 60 * 60 * 1000 || time.getTime() < Date.now() - 24 * 60 * 60 * 1000
+    const disabledDate = time => {
+      return (
+        time.getTime() >
+          Date.now() + (props.validDay - 1) * 24 * 60 * 60 * 1000 ||
+        time.getTime() < Date.now() - 24 * 60 * 60 * 1000
+      )
     }
     const setDefaultValue = () => {
       let currentDate = new Date()
-      currentDate.setMinutes(currentDate.getMinutes() + parseInt(props.delayTime))
-      let now = currentDate.getHours() + ':' + currentDate.getMinutes() + ':' + currentDate.getSeconds()
-      return [new Date(2000, 1, 1, currentDate.getHours(), currentDate.getMinutes(), currentDate.getSeconds()),  new Date(2000,1,1,23, 59, 59)]
+      currentDate.setMinutes(
+        currentDate.getMinutes() + parseInt(props.delayTime)
+      )
+      let now =
+        currentDate.getHours() +
+        ':' +
+        currentDate.getMinutes() +
+        ':' +
+        currentDate.getSeconds()
+      return [
+        new Date(
+          2000,
+          1,
+          1,
+          currentDate.getHours(),
+          currentDate.getMinutes(),
+          currentDate.getSeconds()
+        ),
+        new Date(2000, 1, 1, 23, 59, 59)
+      ]
     }
     const validatEffectiveTime = (rule, value, callback) => {
       if (value === null) {
-         ctx.emit('update:modelValue', '')
+        ctx.emit('update:modelValue', '')
       }
       const startTime = new Date(value[0]).getTime()
       const currentTime = new Date().getTime()
       if (startTime < currentTime) {
-         callback(new Error(_$t('message.cMessage.startGEnd')))
+        callback(new Error(_$t('message.cMessage.startGEnd')))
       } else {
-         callback()
+        callback()
       }
     }
-    const effectiveTimeRules = [{ validator: validatEffectiveTime, trigger: ['blur', 'change'] }]
+    const effectiveTimeRules = [
+      { validator: validatEffectiveTime, trigger: ['blur', 'change'] }
+    ]
     const ElFormItemAttr = props.formItemAttr
-    ElFormItemAttr.rules  = props.formItemAttr.rules ? effectiveTimeRules.concat(props.formItemAttr.rules) : effectiveTimeRules
+    ElFormItemAttr.rules = props.formItemAttr.rules
+      ? effectiveTimeRules.concat(props.formItemAttr.rules)
+      : effectiveTimeRules
     return {
       isReadonly,
       disabledDate,
@@ -82,5 +107,4 @@ export default defineComponent({
 })
 </script>
 
-<style>
-</style>
+<style></style>

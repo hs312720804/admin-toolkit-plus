@@ -67,7 +67,6 @@ export default {
           this.$nextTick(() => {
             this.$refs.AddMultiObj.expandErrorItem()
           })
-          console.log('error submit!!')
           return false
         }
       })
