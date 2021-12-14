@@ -21,15 +21,15 @@
             :index="child.route"
           >
             <template v-if="item.path" #title>
-              <a
+              <!-- <a
                 :href="
                   '#' + item.path + (item.path === '/' ? '' : '/') + child.route
                 "
                 onclick="return false"
-              >
-                <i v-if="child.icon" :class="child.icon"></i>
-                <span>{{ child.title }}</span>
-              </a>
+              > -->
+              <i v-if="child.icon" :class="child.icon"></i>
+              <span>{{ child.title }}</span>
+              <!-- </a> -->
             </template>
             <template v-else #title>
               <i v-if="child.icon" :class="child.icon"></i>
@@ -83,11 +83,3 @@ export default {
   created () {}
 }
 </script>
-<style lang="stylus">
-.el-sub-menu .el-menu-item
-  padding 0
-.el-sub-menu .el-menu-item a
-  display block
-  color rgba(255,255,255,0.7)
-  text-decoration none
-</style>

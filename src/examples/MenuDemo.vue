@@ -1,7 +1,8 @@
 <template>
   <div>
-    <c-menu :items="menu" background-color="#282c34"
-    textColor="#00ff50"/>
+    <!-- <c-menu :items="menu" background-color="#282c34"
+    textColor="#00ff50"/> -->
+    <c-menu :items="menu" background-color="#282c34" textColor="#00ff50" />
     <!-- <c-menu :items="threeLevelMenu" mode="horizontal"/> -->
   </div>
 </template>
