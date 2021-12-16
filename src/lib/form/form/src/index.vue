@@ -1,6 +1,6 @@
 <script lang="ts">
-import { defineComponent, h, provide, watch, watchEffect, ref } from 'vue'
-import { ElForm } from 'element-plus'
+import { defineComponent, h, provide, watch, ref, resolveComponent } from 'vue'
+// import { ElForm } from 'element-plus'
 export default defineComponent({
   name: 'CForm',
   props: {
@@ -11,7 +11,7 @@ export default defineComponent({
       }
     }
   },
-  setup (props) {
+  setup (props, { attrs, slots }) {
     const readonly = ref(props.readonly)
     watch(
       () => props.readonly,
@@ -20,18 +20,29 @@ export default defineComponent({
       }
     )
     provide('readonly', readonly)
-  },
-  render () {
-    return h(
+    const ElForm = resolveComponent('el-form')
+
+    return () => h(
       ElForm,
       {
         ref: 'form',
-        class: this.readonly ? 'data-form data-form__readonly' : 'data-form',
-        ...this.$attrs
+        class: readonly ? 'data-form data-form__readonly' : 'data-form',
+        ...attrs
       },
-      { default: () => this.$slots.default?.() }
+      { default: () => slots.default?.() }
     )
-  }
+  },
+  // render () {
+  //   return h(
+  //     ElForm,
+  //     {
+  //       ref: 'form',
+  //       class: this.readonly ? 'data-form data-form__readonly' : 'data-form',
+  //       ...this.$attrs
+  //     },
+  //     { default: () => this.$slots.default?.() }
+  //   )
+  // }
 })
 </script>
 <style lang="stylus" scoped>
