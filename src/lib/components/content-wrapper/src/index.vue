@@ -2,14 +2,14 @@
   <div class="content-list">
     <slot></slot>
     <el-pagination
-    @size-change="handleSizeChange"
-    @current-change="handleCurrentChange"
-    :current-page="pagination.currentPage"
-    :page-sizes="[5, 10, 15, 20, 50, 100]"
-    :page-size="pagination.pageSize"
-    :layout ="layout"
-    :total="pagination.total">
-  </el-pagination>
+      @size-change="handleSizeChange"
+      @current-change="handleCurrentChange"
+      :current-page="pagination.currentPage"
+      :page-sizes="[5, 10, 15, 20, 50, 100]"
+      :page-size="pagination.pageSize"
+      :layout ="layout"
+      :total="pagination.total">
+    </el-pagination>
   </div>
 </template>
 <script lang="ts">

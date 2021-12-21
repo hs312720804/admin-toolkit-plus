@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import { ElTable, ElTableColumn, ElCheckbox, ElRadio } from 'element-plus'
 import TableWrapper from '../../table-wrapper/src/Index.vue'
 import { defineComponent, h } from 'vue'

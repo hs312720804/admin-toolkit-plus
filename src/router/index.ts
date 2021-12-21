@@ -9,7 +9,7 @@ const routes = [
     redirect: 'actionList',
     meta: {
       title: '面板',
-      icon: 'iconfont el-icon-cc-file-add',
+      icon: 'documentAdd',
       route: 'dashboard'
     },
     children: [
@@ -19,7 +19,7 @@ const routes = [
         component: demos.ActionListDemo,
         meta: {
           title: '按钮组',
-          icon: 'iconfont el-icon-cc-file-add',
+          icon: 'documentAdd',
           route: 'actionList'
         }
       },
@@ -29,7 +29,7 @@ const routes = [
         component: demos.BreadcrumbDemo,
         meta: {
           title: '面包屑',
-          icon: 'iconfont el-icon-cc-file-add',
+          icon: 'documentAdd',
           route: 'Breadcrumb'
         }
       },
@@ -48,7 +48,7 @@ const routes = [
         component: demos.AppParamsDemo,
         meta: {
           title: 'AppParams',
-          icon: 'iconfont el-icon-cc-file-add',
+          icon: 'documentAdd',
           route: 'AppParams'
         }
       },
@@ -58,7 +58,7 @@ const routes = [
         component: demos.AppParamsReadDemo,
         meta: {
           title: 'AppParamsRead',
-          icon: 'iconfont el-icon-cc-file-add',
+          icon: 'documentAdd',
           route: 'AppParamsRead'
         }
       },
@@ -68,7 +68,7 @@ const routes = [
         component: demos.MenuDemo,
         meta: {
           title: '菜单',
-          icon: 'iconfont el-icon-cc-file-add',
+          icon: 'documentAdd',
           route: 'menu'
         }
       },
@@ -78,7 +78,7 @@ const routes = [
         component: demos.ContextMenuDemo,
         meta: {
           title: '右键菜单',
-          icon: 'iconfont el-icon-cc-file-add',
+          icon: 'documentAdd',
           route: 'contextMenu'
         }
       },
@@ -88,7 +88,7 @@ const routes = [
         component: demos.TagNavDemo,
         meta: {
           title: 'tagNav',
-          icon: 'iconfont el-icon-cc-file-add',
+          icon: 'documentAdd',
           route: 'tagNav'
         }
       },
@@ -98,7 +98,7 @@ const routes = [
         component: demos.ContentEllipsisDemo,
         meta: {
           title: '省略号',
-          icon: 'iconfont el-icon-cc-file-add',
+          icon: 'documentAdd',
           route: 'ellipsis'
         }
       },
@@ -108,7 +108,7 @@ const routes = [
         component: demos.TheIconDemoIndex,
         meta: {
           title: '图标',
-          icon: 'iconfont el-icon-cc-file-add',
+          icon: 'documentAdd',
           route: 'theIcon'
         }
       },
@@ -118,7 +118,7 @@ const routes = [
         component: demos.CardDemo,
         meta: {
           title: '标题返回',
-          icon: 'iconfont el-icon-cc-file-add',
+          icon: 'documentAdd',
           route: 'contentCard'
         }
       },
@@ -128,7 +128,7 @@ const routes = [
         component: demos.FixPageDemo,
         meta: {
           title: '头尾固定',
-          icon: 'iconfont el-icon-cc-file-add',
+          icon: 'documentAdd',
           route: 'fixPage'
         }
       },
@@ -138,7 +138,7 @@ const routes = [
         component: demos.AddMultiDemo,
         meta: {
           title: '添加多个对象',
-          icon: 'iconfont el-icon-cc-file-add',
+          icon: 'documentAdd',
           route: 'AddMulti'
         }
       },
@@ -148,7 +148,7 @@ const routes = [
         component: demos.AddFormObjDemo,
         meta: {
           title: '动态添加',
-          icon: 'iconfont el-icon-cc-file-add',
+          icon: 'documentAdd',
           route: 'AddFormObj'
         }
       },
@@ -158,7 +158,7 @@ const routes = [
         component: demos.SelectChangeDemo,
         meta: {
           title: '条件选择',
-          icon: 'iconfont el-icon-cc-file-add',
+          icon: 'documentAdd',
           route: 'SelectChange'
         }
       },
@@ -168,7 +168,7 @@ const routes = [
         component: demos.SelectLimitDemo,
         meta: {
           title: 'select输入长度',
-          icon: 'iconfont el-icon-cc-file-add',
+          icon: 'documentAdd',
           route: 'SelectLimit'
         }
       },
@@ -178,7 +178,7 @@ const routes = [
         component: demos.BoxGroupDemo,
         meta: {
           title: '单项选择按钮形式',
-          icon: 'iconfont el-icon-cc-file-add',
+          icon: 'documentAdd',
           route: 'BoxGroup'
         }
       },
@@ -188,7 +188,7 @@ const routes = [
         component: demos.InputPosibilityDemo,
         meta: {
           title: '概率输入',
-          icon: 'iconfont el-icon-cc-file-add',
+          icon: 'documentAdd',
           route: 'probability'
         }
       },
@@ -198,7 +198,7 @@ const routes = [
       //   component: demos.VideoTagsDemo,
       //   meta: {
       //     title: '标签列表',
-      //     icon: 'iconfont el-icon-cc-file-add',
+      //     icon: 'documentAdd',
       //     route: 'VideoTags'
       //   }
       // },
@@ -208,7 +208,7 @@ const routes = [
       //   component: demos.ProductListDemo,
       //   meta: {
       //     title: '产品包列表',
-      //     icon: 'iconfont el-icon-cc-file-add',
+      //     icon: 'documentAdd',
       //     route: 'ProductList'
       //   }
       // },
@@ -218,7 +218,7 @@ const routes = [
       //   component: demos.VideoFilterDemo,
       //   meta: {
       //     title: '影片筛选器',
-      //     icon: 'iconfont el-icon-cc-file-add',
+      //     icon: 'documentAdd',
       //     route: 'VideoFilter'
       //   }
       // },
@@ -228,7 +228,7 @@ const routes = [
         component: demos.CardListDemo,
         meta: {
           title: '卡片列表',
-          icon: 'iconfont el-icon-cc-file-add',
+          icon: 'documentAdd',
           route: 'CardList'
         }
       },
@@ -238,7 +238,7 @@ const routes = [
         component: demos.FilterTreeDemo,
         meta: {
           title: '树形过滤',
-          icon: 'iconfont el-icon-cc-file-add',
+          icon: 'documentAdd',
           route: 'filterTree'
         }
       },
@@ -248,7 +248,7 @@ const routes = [
         component: demos.InputThousandsDemo,
         meta: {
           title: '输入千分位数字',
-          icon: 'iconfont el-icon-cc-file-add',
+          icon: 'documentAdd',
           route: 'inputThousands'
         }
       },
@@ -258,7 +258,7 @@ const routes = [
         component: demos.InputOrderDemo,
         meta: {
           title: '序号排序',
-          icon: 'iconfont el-icon-cc-file-add',
+          icon: 'documentAdd',
           route: 'inputOrder'
         }
       },
@@ -268,7 +268,7 @@ const routes = [
         component: demos.InputPositiveIntDemo,
         meta: {
           title: '正整数输入',
-          icon: 'iconfont el-icon-cc-file-add',
+          icon: 'documentAdd',
           route: 'inputPositiveInt'
         }
       },
@@ -278,7 +278,7 @@ const routes = [
       //   component: demos.SelectDialogDemo,
       //   meta: {
       //     title: '基础数据选择器',
-      //     icon: 'iconfont el-icon-cc-file-add',
+      //     icon: 'documentAdd',
       //     route: 'selectDialog'
       //   }
       // },
@@ -288,7 +288,7 @@ const routes = [
         component: demos.ContentWrapperDemo,
         meta: {
           title: '内容包装器',
-          icon: 'iconfont el-icon-cc-file-add',
+          icon: 'documentAdd',
           route: 'ContentWrapperDemo'
         }
       },
@@ -298,7 +298,7 @@ const routes = [
         component: demos.TreeSelectDemo,
         meta: {
           title: '树形下拉框',
-          icon: 'iconfont el-icon-cc-file-add',
+          icon: 'documentAdd',
           route: 'treeSelect'
         }
       },
@@ -308,7 +308,7 @@ const routes = [
         component: demos.SearchDropdownDemo,
         meta: {
           title: '下拉框远程搜索',
-          icon: 'iconfont el-icon-cc-file-add',
+          icon: 'documentAdd',
           route: 'searchDropdown'
         }
       },
@@ -318,7 +318,7 @@ const routes = [
         component: demos.SelectChangeDemo,
         meta: {
           title: '条件选择',
-          icon: 'iconfont el-icon-cc-file-add',
+          icon: 'documentAdd',
           route: 'selectChange'
         }
       },
@@ -328,7 +328,7 @@ const routes = [
         component: demos.LazyRemoteSelectDemo,
         meta: {
           title: '懒加载搜索',
-          icon: 'iconfont el-icon-cc-file-add',
+          icon: 'documentAdd',
           route: 'lazyRemoteSelect'
         }
       }
@@ -341,7 +341,7 @@ const routes = [
     redirect: '/file/downloadFile',
     meta: {
       title: '文件',
-      icon: 'iconfont el-icon-cc-file-add',
+      icon: 'documentAdd',
       route: 'dashboard'
     },
     children: [
@@ -351,7 +351,7 @@ const routes = [
         component: demos.DownloadFileDemo,
         meta: {
           title: '文件下载',
-          icon: 'iconfont el-icon-cc-file-add',
+          icon: 'documentAdd',
           route: 'downloadFile'
         }
       },
@@ -361,7 +361,7 @@ const routes = [
         component: demos.UploadDemo,
         meta: {
           title: '文件上传',
-          icon: 'iconfont el-icon-cc-file-add',
+          icon: 'documentAdd',
           route: 'uploadFile'
         }
       },
@@ -371,7 +371,7 @@ const routes = [
         component: demos.CascaderPanelDemo,
         meta: {
           title: '级联选择器',
-          icon: 'iconfont el-icon-cc-file-add',
+          icon: 'documentAdd',
           route: 'cascaderPanelDemo'
         }
       }
@@ -384,7 +384,7 @@ const routes = [
     redirect: '/table/tableList',
     meta: {
       title: '表格',
-      icon: 'iconfont el-icon-cc-file-add',
+      icon: 'documentAdd',
       route: 'table'
     },
     children: [
@@ -394,7 +394,7 @@ const routes = [
         component: demos.TableDemo,
         meta: {
           title: '表格',
-          icon: 'iconfont el-icon-cc-file-add',
+          icon: 'documentAdd',
           route: 'tableList'
         }
       },
@@ -404,7 +404,7 @@ const routes = [
         component: demos.TableTreeDemo,
         meta: {
           title: '树形表格',
-          icon: 'iconfont el-icon-cc-file-add',
+          icon: 'documentAdd',
           route: 'treeTableList'
         }
       },
@@ -414,7 +414,7 @@ const routes = [
         component: demos.ContentWrapperDemo,
         meta: {
           title: '表格分页',
-          icon: 'iconfont el-icon-cc-file-add',
+          icon: 'documentAdd',
           route: 'ContentWrapper'
         }
       },
@@ -424,7 +424,7 @@ const routes = [
       //   component: demos.GateSchemaFormDemo,
       //   meta: {
       //     title: 'GateSchemaForm表单',
-      //     icon: 'iconfont el-icon-cc-file-add',
+      //     icon: 'documentAdd',
       //     route: 'GateSchemaFormDemo'
       //   }
       // }
@@ -437,7 +437,7 @@ const routes = [
     redirect: '/form/formList',
     meta: {
       title: '表单',
-      icon: 'iconfont el-icon-cc-file-add',
+      icon: 'documentAdd',
       route: 'form'
     },
     children: [
@@ -447,7 +447,7 @@ const routes = [
         component: demos.DataFormDemo,
         meta: {
           title: '表单',
-          icon: 'iconfont el-icon-cc-file-add',
+          icon: 'documentAdd',
           route: 'DataForm'
         }
       },
@@ -457,7 +457,7 @@ const routes = [
         component: demos.BooleanDemo,
         meta: {
           title: '表单布尔值',
-          icon: 'iconfont el-icon-cc-file-add',
+          icon: 'documentAdd',
           route: 'BooleanDemo'
         }
       },
@@ -467,7 +467,7 @@ const routes = [
         component: demos.NumberDemo,
         meta: {
           title: '表单数字',
-          icon: 'iconfont el-icon-cc-file-add',
+          icon: 'documentAdd',
           route: 'NumberDemo'
         }
       },
@@ -477,7 +477,7 @@ const routes = [
         component: demos.StringDemo,
         meta: {
           title: '表单字符串',
-          icon: 'iconfont el-icon-cc-file-add',
+          icon: 'documentAdd',
           route: 'StringDemo'
         }
       },
@@ -487,7 +487,7 @@ const routes = [
         component: demos.EnumDemo,
         meta: {
           title: '表单枚举',
-          icon: 'iconfont el-icon-cc-file-add',
+          icon: 'documentAdd',
           route: 'EnumDemo'
         }
       },
@@ -497,7 +497,7 @@ const routes = [
         component: demos.EnumListDemo,
         meta: {
           title: '表单枚举列表',
-          icon: 'iconfont el-icon-cc-file-add',
+          icon: 'documentAdd',
           route: 'EnumListDemo'
         }
       },
@@ -507,7 +507,7 @@ const routes = [
         component: demos.AnyDemo,
         meta: {
           title: '表单任何类型',
-          icon: 'iconfont el-icon-cc-file-add',
+          icon: 'documentAdd',
           route: 'AnyDemo'
         }
       },
@@ -517,7 +517,7 @@ const routes = [
         component: demos.MacDemo,
         meta: {
           title: '表单Mac类型',
-          icon: 'iconfont el-icon-cc-file-add',
+          icon: 'documentAdd',
           route: 'MacDemo'
         }
       },
@@ -527,7 +527,7 @@ const routes = [
         component: demos.EffectiveTimeDemo,
         meta: {
           title: '表单活动有效期范围',
-          icon: 'iconfont el-icon-cc-file-add',
+          icon: 'documentAdd',
           route: 'EffectiveTimeDemo'
         }
       },
@@ -537,7 +537,7 @@ const routes = [
         component: demos.ListFilterDemo,
         meta: {
           title: '列表筛选器',
-          icon: 'iconfont el-icon-cc-file-add',
+          icon: 'documentAdd',
           route: 'ListFilterDemo'
         }
       }

@@ -21,7 +21,7 @@
     </div>
   </div>
 </template>
-<script>
+<script lang="ts">
 export default {
   data () {
     return {
@@ -37,7 +37,7 @@ export default {
     /**
      * 得到icon
      */
-    getIcon (iconName, name) {
+    getIcon (iconName) {
       this.iconName = iconName
       this.isShowMainPage = true
     },

@@ -1,15 +1,28 @@
 <template>
   <el-form-item v-bind="formItemAttr">
+    
     <el-input
       v-if="!isReadonly"
+      v-bind="$attrs"
       :model-value="modelValue"
-       v-bind="$attrs"
-       @update:modelValue="$emit('update:modelValue', $event)"
-       @change="$emit('change', $event)"
-       @clear="$emit('clear', $event)"
-       @focus="$emit('focus', $event)"
-       @blur="$emit('blur', $event)"
-    />
+      @update:modelValue="$emit('update:modelValue', $event)"
+      @change="$emit('change', $event)"
+      @clear="$emit('clear', $event)"
+      @focus="$emit('focus', $event)"
+      @blur="$emit('blur', $event)"
+    >
+    
+      <!--传递插槽-->
+      <template 
+        v-for="(item, key, index) in $slots"
+        :key="index"
+        #[key]
+      >
+        <slot :name="key"></slot>
+      </template> 
+   
+    </el-input>
+    
     <template v-else>
       {{ modelValue }}
     </template>
