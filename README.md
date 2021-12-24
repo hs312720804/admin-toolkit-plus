@@ -67,3 +67,11 @@ npm install -g commitizen
 commitizen init cz-conventional-changelog --save --save-exact
 具体使用见 [源代码](https://blog.csdn.net/m0_37263637/article/details/86723431)
 ```
+
+## V1.0.2 修改项：
+
+```
+1、修改 <c-form> 组件；更新 vue-i18n、@vue/compiler-sfc、vite等包
+2、修改一些ele图标语法；修改 icon-select 组件；安装 @element-plus/icons-vue 包；
+3、修改 Menu 组件的key值，使用 route 字段
+```
