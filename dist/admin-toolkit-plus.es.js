@@ -18,7 +18,7 @@ var __spreadValues = (a2, b2) => {
 };
 var __spreadProps = (a2, b2) => __defProps(a2, __getOwnPropDescs(b2));
 /*!
-* @ccprivate/admin-toolkit-plus v1.0.1 Tue Dec 21 2021 15:08:00 GMT+0800 (GMT+08:00)
+* @ccprivate/admin-toolkit-plus v1.0.1 Fri Dec 24 2021 18:08:34 GMT+0800 (GMT+08:00)
 * (c) 2021 @jdf2e.
 * Released under the MIT License.
 */
@@ -15324,7 +15324,6 @@ const _sfc_main$4_ = {
     }
   },
   created() {
-    console.log("items===", this.items);
   }
 };
 function _sfc_render$4Y(_ctx, _cache, $props, $setup, $data, $options) {
@@ -15345,27 +15344,27 @@ function _sfc_render$4Y(_ctx, _cache, $props, $setup, $data, $options) {
     default: withCtx(() => [
       (openBlock(true), createElementBlock(Fragment, null, renderList($props.items, (item, index2) => {
         return openBlock(), createElementBlock(Fragment, {
-          key: index2 + "_menu"
+          key: item.route + "_menu"
         }, [
           item.children ? (openBlock(), createBlock(_component_el_sub_menu, {
             key: 0,
-            index: index2 + ""
+            index: item.route
           }, {
             title: withCtx(() => [
-              createVNode(_component_el_icon, null, {
+              item.icon ? (openBlock(), createBlock(_component_el_icon, { key: 0 }, {
                 default: withCtx(() => [
                   (openBlock(), createBlock(resolveDynamicComponent(item.icon), {
                     class: normalizeClass(item.icon)
                   }, null, 8, ["class"]))
                 ]),
                 _: 2
-              }, 1024),
+              }, 1024)) : createCommentVNode("", true),
               createElementVNode("span", null, toDisplayString$1(item.title), 1)
             ]),
             default: withCtx(() => [
               (openBlock(true), createElementBlock(Fragment, null, renderList(item.children, (child, idx) => {
                 return openBlock(), createElementBlock(Fragment, {
-                  key: idx + "_menu_c"
+                  key: child.route + "_menu_c"
                 }, [
                   typeof child.children === "undefined" ? (openBlock(), createBlock(_component_el_menu_item, {
                     key: 0,
@@ -15416,7 +15415,7 @@ function _sfc_render$4Y(_ctx, _cache, $props, $setup, $data, $options) {
                     default: withCtx(() => [
                       (openBlock(true), createElementBlock(Fragment, null, renderList(child.children, (c2, n2) => {
                         return openBlock(), createBlock(_component_el_menu_item, {
-                          key: n2 + "_no-c",
+                          key: c2.route + "_no-c",
                           index: c2.route
                         }, {
                           default: withCtx(() => [
@@ -15581,7 +15580,7 @@ function _sfc_render$4W(_ctx, _cache, $props, $setup, $data, $options) {
     }, null, 8, ["onSizeChange", "onCurrentChange", "current-page", "page-size", "layout", "total"])
   ]);
 }
-var CContentWrapper = /* @__PURE__ */ _export_sfc$1(_sfc_main$4Y, [["render", _sfc_render$4W], ["__scopeId", "data-v-dd3deb08"]]);
+var CContentWrapper = /* @__PURE__ */ _export_sfc$1(_sfc_main$4Y, [["render", _sfc_render$4W], ["__scopeId", "data-v-00ae91fc"]]);
 CContentWrapper.install = (app) => {
   const name = CContentWrapper.name;
   app.component(name, CContentWrapper);
@@ -16295,7 +16294,7 @@ const _sfc_main$4T = defineComponent({
     } });
   }
 });
-var CForm = /* @__PURE__ */ _export_sfc$1(_sfc_main$4T, [["__scopeId", "data-v-1f23a7ba"]]);
+var CForm = /* @__PURE__ */ _export_sfc$1(_sfc_main$4T, [["__scopeId", "data-v-790486ba"]]);
 CForm.install = (app) => {
   const name = CForm.name;
   app.component(name, CForm);
@@ -34249,7 +34248,6 @@ const _sfc_main$a = defineComponent({
     let elIcons = ref([]);
     for (const iconName in ElIconModules) {
       if (Reflect.has(ElIconModules, iconName)) {
-        console.log("transElIconName(key)===", iconName);
         elIcons.value.push(iconName);
       }
     }
@@ -34308,7 +34306,7 @@ function _sfc_render$9(_ctx, _cache, $props, $setup, $data, $options) {
     ])) : createCommentVNode("", true)
   ]);
 }
-var component$a = /* @__PURE__ */ _export_sfc$1(_sfc_main$a, [["render", _sfc_render$9], ["__scopeId", "data-v-00228510"]]);
+var component$a = /* @__PURE__ */ _export_sfc$1(_sfc_main$a, [["render", _sfc_render$9], ["__scopeId", "data-v-1e6695fc"]]);
 component$a.install = (app) => {
   const name = component$a.name;
   app.component(name, component$a);

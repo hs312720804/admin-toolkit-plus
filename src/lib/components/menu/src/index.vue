@@ -9,16 +9,16 @@
     :collapse="isCollapse"
     :mode="mode"
   >
-    <template v-for="(item, index) in items" :key="index + '_menu'">
-      <el-sub-menu v-if="item.children" :index="index + ''">
+    <template v-for="(item, index) in items" :key="item.route + '_menu'">
+      <el-sub-menu v-if="item.children" :index="item.route">
         <template #title>
           <!-- <i v-if="item.icon" :class="item.icon"></i> -->
-          <el-icon>
+          <el-icon v-if="item.icon">
             <component :is="item.icon" :class="item.icon"></component>
           </el-icon>
           <span>{{ item.title }}</span>
         </template>
-        <template v-for="(child, idx) in item.children" :key="idx + '_menu_c'">
+        <template v-for="(child, idx) in item.children" :key="child.route + '_menu_c'">
           <el-menu-item
             v-if="typeof child.children === 'undefined'"
             :index="child.route"
@@ -53,7 +53,7 @@
               </el-icon>
               <span>{{ child.title }}</span>
             </template>
-            <template v-for="(c, n) in child.children" :key="n + '_no-c'">
+            <template v-for="(c, n) in child.children" :key="c.route + '_no-c'">
               <el-menu-item :index="c.route">
                 <!-- <i v-if="c.icon" :class="c.icon"></i> -->
                 <el-icon v-if="c.icon">
